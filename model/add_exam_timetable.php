@@ -36,7 +36,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_exam_timetable")){
 	
 	if(isset($_POST["create_by"])&&($_POST["create_by"]=="Admin")){
 		
-		header("Location: view/exam_timetable.php?do=alert_from_insert&msg=$msg&grade=$grade_id&exam=$exam_id");//MSK-000143-5
+		header("Location: view/Dashboard_Principal/exam_timetable.php?do=alert_from_insert&msg=$msg&grade=$grade_id&exam=$exam_id");//MSK-000143-5
 		
 	}
 	

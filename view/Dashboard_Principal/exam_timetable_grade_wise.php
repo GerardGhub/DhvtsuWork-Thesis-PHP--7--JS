@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
@@ -9,7 +9,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 	<div class="box">
     	<div class="box-header">
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 if(isset($_GET["do"])&&($_GET["do"]=="show_exam_Timetable")){
 	
 $grade_id=$_GET['grade'];
@@ -42,7 +42,7 @@ $row1=mysqli_fetch_assoc($result1);
                  </thead>
                  <tbody>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 
@@ -68,7 +68,7 @@ while($row2=mysqli_fetch_assoc($result2)){
                         </th>
                         <td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];		
 
@@ -104,7 +104,7 @@ if (mysqli_num_rows($result) > 0) { // 1#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name
@@ -135,7 +135,7 @@ if (mysqli_num_rows($result) > 0) { // 2#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name
@@ -166,7 +166,7 @@ if (mysqli_num_rows($result) > 0) { // 3#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name
@@ -197,7 +197,7 @@ if (mysqli_num_rows($result) > 0) { // 4#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name
@@ -229,7 +229,7 @@ if (mysqli_num_rows($result) > 0) { //5#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name
@@ -261,7 +261,7 @@ if (mysqli_num_rows($result) > 0) { // 6#
 ?>
 						<td>
 <?php 
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $grade_id=$_GET['grade'];
 $exam_id=$_GET['exam'];	
 $sql="select exam_timetable.id as ett_id,exam_timetable.start_time as ett_stime,exam_timetable.end_time as ett_etime, subject.name as s_name, class_room.name as c_name

@@ -146,11 +146,11 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_attendance")){
 	}
 	
 	if($user_type == "Student"){
-		header("Location:view/add_attendance.php?do=alert_from_insert_student_atd&msg=$msg&monthly_fee=$monthly_fee&index=$index_number");//MSK-000143-5
+		header("Location:view/Dashboard_Principal/add_attendance.php?do=alert_from_insert_student_atd&msg=$msg&monthly_fee=$monthly_fee&index=$index_number");//MSK-000143-5
 	}else if($user_type == "Teacher"){
-		header("Location:view/add_attendance.php?do=alert_from_insert_teacher_atd&msg=$msg");//MSK-000143-5
+		header("Location:view/Dashboard_Principal/add_attendance.php?do=alert_from_insert_teacher_atd&msg=$msg");//MSK-000143-5
 	}else{
-		header("Location:view/add_attendance.php?do=wrong_index&msg=$msg");
+		header("Location:view/Dashboard_Principal/add_attendance.php?do=wrong_index&msg=$msg");
 	}
 	
 }

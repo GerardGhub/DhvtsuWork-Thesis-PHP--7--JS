@@ -1,14 +1,14 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
 <?php include_once('head.php'); ?>
 <?php include_once('header_admin.php'); ?>
 <?php include_once('sidebar.php'); ?>
-<?php include_once('alert.php'); ?>
+<?php include_once('../alert.php'); ?>
 
 <style>
 
@@ -518,7 +518,7 @@ function showPayment(){
 				
 			};	
 			
-			xhttp1.open("GET", "../model/get_student1.php?index=" + index , true);												
+			xhttp1.open("GET", "../../model/get_student1.php?index=" + index , true);												
 			xhttp1.send();
 		
 	}
@@ -677,7 +677,7 @@ window.addEventListener("popstate", function() {
   if(location.hash === "#!/history") {
     history.replaceState(null, document.title, location.pathname);
     setTimeout(function(){
-      location.replace("../index.php");//path to when click back button
+      location.replace("../../index.php");//path to when click back button
     },0);
   }
 }, false);
@@ -686,4 +686,4 @@ window.addEventListener("popstate", function() {
 
 </div><!-- /.content-wrapper -->  
                               
-<?php include_once('footer.php');?>
+<?php include_once('../footer.php');?>

@@ -1,14 +1,14 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
 <?php include_once('head.php'); ?>
 <?php include_once('header_admin.php'); ?>
 <?php include_once('sidebar.php'); ?>
-<?php include_once('alert.php'); ?>
+<?php include_once('../alert.php'); ?>
 
 <style>
 
@@ -71,7 +71,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                 	<div class="box-header with-border">
                   		<h3 class="box-title">Add Attendance </h3>
                 	</div><!-- /.box-header -->
-                    <form role="form" action="../index.php" method="post" id="form1" >
+                    <form role="form" action="../../index.php" method="post" id="form1" >
                   		<div class="box-body">
                     		<div class="form-group" id="divIndex">
                       			<label for="">Index Number</label>
@@ -143,7 +143,7 @@ function duePayment(index){
 				
 		};	
 			
-		xhttp.open("GET", "../model/add_payment_notifications.php?index="+index +"&do="+do1, true);												
+		xhttp.open("GET", "../../model/add_payment_notifications.php?index="+index +"&do="+do1, true);												
 		xhttp.send();//MSK-00105-Ajax End
 	
 };
@@ -310,7 +310,7 @@ window.addEventListener("popstate", function() {
   if(location.hash === "#!/history") {
     history.replaceState(null, document.title, location.pathname);
     setTimeout(function(){
-      location.replace("../index.php");//path to when click back button
+      location.replace("../../index.php");//path to when click back button
     },0);
   }
 }, false);
@@ -319,4 +319,4 @@ window.addEventListener("popstate", function() {
 
 </script>
                            
-<?php include_once('footer.php');?>
+<?php include_once('../footer.php');?>

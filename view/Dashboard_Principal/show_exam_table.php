@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
@@ -19,7 +19,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                 </thead>
                 <tbody>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $sql="SELECT * FROM exam";
 $result=mysqli_query($conn,$sql);
 $count = 0;

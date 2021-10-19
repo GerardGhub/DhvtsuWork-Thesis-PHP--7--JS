@@ -436,7 +436,7 @@ $("#form1").submit(function (e) {
 
 	if(photo == ''){
 		//MSK-00102-photo
-		output.src="../uploads/error.png";
+		output.src="../../uploads/error.png";
 		
 		$("#btnSubmit").attr("disabled", true);
 		$('#divPhoto').addClass('has-error');
@@ -581,7 +581,7 @@ window.addEventListener("popstate", function() {
   if(location.hash === "#!/history") {
     history.replaceState(null, document.title, location.pathname);
     setTimeout(function(){
-      location.replace("../index.php");//path to when click back button
+      location.replace("../../index.php");//path to when click back button
     },0);
   }
 }, false);
@@ -590,4 +590,4 @@ window.addEventListener("popstate", function() {
   	 	
 </div><!-- /.content-wrapper -->  
                            
-<?php include_once('foo
+<?php include_once('../footer.php');?>

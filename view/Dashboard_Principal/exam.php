@@ -1,14 +1,14 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
 <?php include_once('head.php'); ?>
 <?php include_once('header_admin.php'); ?>
 <?php include_once('sidebar.php'); ?>
-<?php include_once('alert.php'); ?>
+<?php include_once('../alert.php'); ?>
 
 
 <style>
@@ -103,7 +103,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                             </thead>
                         	<tbody>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $sql="SELECT * FROM exam";
 $result=mysqli_query($conn,$sql);
 $count = 0;
@@ -176,7 +176,7 @@ if($cant_remove1 > 0 || $cant_remove2 > 0 ){
         					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
           					<h3 class="panel-title">Add Exam</h3>
    						</div>
-            			 <form role="form" action="../index.php" method="post">
+            			 <form role="form" action="../../index.php" method="post">
             				<div class="panel-body"> <!-- Start of modal body--> 
                                 <div class="form-group" id="divName">
                 					<label for="" >Name</label>
@@ -342,7 +342,7 @@ function showModal(Updateform){
 			
   		};	
 		
-    	xhttp.open("GET", "../model/get_exam.php?id=" + Id , true);												
+    	xhttp.open("GET", "../../model/get_exam.php?id=" + Id , true);												
   		xhttp.send();//MSK-00105-Ajax End
 	 
 };
@@ -421,7 +421,7 @@ function UpdateExam(){
 			
   		};
   		
-		xhttp.open("GET", "../model/update_exam.php?id=" + Id1 + "&name="+name1 + "&do="+do1, true);												
+		xhttp.open("GET", "../../model/update_exam.php?id=" + Id1 + "&name="+name1 + "&do="+do1, true);												
   		xhttp.send();//MSK-00111-Ajax End
 		
 	}
@@ -494,7 +494,7 @@ function Update_alert(msg){
       			</div>
 
 				<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Are you sure?</strong>  Do you want to Delete this Record
+        			  Do you want to Delete this Record?
         		</div>
       			<div class="modal-footer">
 					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000125 -->
@@ -567,7 +567,7 @@ $('#btnYes').click(function() {
 			
   		};	
     	
-		xhttp.open("GET", "../model/delete_record.php?id=" + id + "&do="+do1 + "&table_name="+table_name + "&page="+currentPage , true);												
+		xhttp.open("GET", "../../model/delete_record.php?id=" + id + "&do="+do1 + "&table_name="+table_name + "&page="+currentPage , true);												
   		xhttp.send();//MSK-000127-Ajax End
 	 			   		
 });
@@ -629,7 +629,7 @@ window.addEventListener("popstate", function() {
   if(location.hash === "#!/history") {
     history.replaceState(null, document.title, location.pathname);
     setTimeout(function(){
-      location.replace("../index.php");//path to when click back button
+      location.replace("../../index.php");//path to when click back button
     },0);
   }
 }, false);
@@ -638,4 +638,4 @@ window.addEventListener("popstate", function() {
 
 </div><!-- /.content-wrapper -->  
                            
-<?php include_once('footer.php');?>
+<?php include_once('../footer.php');?>

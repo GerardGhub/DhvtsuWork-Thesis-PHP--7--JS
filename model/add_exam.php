@@ -29,7 +29,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_exam")){
 	
 	}
 	
-	header("Location: view/exam.php?do=alert_from_insert&msg=$msg");//MSK-000143-5
+	header("Location: view/Dashboard_Principal/exam.php?do=alert_from_insert&msg=$msg");//MSK-000143-5
 
 }
 ?>

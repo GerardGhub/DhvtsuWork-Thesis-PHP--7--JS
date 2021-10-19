@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
@@ -15,7 +15,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                             
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $index=$_GET['index'];
 $sql="SELECT * FROM student WHERE index_number='$index'"; 
 $result=mysqli_query($conn,$sql);
@@ -39,7 +39,7 @@ $name=$row['i_name'];
                                         </thead>
                                         <tbody id="tBody">
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $index=$_GET['index'];
 $page=$_GET['page'];
 $current_month=date('F');
@@ -111,7 +111,7 @@ if(mysqli_num_rows($result) > 0){
                                         </thead>
                                         <tbody>
 <?php
-include_once("../controller/config.php");
+include_once("../../controller/config.php");
 $index=$_GET['index'];
       
 $sql1="SELECT * FROM student_payment WHERE index_number='$index' and _status='Monthly Fee' ORDER BY id DESC LIMIT 1";
@@ -150,7 +150,7 @@ if(mysqli_num_rows($result1) > 0){
                                 	<div class="box">    
                                     	<h3>Add Payment</h3>
                                     
-                                        <form role="form" action="../index.php" method="post" id="form1" class="form-horizontal" >
+                                        <form role="form" action="../../index.php" method="post" id="form1" class="form-horizontal" >
                                             <div class="box-body" >
                                                 <div class="form-group" id="divIndexNumber">
                                                     <div class="col-xs-4">

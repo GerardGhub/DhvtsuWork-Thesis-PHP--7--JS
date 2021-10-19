@@ -1,14 +1,14 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../../index.php');
     exit;
 }
 ?>
 <?php include_once('head.php'); ?>
 <?php include_once('header_admin.php'); ?>
 <?php include_once('sidebar.php'); ?>
-<?php include_once('alert.php'); ?>
+<?php include_once('../alert.php'); ?>
 
 <style>
 body { 
@@ -92,7 +92,7 @@ body.modal-open-noscroll1
     <section class="content-header">
     	<h1>
         	Exam Timetable
-            <small>Preview</small>
+         
         </h1>
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -114,7 +114,7 @@ body.modal-open-noscroll1
                     		<select name="grade" class="form-control col-md-3" id="grade" ><!--MSK-000107-->
                     			<option>Select Grade</option>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $sql="SELECT * FROM grade";
 $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result) > 0){
@@ -129,7 +129,7 @@ if(mysqli_num_rows($result) > 0){
                     		<select name="exam" class="form-control " id="exam" ><!--MSK-000107-->
                     			<option>Select Exam</option>
 <?php
-include_once('../controller/config.php');
+include_once('../../controller/config.php');
 $sql="SELECT * FROM exam";
 $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result) > 0){
@@ -666,7 +666,7 @@ function showModal2(Updateform){
 			
 		};
 			
-		xhttp.open("GET", "../model/get_exam_timetable.php?id="+Id , true);												
+		xhttp.open("GET", "../../model/get_exam_timetable.php?id="+Id , true);												
   		xhttp.send();//MSK-00133-Ajax End
 	
 };
@@ -847,7 +847,7 @@ $('#btnYes').click(function() {//MSK-000155
 			
   		};
 			
-		xhttp.open("GET", "../model/delete_record.php?id=" + id + "&do="+do1 + "&table_name="+table_name1 + "&page="+currentPage , true);												
+		xhttp.open("GET", "../../model/delete_record.php?id=" + id + "&do="+do1 + "&table_name="+table_name1 + "&page="+currentPage , true);												
   		xhttp.send();//MSK-000156-Ajax End
 	 			   		
 });
@@ -894,7 +894,7 @@ window.addEventListener("popstate", function() {
   if(location.hash === "#!/history") {
     history.replaceState(null, document.title, location.pathname);
     setTimeout(function(){
-      location.replace("../index.php");//path to when click back button
+      location.replace("../../index.php");//path to when click back button
     },0);
   }
 }, false);
@@ -906,4 +906,4 @@ window.addEventListener("popstate", function() {
                
 
                
-<?php include_once('footer.php');?>
+<?php include_once('../footer.php');?>
