@@ -416,7 +416,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="alert_from_insert")){
                 <div class="row">	
                     <div class="col-md-3 ">
                         <div class="panel">
-                            <div class="panel-heading bg-orange">               
+                            <div class="panel-heading bg-primary">               
         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
           						<h3 class="panel-title">Edit Subject Routing</h3>
    							</div>
@@ -466,7 +466,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="alert_from_insert")){
                                     </select>
                                 </div> 
                                 <div class="form-group" id="divFeeUpdate">
-                                    <label for="" >Fee($)</label>
+                                    <label for="" >Fee</label>
                                     <input type="text" class="form-control" id="fee1" name="fee"  placeholder="Enter subject fee" autocomplete="off"/>
                                 </div>  
                             </div><!--/.modal body-->

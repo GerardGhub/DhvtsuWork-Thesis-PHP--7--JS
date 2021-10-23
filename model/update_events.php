@@ -72,7 +72,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_events")){
 	}
 	
 	if($my_type == "Admin"){
-		header("Location: view/my_events.php?do=alert_from_update&msg=$msg");//MSK-000143-5	
+		header("Location: view/Dashboard_Principal/my_events.php?do=alert_from_update&msg=$msg");//MSK-000143-5	
 	}
 	
 	if($my_type == "Teacher"){

@@ -43,7 +43,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_timetable")){
 	
 	if(isset($_POST["do2"])&&($_POST["do2"]=="add_timetable2")){
 		
-		header("Location: view/Dashboard_Principal/my_timetable2.php?do=alert_from_insert&msg=$msg");//MSK-000143-5
+		header("Location: view/Teacher/my_timetable2.php?do=alert_from_insert&msg=$msg");//MSK-000143-5
 
 	}
 

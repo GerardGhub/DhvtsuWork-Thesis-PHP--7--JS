@@ -105,9 +105,7 @@ body.modal-open-noscroll1
     	<div class="row">
             <div class="col-md-5"><!-- left column -->
               	<div class="box box-primary"><!-- general form elements -->
-                	<div class="box-header with-border">
-                  		<h3 class="box-title">Add Exam Timetable</h3>
-                	</div><!-- /.box-header -->
+           
                   	<div class="box-body">
                     	<div class="form-group col-md-5" id="divGender1">
                         	<label>Grade</label>
@@ -774,7 +772,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="alert_from_update")){
       			</div>
 
 				<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Are you sure?</strong>  Do you want to Delete this Record
+        		  Do you want to Delete this Record?
         		</div>
       			<div class="modal-footer">
 					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000154 -->

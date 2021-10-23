@@ -40,7 +40,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="user_login")){
 			$index_number=$row1['index_number'];
 			$_SESSION["index_number"]=$index_number;
 			$_SESSION["type"]="Teacher";
-			header("Location: view/dashboard2.php");
+			header("Location: view/Teacher/dashboard2.php");
 		}
 		
 		if($type == "Admin"){
@@ -64,7 +64,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="user_login")){
 			$index_number=$row1['index_number'];
 			$_SESSION["index_number"]=$index_number;
 			$_SESSION["type"]="Parents";
-			header("Location: view/dashboard3.php");
+			header("Location: view/Parents/dashboard3.php");
 		}
 	}else{
 		$msg+=1;//Email or Password is incorrect

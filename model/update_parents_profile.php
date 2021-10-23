@@ -97,7 +97,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_parents_profile")){
 		
 	}
 	
-	header("Location:view/parents_profile.php?do=alert_from_update&msg=$msg");//MSK-000143-5
+	header("Location:view/Parents/parents_profile.php?do=alert_from_update&msg=$msg");//MSK-000143-5
 
 }
 ?>

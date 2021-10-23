@@ -172,10 +172,10 @@ $name=$row['i_name'];
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Total Students</span>
+              <span class="info-box-text">Total Active Students</span>
 <?php
 include_once('../../controller/config.php');
 
@@ -196,10 +196,10 @@ $total_count1=$row1['count(id)'];
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-primary"><i class="fa fa-users"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Total Teacher</span>
+              <span class="info-box-text">Total Active Teacher</span>
 <?php
 include_once('../../controller/config.php');
 
@@ -227,8 +227,9 @@ $total_count2=$row2['count(id)'];
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Monthly Income</span>
-<?php
+              <span class="info-box-text">Total Modules</span>
+			  0
+<!-- <?php
 include_once('../../controller/config.php');
 $current_year=date("Y");
 $current_month=date("F");
@@ -243,7 +244,8 @@ $monthly_income=$row3['SUM(paid)'];
 ?>             
         
               <span class="info-box-number"><small>$</small><?php echo $monthly_income; ?></span>
-            </div>
+           -->
+			</div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -254,21 +256,23 @@ $monthly_income=$row3['SUM(paid)'];
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Total Income</span>
+              <span class="info-box-text">Total Active Post</span>
+			  5
 <?php
 include_once('../../controller/config.php');
+5
+// $sql4="SELECT SUM(paid) FROM student_payment";
+// $total_income=0;
 
-$sql4="SELECT SUM(paid) FROM student_payment";
-$total_income=0;
+// $result4=mysqli_query($conn,$sql4);
+// $row4=mysqli_fetch_assoc($result4);
+// $total_income=$row4['SUM(paid)'];
 
-$result4=mysqli_query($conn,$sql4);
-$row4=mysqli_fetch_assoc($result4);
-$total_income=$row4['SUM(paid)'];
-
-?>             
+// ?>             
         
-              <span class="info-box-number"><small>$</small><?php echo $total_income; ?></span>
-            </div>
+               <!-- <span class="info-box-number"><small>$</small><?php echo $total_income; ?></span>
+           -->
+			</div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -278,7 +282,7 @@ $total_income=$row4['SUM(paid)'];
       <!-- /.row -->
       <!-- <h5><?php echo $name; ?>,<strong><span style="color:#cf4ed4;"> Welcome back! </span></strong></h5>
 	     -->
-		<div class="row" id="table1"><!--MSK-000132-1-->    
+		<div class="row" id="table1" style="display:none;"><!--MSK-000132-1-->    
         	<div class="col-md-8">
            		<center><h4 class="box-title">Monthly Income</h4></center>
                 <canvas id="barChart" width="800" height="438"></canvas>
@@ -589,7 +593,7 @@ echo '<script>','ShowEvents("K",'.$my_index.',"'.$my_type.'");','</script>';
 
 ?>
 
-	<div class="row" >
+	<div class="row"  style="display:none;">
     	<div class="col-md-10" ><!-- left column -->
         	<center><h4>Monthly Student Registration</h4></center>
             

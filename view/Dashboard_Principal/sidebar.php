@@ -114,7 +114,7 @@ $image=$row['image_name'];
             <i class="fa fa-money"></i> <span style="color:white;">Student Payment</span>
           </a>
         </li>
-         <li class="treeview">
+         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-calendar-check-o"></i>
             <span style="color:white;">Attendance</span>
@@ -127,7 +127,7 @@ $image=$row['image_name'];
             <li><a href="student_attendance_history.php"><i class="fa fa-circle-o"></i>Student Attendance History </a></li>
             <li><a href="teacher_attendance_history.php"><i class="fa fa-circle-o"></i> Teacher Attendance History</a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-certificate"></i>
@@ -143,16 +143,16 @@ $image=$row['image_name'];
             <li><a href="student_exam_marks_history.php"><i class="fa fa-circle-o"></i>Student Exam Marks History</a></li>
           </ul>
         </li>
-        <li>
+        <!-- <li>
           <a href="petty_cash.php">
             <i class="fa fa-yen"></i> <span style="color:white;">Petty Cash</span>
           </a>
-        </li>
+        </li> -->
    
         <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
-            <span style="color:white;">Online Reservation</span>
+            <span style="color:white;">Announcement Post</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -168,14 +168,14 @@ $image=$row['image_name'];
 
         <li>
           <a href="../ong/Admin/userportal/managemis.php">
-            <i class="fa fa-yen"></i> <span style="color:white;">Modules</span>
+            <i class="fa fa-yen"></i> <span style="color:white;">Modules Management</span>
           </a>
         </li>
     
 
 
 
-        <li class="treeview">
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
             <span style="color:white;">Applicant List</span>
@@ -190,12 +190,12 @@ $image=$row['image_name'];
             <li><a href="my_friends.php"><i class="fa fa-circle-o"></i> Processed</a>
            
           </ul>
-        </li>
+        </li> -->
 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
-            <span style="color:white;">Friends</span>
+            <span style="color:white;">Communication Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

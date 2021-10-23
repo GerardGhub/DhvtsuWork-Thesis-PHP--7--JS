@@ -29,7 +29,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student_exam_mark1")){
 		
 	}
 
-	header("Location: view/student_exam_marks.php?do=show_student_from_insert&msg=$msg&exam=$exam_id&current_year=$current_year&grade=$grade_id");		//MSK-000143-5
+	header("Location: view/Dashboard_Principal/student_exam_marks.php?do=show_student_from_insert&msg=$msg&exam=$exam_id&current_year=$current_year&grade=$grade_id");		//MSK-000143-5
 
 }
 ?>

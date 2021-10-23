@@ -300,7 +300,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="alert_from_insert")){
             	<div class="row ">	
            			<div class="col-md-6">
                 		<div class="panel">
-        					<div class="panel-heading bg-orange">                 
+        					<div class="panel-heading bg-primary">                 
         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
           						<h4 class="modal-title custom_align" id="Heading">Edit Exam</h4>
                             </div>

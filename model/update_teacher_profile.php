@@ -96,7 +96,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_teacher_profile")){
 		
 	}
 	
-	header("Location:view/teacher_profile2.php?do=alert_from_update&msg=$msg");//MSK-000143-5
+	header("Location:view/Teacher/teacher_profile2.php?do=alert_from_update&msg=$msg");//MSK-000143-5
 
 }
 ?>

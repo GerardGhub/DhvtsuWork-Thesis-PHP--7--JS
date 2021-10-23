@@ -111,7 +111,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_student")){
 	
 	if(isset($_POST["showPage"])&&($_POST["showPage"]=="my_student")){
 	
-		header("Location: view/my_student.php?do=alert_from_update&msg=$msg&grade=$grade_id");//MSK-000143-U-23			
+		header("Location: view/Teacher/my_student.php?do=alert_from_update&msg=$msg&grade=$grade_id");//MSK-000143-U-23			
 		
 	}
 

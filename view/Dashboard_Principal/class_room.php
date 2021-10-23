@@ -61,14 +61,14 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        	Classroom
+        	Section
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 New
 </button>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Classroom</a></li>
+            <li><a href="#">Section</a></li>
         </ol>
 	</section>
 
