@@ -166,9 +166,28 @@ $image=$row['image_name'];
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+            <span style="color:white;">Module Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+
+            <li><a href="posted.php"><i class="fa fa-circle-o"></i> Posted</a>
+            <li><a href="postedlist.php"><i class="fa fa-circle-o"></i> Posts List</a>
+            <li><a href="readmodule.php"><i class="fa fa-circle-o"></i>View All Modules</a>
+
+           
+           
+          </ul>
+        </li>
+
         <li>
-          <a href="../ong/Admin/userportal/managemis.php">
-            <i class="fa fa-yen"></i> <span style="color:white;">Modules Management</span>
+          <a href="allmodules.php">
+            <i class="fa fa-yen"></i> <span style="color:white;">Modules</span>
           </a>
         </li>
     

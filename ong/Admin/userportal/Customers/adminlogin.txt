@@ -1,0 +1,24 @@
+<?php
+if(isset($_POST['login']))
+{
+$uname=$_POST['username'];
+$password=md5($_POST['userpassword']);
+$sql ="SELECT UserName,Password FROM users WHERE UserName=:uname and Password=:userpassword";
+$query= $dbh -> prepare($sql);
+$query-> bindParam(':uname', $uname, PDO::PARAM_STR);
+$query-> bindParam(':userpassword', $password, PDO::PARAM_STR);
+$query-> execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+if($query->rowCount() > 0)
+{
+$_SESSION['blogin']=$_POST['username'];
+echo "<script type='text/javascript'> document.location = 'usersdashboard.php'; </script>";
+} else{
+    
+    echo "<script>alert('Invalid Username or Password!');</script>";
+
+}
+
+}
+
+?>

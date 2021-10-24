@@ -1,0 +1,147 @@
+USE [hr_bak]
+GO
+/****** Object:  StoredProcedure [dbo].[rdf_sp_TimeKeeper]    Script Date: 12/31/2019 1:42:22 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		MIS.Gerard
+-- Create date: Dec 201
+-- Description:	DTRecords_3
+-- =============================================
+ALTER PROCEDURE [dbo].[rdf_sp_TimeKeeper] 
+	-- Add the parameters for the stored procedure here
+	@mode varchar(50) = NULL,
+	@empid int = NULL,
+	@empnum varchar(50) = NULL,
+	@date varchar(50) = NULL,
+	@time varchar(50) = NULL,
+	@quarter varchar(20) = NULL,
+	@year varchar(20) = NULL,
+	@hwbatch int = NULL,
+	@hwAttTime datetime = NULL,
+	@dschedTime varchar(15) = NULL,
+	@dtrTime varchar(50) = NULL,
+	@dtrID int = NULL
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	IF (@mode = 'getEmpID')
+	BEGIN
+	   SELECT e.employee_id FROM dbo.employee e WHERE e.employee_number = @empnum AND e.is_active = 1 AND e.is_resigned = 0
+	END
+
+	IF (@mode = 'CheckHW')
+	BEGIN
+	   SELECT h.employee_number FROM dbo.Hwtbl h LEFT JOIN employee e ON e.employee_number = h.employee_number WHERE
+	   e.employee_number = @empnum AND h.sched_type = @hwbatch AND h.hw_quarter = @quarter AND h.hw_year = @year
+	END
+
+	IF (@mode = 'HwExisting')
+	BEGIN
+	   select null from Health_wellnessDTRecords where employee_number = @empnum and Attendance_Date = @date
+	END
+
+	IF (@mode = 'checkFlex')
+	BEGIN
+	   SELECT fe.employee_id FROM dbo.Flexitime_Employee fe WHERE fe.employee_number = @empnum
+	END
+	
+	IF (@mode = 'checkDS')
+	BEGIN
+	   SELECT dst.in_time FROM dbo.dynamic_shift_tab dst WHERE dst.emp_no = @empnum AND FORMAT(CAST(CONVERT(NVARCHAR, dst.in_time, 112) AS DATETIME), 'ttt') = 'PM' AND dst.attendance_date = @date
+	END
+
+	IF (@mode = 'hwInsert')
+	BEGIN
+	   INSERT INTO dbo.Health_wellnessDTRecords
+	   (
+	       employee_number,
+	       Attendance_Date,
+	       Attendance_Time
+	   )
+	   VALUES
+	   (
+	       @empnum, -- employee_number - nchar
+	       @date, -- Attendance_Date - nchar
+	       @hwAttTime -- Attendance_Time - datetime
+	   )
+	END
+
+	IF (@mode = 'checkDynamicSched')
+	BEGIN
+	   select DISTINCT in_time from dynamic_shift_tab where emp_no = @empnum AND attendance_date = @date AND in_time > @dschedTime
+	END
+
+	IF (@mode = 'overnightSched')
+	BEGIN
+	   SELECT os.employee_id, os.dtr_type from overnight_emp_sched os where os.employee_number = @empnum
+	END
+
+	IF (@mode = 'selectDTR')
+	BEGIN
+	   select [entry1],[entry2],[entry3],[entry4],[id], dbo.DT_RAW_RECORDS.attendance_date from DT_RAW_RECORDS where [id] = (SELECT max([id]) FROM [DT_RAW_RECORDS] where employee_id = @empid and attendance_date = @date)
+	END
+
+	IF (@mode = 'selectDTR2')
+	BEGIN
+	   select [entry1],[entry2],[entry3],[entry4] from DT_RAW_RECORDS where [id] = @dtrID AND dbo.DT_RAW_RECORDS.employee_id = @empid AND dbo.DT_RAW_RECORDS.attendance_date = @date
+	END
+
+	IF (@mode = 'selectLastDTR')
+	BEGIN
+	   select [entry1],[entry2],[entry3],[entry4] from DT_RAW_RECORDS where employee_id = @empid and [attendance_date] = @date and [entry1] is not null
+	END
+
+	--IF (@mode = 'insTimeIn')
+	---BEGIN
+	---   insert into DTRecords (Employee_ID,Attendance_Date,TimeIn) values (@empid, @date, @dtrTime)
+	---END
+
+		IF (@mode = 'insTimeIn')
+	BEGIN
+	   insert into DT_RAW_RECORDS(Employee_ID,Attendance_Date,entry1) values (@empid, @date, @dtrTime)
+	END
+
+	IF (@mode = 'insTimeLo')
+	BEGIN
+	   insert into DT_RAW_RECORDS(Employee_ID,Attendance_Date, dbo.DTRecords.entry2) values (@empid, @date, @dtrTime)
+	END
+
+	IF (@mode = 'insTimeLi')
+	BEGIN
+	   insert into DT_RAW_RECORDS(employee_id,attendance_date, dbo.DT_RAW_RECORDS.entry3) values (@empid, @date, @dtrTime)
+	END
+
+	IF (@mode = 'insTimeOut')
+	BEGIN
+	   insert into DT_RAW_RECORDS(employee_id,attendance_date,entry4) values (@empid, @date, @dtrTime)
+	END
+
+	IF (@mode = 'updTimeIn')
+	BEGIN
+	   update DTRecords SET DTRecords.TimeIn = @dtrTime where Employee_ID = @empid and Attendance_Date = @date and [ID] = @dtrID
+	END
+
+	IF (@mode = 'updLunchOut')
+	BEGIN
+	   update DT_RAW_RECORDS SET DT_RAW_RECORDS.entry2 = @dtrTime where Employee_ID = @empid and Attendance_Date = @date and [ID] = @dtrID
+	END
+
+	IF (@mode = 'updLunchIn')
+	BEGIN
+	   update DT_RAW_RECORDS SET DT_RAW_RECORDS.entry3 = @dtrTime where employee_id = @empid and attendance_date = @date and [id] = @dtrID
+	END
+
+	IF (@mode = 'updTimeOut')
+	BEGIN
+	   update DT_RAW_RECORDS SET DT_RAW_RECORDS.entry4 = @dtrTime where employee_id = @empid and attendance_date = @date and [id] = @dtrID
+	END
+
+
+END

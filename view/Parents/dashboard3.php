@@ -304,7 +304,7 @@ $total_paid=$row3['SUM(paid)'];
      <!-- <h5><?php echo $name; ?>,<strong><span style="color:#cf4ed4;"> Welcome back! </span></strong></h5> -->
      
      <div class="row" id="table1"><!--MSK-000132-1-->    
-        	<div class="col-md-8">
+        	<div class="col-md-8" style="display:none">
            		<center><h4 class="box-title">My Son's Monthly Attendance</h4></center>
                 <canvas id="barChart" width="800" height="438"></canvas>
   			</div>
@@ -371,7 +371,7 @@ echo "<script>showBarChart('$monthly_attendance');</script>";
           
         	<div class="col-md-4">
                 <div id="calendar-container">
-                	<div id="calendar-header">
+                	<div id="calendar-header" style="display:none">
                     	<center><h4><span id="calendar_month_year"></span> <?php echo $current_year; ?> </h4></center>
         			</div>
                     <input type="hidden" id="my_index" value="<?php echo $my_index; ?>">  
@@ -606,18 +606,18 @@ function get_calendar(day_no,days){
 </script>
     
 
-<?php 
+<!-- <?php 
 
 $my_index=$_SESSION['index_number'];
 $my_type=$_SESSION['type'];
 
 echo '<script>','ShowEvents("K","'.$my_index.'","'.$my_type.'");','</script>';
 
-?>
+?> -->
 <br>
 
        <div class="row" >
-            <div class="col-md-9" ><!-- left column -->
+            <div class="col-md-9"  style="display:none"><!-- left column -->
                 <center><h4>My Son's Exam Marks</h4></center>
                 <canvas id="lineChart" width="800" height="450"></canvas>
              </div>  
@@ -754,7 +754,7 @@ while($row=mysqli_fetch_assoc($result)){
 echo "<script>showLineChart('$subject','$terms1','$terms2','$terms3');</script>";
 
 ?>
-		<div class="row" id="table1"><!--MSK-000132-1-->
+		<div class="row" id="table1" style="display:none"><!--MSK-000132-1-->
         	<div class="col-md-12">
             	<center><h4 class="box-title">My Son's Timetable</h4></center>
                 <div class="box">

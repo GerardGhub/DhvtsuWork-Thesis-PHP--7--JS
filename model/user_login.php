@@ -27,7 +27,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="user_login")){
 			$index_number=$row1['index_number'];
 			$_SESSION["index_number"]=$index_number;
 			$_SESSION["type"]="Student";
-			header("Location: view/dashboard1.php");
+			header("Location: view/Student/dashboard1.php");
 		}
 		
 		if($type == "Teacher"){
