@@ -267,10 +267,18 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        Modules
+        Modules :
+		<td><b>
+								   <?php include('connect.php');
+			$get_id=$_GET['id'];
+          //  $cats=$row['Prepared_By'];
+            $query7 = mysql_query("select * from miscategory where category_id='$get_id'") or die(mysql_error());
+            $row7 = mysql_fetch_array($query7);
+            echo $row7['classname']; 
 
+?>			</td> </b>
         </h1>
-		
+		<br>
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Modules</a></li>
@@ -656,9 +664,9 @@ while($query2=mysql_fetch_array($query))
 			
             </div>
             <div class='panel-body'>
-           <a class='fancybox-buttons' href='/adminportal local/item_images/".$query2['img_name']."' data-fancybox-group='button' title='Page ".$ip."- ".$query2['policy_title']."'>
+           <a class='fancybox-buttons' href='../item_images/".$query2['img_name']."' data-fancybox-group='button' title='Page ".$ip."- ".$query2['policy_title']."'>
 	
-					<img src='/adminportal local/item_images/".$query2['img_name']."' class='img img-thumbnail'  style='width:350px;height:190px;' />
+					<img src='../item_images/".$query2['img_name']."' class='img img-thumbnail'  style='width:350px;height:190px;' />
 					</a>
 				
 					
@@ -666,7 +674,7 @@ while($query2=mysql_fetch_array($query))
 					
 		
 					
-						<a class='btn btn-block btn-danger' title='Download Selected Policy?' href='#'><span class='fa fa-cloud-download'></span>&nbsp;RevisionNo&nbsp;".$query2['revisionno']."</a>
+						<a class='btn btn-block btn-danger' title='Download Selected Module?' href='#downloadfile.php?file=../item_images/".$query2['item_image']."'><span class='fa fa-cloud-download'></span>&nbsp;RevisionNo&nbsp;".$query2['revisionno']."</a>
 							
 						
             </div>

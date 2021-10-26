@@ -303,8 +303,8 @@ display:none;
                                                 <div class="col-xs-5">
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
-                                                <div class="col-xs-7" id="divPhone1">
-                                                	<input type="text" class="form-control" id="phone" name="phone" placeholder="111-111-1111">
+                                                <div class="col-xs-7" id="divPhone12">
+                                                	<input type="text" class="form-control" id="phone" name="phone" placeholder="111-111-111-11">
                                                 </div> 
                                         	</div>  
                                             <div class="form-group" id="divDOB">
@@ -390,7 +390,7 @@ display:none;
                                                 <div class="col-xs-5" >
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
-                                                <div class="col-xs-7" id="divGPhone1">
+                                                <div class="col-xs-7" id="divGPhone12">
                                                 	<input type="text" class="form-control" id="g_phone" name="g_phone" placeholder="111-111-1111" >
                                                 </div> 
                                         	</div>

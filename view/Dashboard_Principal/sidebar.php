@@ -176,20 +176,21 @@ $image=$row['image_name'];
           </a>
           <ul class="treeview-menu">
 
-            <li><a href="posted.php"><i class="fa fa-circle-o"></i> Posted</a>
-            <li><a href="postedlist.php"><i class="fa fa-circle-o"></i> Posts List</a>
+            <li><a data-toggle="modal" data-target="#uploadModalcategorymissection" data-backdrop="false"><i class="fa fa-circle-o"></i> New Section</a>
+            <li><a href="managesection.php"><i class="fa fa-circle-o"></i> Manage Section</a>
+            <li><a data-toggle="modal" data-target="#uploadModalcategorymis" data-backdrop="false"><i class="fa fa-circle-o"></i> New Category</a>
+            <li><a href="managecategory.php"><i class="fa fa-circle-o"></i> Manage Category</a>
+            <li><a data-toggle="modal" data-target="#uploadModalsamplex" data-backdrop="false"><i class="fa fa-circle-o"></i> New Module</a>
+            <li><a href="managedata.php"><i class="fa fa-circle-o"></i> Manage Modules</a>
             <li><a href="readmodule.php"><i class="fa fa-circle-o"></i>View All Modules</a>
+            <li><a href="allmodules.php"><i class="fa fa-circle-o"></i>Download Modules</a>
 
            
            
           </ul>
         </li>
 
-        <li>
-          <a href="allmodules.php">
-            <i class="fa fa-yen"></i> <span style="color:white;">Modules</span>
-          </a>
-        </li>
+    
     
 
 
@@ -241,6 +242,344 @@ $image=$row['image_name'];
           </ul>
         </li>
       </ul>
+
+        	<!-- Mediul Modal -->
+          <div class="modal fade" id="uploadModalcategorymissection" tabindex="-1" role="dialog" aria-labelledby="myMediulModalLabel">
+          <div class="modal-dialog modal-md">
+            <div style="color:white;background-color:#008CBA" class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add New Department Sections</center></h2>
+              </div>
+              <div class="modal-body">
+         
+				
+			
+				
+				 <form enctype="multipart/form-data" method="post" action="adddepartmentsection.php">
+                   <fieldset>
+					
+						
+                      
+                            <div class="form-group">
+							
+
+							
+                                <input class="form-control" placeholder="Department Section" name="classname" type="text" required>
+								
+								
+								
+								
+								
+								
+								
+								
+						
+							
+								
+								
+								
+								
+                           
+							 <!--p style="color:pink; text-align:center;"><i><b>/*Note: You Must Add Category Before Adding a New  Policy</i></b></p-->
+							</div>
+							
+							
+							
+							
+			
+				   
+				   
+					 </fieldset>
+                  
+            
+              </div>
+              <div class="modal-footer">
+               
+                <button class="btn btn-success btn-md" name="item_save">Save</button>
+				
+				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+				
+				
+				   </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+			<!-- Mediul Modal -->
+        <div class="modal fade" id="uploadModalcategorymisgallery" tabindex="-1" role="dialog" aria-labelledby="myMediulModalLabel">
+          <div class="modal-dialog modal-md">
+            <div style="color:white;background-color:#008CBA" class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center><h2 style="color:white" class="modal-title" id="myModalLabel">Add New Category Title</h2></center>
+              </div>
+              <div class="modal-body">
+         
+				
+			
+				
+				 <form enctype="multipart/form-data" method="post" action="addcategory.php">
+                   <fieldset>
+					
+						
+                            <p>Category Title</p>
+                            <div class="form-group">
+							
+                                <input class="form-control" placeholder="Category Title" name="classname" type="text" required>
+                           
+							 <p style="color:black";><i><b><center>/*Note: You Must Add Category Before Adding a New  Policy</center></i></b></p>
+							</div>
+							
+							
+							
+							
+							
+		
+				   
+				   
+					 </fieldset>
+                  
+            
+              </div>
+              <div class="modal-footer">
+               
+                <button class="btn btn-success btn-md" name="item_save">Save</button>
+				
+				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+				
+				
+				   </form>
+              </div>
+            </div>
+          </div>
+        </div>
+							
+
+
+        		<!-- Mediul Modal -->
+            <div class="modal fade" id="uploadModalcategorymis" tabindex="-1" role="dialog" aria-labelledby="myMediulModalLabel">
+          <div class="modal-dialog modal-md">
+            <div style="color:white;background-color:#008CBA" class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add Category title MIS</center></h2>
+              </div>
+              <div class="modal-body">
+         
+				
+			
+				
+				 <form enctype="multipart/form-data" method="post" action="addcategory.php">
+                   <fieldset>
+					
+						
+                            <p>Category Title</p>
+                            <div class="form-group">
+							
+
+							
+                                <input class="form-control" placeholder="Category Title" name="classname" type="text" required>
+								
+								
+								
+								
+								
+								
+								
+								
+										              <div class="form-group">
+							
+							<p>Choose Department Section</p>
+                                <!--input  class="form-control" placeholder="Section" name="item_price" type="text" required-->
+                           <select  class="form-control"  name="dep_sec" required>
+						   <?php
+						   include('connect.php');
+			$cat_query = mysql_query("SELECT * FROM misdepfinal");
+			while($cat_row = mysql_fetch_array($cat_query)){
+			?>
+	<option value="<?php echo $cat_row['category_id']; ?>"><?php echo $cat_row['classname']; ?></option>
+			<?php  } ?>
+ 
+
+ 
+</select>
+							 
+							</div>
+							
+								
+								
+								
+								
+                           
+							 <p style="color:pink; text-align:center;"><i><b>/*Note: You Must Add Category Before Adding a New  Policy</i></b></p>
+							</div>
+							
+							
+							
+							
+			
+				   
+				   
+					 </fieldset>
+                  
+            
+              </div>
+              <div class="modal-footer">
+               
+                <button class="btn btn-success btn-md" name="item_saved">Save</button>
+				
+				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+				
+				
+				   </form>
+              </div>
+            </div>
+          </div>
+        </div>
+							
+		
+
+
+        
+			<!-- Mediul Modal -->
+      <div class="modal fade" id="uploadModalsamplex" tabindex="-1" role="dialog" aria-labelledby="myMediulModalLabel">
+          <div class="modal-dialog modal-md">
+            <div style="color:white;background-color:#008CBA" class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <center > <h2 style="color:white" class="modal-title" id="myModalLabel">Add New Module</h2></center>
+              </div>
+              <div class="modal-body">
+         
+				
+			
+				
+				 <form enctype="multipart/form-data" method="post" action="addcatmis.php">
+                   <fieldset>
+					
+						
+                            <p style="display:none;">Subject:</p>
+                            <div class="form-group" style="display:none;">
+							
+                                <input class="form-control" placeholder="Subject" name="policy_title" type="text">
+                           
+							 
+							</div>
+							
+							
+							<div class="form-group">
+							
+							<p>Choose Category</p>
+                                <!--input  class="form-control" placeholder="Section" name="item_price" type="text" required-->
+                           <select  class="form-control" placeholder="Categoryid" name="category_id" required>
+						   <?php
+						   include('dbcon.php');
+			$cat_query = mysql_query("SELECT * FROM miscategory");
+			while($cat_row = mysql_fetch_array($cat_query)){
+			?>
+	<option value="<?php echo $cat_row['category_id']; ?>"><?php echo $cat_row['classname']; ?></option>
+			<?php  } ?>
+ 
+
+ 
+</select>
+							 
+							</div>
+							
+							
+							
+							
+							<!-- 			 price input
+                                <input id="priceinput" class="form-control" placeholder="Department" name="item_price" type="text" required>-->
+							
+							<p>Department:</p>
+                            <div class="form-group">
+							
+                                <!--input  class="form-control" placeholder="Department" name="item_price" type="text" required-->
+                        <input id="priceinput" class="form-control" value="MIS" name="department" readonly="readonly" type="text"required>
+ 
+							 
+							</div>
+							
+							<!--break this-->
+							<p>Revision:</p>
+                            <div class="form-group">
+							
+                                <input id="priceinput" class="form-control" placeholder="Revision" name="revisionno" type="number" required>
+                           
+							 
+							</div>
+							
+							
+								<p>Issue Date:</p>
+                            <div class="form-group">
+							
+                                <input id="priceinput" class="form-control" placeholder="Issue Date" name="issuedate" type="date" required>
+                           
+							 
+							</div>
+							
+								<p>Effective Date:</p>
+                            <div class="form-group">
+							
+                                <input id="priceinput" class="form-control" placeholder="Effective Date" name="effectivedate" type="date">
+                           
+							 
+							</div>
+							<!-- break thius-->
+							
+									<p>Added By:</p>
+                            <div class="form-group">
+							
+                                <input id="priceinputs" class="form-control" placeholder="Department Head" readonly="readonly" value="<?php echo $name;?>" name="dh" type="text" required>
+                           
+							 
+							</div>
+	
+		
+							              
+							
+							<!-- break thius-->
+							
+
+							<p>Choose Image:</p>
+							<div class="form-group">
+						
+					
+                                <input class="form-control"  type="file" name="file_img[]" accept="image/*" multiple required/>
+                           
+							</div>
+				   
+				   
+					 </fieldset>
+                  
+            
+              </div>
+              <div class="modal-footer">
+               
+                <button class="btn btn-success btn-md" name="btn_upload">Save</button>
+				
+				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
+				
+				
+				   </form>
+              </div>
+            </div>
+          </div>
+        </div>
+							
+        
     </section>
     <!-- /.sidebar -->
+  
+							
+		
+		
+		
+		
   </aside>

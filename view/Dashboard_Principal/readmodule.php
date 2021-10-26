@@ -524,7 +524,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
               <th style="width:5%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Image</th>
                 <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
 				   <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Sections</th>
-			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Policies</th>
+			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Module</th>
 				
 				
 				
@@ -573,7 +573,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 			
       <tr>
 	     <td class="zoom" style="text-align:center;">
-				<center> <img src="../item_images/GerardSS.jpg" class="img img-rounded"  width="50" height="50" /></center>
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="50" height="50" /></center>
 				 </td>
 	  
 	  
@@ -693,7 +693,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 		  
 		  
         <td width="140" style="text-align:center;">
-                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="tblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7['classname'];?>&nbsp;Policies<i class="icon-list icon-large"></i></a>
+                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="tblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7['classname'];?>&nbsp;Modules<i class="icon-list icon-large"></i></a>
            </td>
       </tr>
       <?php } ?>

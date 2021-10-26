@@ -69,13 +69,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        Modules
+		Download Modules
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Modules</a></li>
+            <li><a href="#">Download Modules</a></li>
     	</ol>
 	</section>
 
@@ -570,7 +570,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 					
 					<tr>
 					 <td class="zoom">
-							  <center> <img src="../item_images/GerardSs.jpg" class="img img-rounded"  width="65" height="45" /></center>
+							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
 							   </td>
 					
 					
@@ -633,7 +633,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 				
 				   
 				   
-					   <!--a rel="tooltip" class="btn btn-danger"href="myfilemgr/delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a-->
+					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
 				   
 			   </td>
 					</tr>

@@ -696,30 +696,23 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 			  
 			  
 			  
-			  <!-- <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="../../ong/Admin/userportal/Customers/getmymispolicies.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Policy?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a>  -->
+			  <!-- <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="../../ong/Admin/userportal/Customers/getmymispolicies.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Module?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a>  -->
 
      
 
 
-			 <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="getmodules.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Policy?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a> 
-
-<!-- existing not working -->
-<!--adminportal/userportal/Customers/financepolicies.php?id=4--
->
+			 <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="getmodules.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Module?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a> 
 
 
-					 				 <!--a rel="tooltip" class="btn btn-info" href="www.google.com" target="_blank" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Policy?')">Read Policy&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a--> 
+
+
+
 									 
 							
 
 
 							
-					<!-- Old should be working bello w -->
-
-   <!--td width="140" style="text-align:center;">
-                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="financetblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7[classname];?>&nbsp;Policies<i class="icon-list icon-large"></i></a>
-           </td-->					
-									 
+		 
 									 
 									 
 									 
@@ -737,8 +730,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
  
 
 	 
-	 			 <!--a rel="tooltip" class="btn btn-info" href="print.php?Memo_id=<?php echo $row['Memo_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Policy?')">Read Policy&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a-->
-	 
+
 	 
 	 
 	 

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>San Antonio Mgmt</title>
-
+  <title>SAE</title>
+		<link rel="shortcut icon" href="item_images/saelogo.jpg" type="image/x-icon"/>
   
 	 <link rel="stylesheet" type="text/css" href="../ong/Admin/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../ong/Admin/font-awesome/css/font-awesome.min.css" />
@@ -315,7 +316,9 @@ body{
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#index.php">San Antonio Elementary School</a>
+                <a class="navbar-brand" href="#index.php">
+			
+				San Antonio Elementary School</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="background-color:#3c8dbc">
    
@@ -405,7 +408,7 @@ body{
     <div class="carousel-inner" role="listbox" >
         <div class="item active">
 		
-            <img src="../ong/Admin/item_images/img1.jpg" alt="Hero Slide" style="width:100%;height:830px;">
+            <img src="item_images/ilovesae.jpg" alt="Hero Slide" style="width:100%;height:830px;">
 
             <div class="carousel-caption">
                 <h1 style="font-family:Century Gothic"><b></b></h1>
@@ -414,49 +417,49 @@ body{
             </div>
         </div>
         <div class="item">
-            <img src="../ong/Admin/item_images/img2.jpg" alt="..." style="width:100%;height:830px;">
-
+            <img src="item_images/buildingsae.jpg" alt="..." style="width:100%;height:830px;">
+<!--../ong/Admin/item_images/buildingsae.jpg-->
             <div class="carousel-caption">
-               
+                <p>San Antonio Elementary School</p>
             </div>
         </div>
         <div class="item">
-            <img src="../ong/Admin/item_images/img3.jpg" alt="..." style="width:100%;height:830px;">
+            <img src="item_images/classroomsae.jpg" alt="..." style="width:100%;height:830px;">
 
             <div class="carousel-caption">
 		
 
-                <p></p>
+                <p>Class Rooms</p>
             </div>
         </div>
 		
 		<div class="item">
-            <img src="../ong/Admin/item_images/img4.jpg" alt="..." style="width:100%;height:830px;">
+            <img src="item_images/roomsae.jpg" alt="..." style="width:100%;height:830px;">
 
             <div class="carousel-caption">
 		
 
-                <p></p>
+                <p>Kinder Rooms</p>
             </div>
         </div>
 		
 		<div class="item">
-            <img src="../ong/Admin/item_images/img5.jpg" alt="..." style="width:100%;height:830px;">
+            <img src="item_images/teachersae.jpg" alt="..." style="width:100%;height:830px;">
 
             <div class="carousel-caption">
 		
 
-                <p></p>
+                <p>Teachers</p>
             </div>
         </div>
 		
 		<div class="item">
-            <img src="../ong/Admin/item_images/img6.jpg" alt="..." style="width:100%;height:830px;">
+            <img src="item_images/interviewsae.jpg" alt="..." style="width:100%;height:830px;">
 
             <div class="carousel-caption">
 		
 
-                <p></p>
+                <p>Interview in the Locale</p>
             </div>
         </div>
     </div>
@@ -493,20 +496,35 @@ body{
 <section class="col-md-4">
 <img class="icon" src="../ong/Admin/item_images/rocket.svg" alt="Icon">
 <h3>MISSION</h3>
-<p> Be unique in delivering<br> Creativeness</p>
+<p> To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:</p>
+<p> <b>Students</b> learn in a child-friendly, gender-sensitive, safe, and motivating environment. </p>
+<p> <b>Teachers</b> facilitate learning and constantly nurture every learner. </p>
+<p> <b>Administrators</b> and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen </p>
+<p><b>Family</b>, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.  </p>
 </section>
 
 <section class="col-md-4">
 <img class="icon" src="../ong/Admin/item_images/earth.png" alt="Icon">
 <h3>VISION</h3>
-<p> Participate actively<br> provides a vivid picture of the school's values and objectives</p>
+<p> We dream of Filipinos
+who passionately love their country
+and whose values and competencies
+enable them to realize their full potential
+and contribute meaningfully to building the nation.</p>
+<p>As a learner-centered public institution,
+the Department of Education
+continuously improves itself
+to better serve its stakeholders. </p>
 </section>
 
 
 <section class="col-md-4">
 <img class="icon" src="../ong/Admin/item_images/cap.png" alt="Icon">
 <h3>CORE VALUES</h3>
-<p style="color:magenta;"> Innovation, Integrity, Flexibility,<br> Cooperation, Meticulousness</p>
+<p style="color:magenta;"> Maka-Diyos<br>
+Maka-tao<br>
+Makakalikasan<br>
+Makabansa</p>
 </section>
 </div>
 
@@ -575,9 +593,9 @@ body{
 				
 				
 		<section class="col-md-6">
-		<h1 style="font-size:60px;">Why work in SAE.<emp style="color:gray;">See for yourself.</emp> </h1>
+		<h1 style="font-size:60px;">Why you choose SAE.<emp style="color:gray;">See for yourself.</emp> </h1>
 
-<p style="font-size:17px;">Working in SAE is more than just a job. It’s a chance to make you a productive individual longing for improvement and advancement. It enhances individual strength and capabilities.</p>
+<p style="font-size:17px;">Studying in SAE is more than just a learning. It’s a chance to make you a productive individual longing for improvement and advancement. It enhances individual strength and capabilities.</p>
 </section>
 		
 		
@@ -603,9 +621,9 @@ body{
 				<hr>
 				
 		<section class="col-md-6">
-		<h1 style="font-size:60px;">SAE Benefits.<br><emp style="color:gray;">Checkmate.</emp> </h1>
+		<h1 style="font-size:60px;">SAE Core Values.<br><emp style="color:gray;">Checkmate.</emp> </h1>
 
-<p style="font-size:17px;">It’s not all about work. SAE offers competitive compensation and benefits to support you both personally and professionally.</p>
+<p style="font-size:17px;">The Department of Education was established through the Education Decree of 1863 as the Superior Commission of Primary Instruction under a Chairman. The Education agency underwent many reorganization efforts in the 20th century in order to better define its purpose vis a vis the changing administrations and charters. The present day Department of Education was eventually mandated through Republic Act 9155, otherwise known as the Governance of Basic Education act of 2001 which establishes the mandate of this agency</p>
 </section>
 		
 		
@@ -627,7 +645,7 @@ body{
 		<br>
 <br>		
 
-  <center><b style="font-size:36px;"><!--u style=" text-decoration: underline gray;"-->&nbsp;&nbsp;&nbsp;&nbsp;WE ARE LOOKING FOR YOU&nbsp;&nbsp;&nbsp;&nbsp;</b></center><p style="text-align:center;">Long Term Job Opportunities for Teachers.</p> <p style="text-align:center;">Walk in applicants are welcome to visit us in our office, located at <emp style="color:skyblue;">San Antonio Mexicon Pampanga.</emp></p>
+  <center><b style="font-size:36px;"><!--u style=" text-decoration: underline gray;"-->&nbsp;&nbsp;&nbsp;&nbsp;WE ARE LOOKING FOR YOU&nbsp;&nbsp;&nbsp;&nbsp;</b></center><p style="text-align:center;">Long Term Knowledge for Students.</p> <p style="text-align:center;">Walk in are welcome to visit us in our office, located at <emp style="color:skyblue;">San Antonio Mexico Pampanga.</emp></p>
 
 
 <div class="row">	
@@ -987,7 +1005,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 				
 		<section class="col-md-6">
 		<br>
-		<h4 style="font-size:30px;">Find us here:<emp style="color:gray;"><h4><br><i class="fa fa-map"></i> <emp style="color:black;font-size:20px;">#243 Brgy San Antonio</emp><br><emp style="color:black;font-size:20px;">San Antonio</emp> <br><emp style="color:black;font-size:20px;">City, Pampanga, Philippines</emp><br><br><i class="fa fa-phone" style="width:28px;"></i><emp style="color:black;font-size:20px;">(045) 492323 2323</emp><br><br><i class="fa fa-envelope" style="width:28px;"></i><emp style="color:black;font-size:20px;">sdsdsds.com</emp> <!--h1>It'll blow your mind.</emp> </h1-->
+		<h4 style="font-size:30px;">Find us here:<emp style="color:gray;"><h4><br><i class="fa fa-map"></i> <emp style="color:black;font-size:20px;">#243 San Antonio</emp><br><emp style="color:black;font-size:20px;"></emp> <br><emp style="color:black;font-size:20px;">Mexico, Pampanga, Philippines</emp><br><br><i class="fa fa-phone" style="width:28px;"></i><emp style="color:black;font-size:20px;">(045) 492323 2323</emp><br><br><i class="fa fa-envelope" style="width:28px;"></i><emp style="color:black;font-size:20px;">sae@gmail.com</emp> <!--h1>It'll blow your mind.</emp> </h1-->
 <!--img class="icon" src="item_images/rocket.svg" alt="Icon">-->
 <!--h3>MISSION</h3-->
 <!--p style="font-style: arial; font-size:17px;">O&G is a manufacturing company of leather goods with headquarter in Unit 4A Philexcel Business Park, Clark Freeport Zone, Philippines. O&G was organized in December 2004 with the purpose to combine Italian creativity with the Filipinos craftsmanship.</p-->
