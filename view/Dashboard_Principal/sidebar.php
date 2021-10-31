@@ -90,7 +90,7 @@ $image=$row['image_name'];
         </li>
         <li>
           <a href="class_room.php">
-            <i class="fa fa-list-ul"></i> <span style="color:white;">Section</span>
+            <i class="fa fa-list-ul"></i> <span style="color:white;">Classroom</span>
           </a>
       </li>
       <li>
@@ -158,8 +158,8 @@ $image=$row['image_name'];
             </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="../ong/Admin/userportal/finance/myinbox.php"><i class="fa fa-circle-o"></i> Inbox</a></li>
-            <li><a href="posted.php"><i class="fa fa-circle-o"></i> Posted</a>
+          	<li><a href="myinbox.php"><i class="fa fa-circle-o"></i> Inbox</a></li>
+            <li><a href="datalist.php"><i class="fa fa-circle-o"></i> Data List</a>
             <li><a href="postedlist.php"><i class="fa fa-circle-o"></i> Posts List</a>
 
            

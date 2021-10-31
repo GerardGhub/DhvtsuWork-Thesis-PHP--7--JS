@@ -529,8 +529,8 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
                     		<thead>
                         		<th>ID</th>
                             	<th>Grade</th>
-                                <th>Admission Fee($)</th>
-                                <th>Hall Charge(%)</th>
+                                <th>Admission Fee</th>
+                                <th>Hall Charge & Misc(%)</th>
                             	<th>Action</th>
                         	</thead>
                         	<tbody>

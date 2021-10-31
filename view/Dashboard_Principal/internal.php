@@ -69,13 +69,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-		Download Modules
+      Request
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Download Modules</a></li>
+            <li><a href="#">Request</a></li>
     	</ol>
 	</section>
 
@@ -518,132 +518,822 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	<section class="content" > <!-- Start of table section -->
 	<form method="post" action="delete.php" >
 						  
-						  <table id="example1" class="table table-bordered table-striped">
-							<thead>
-							  <tr>
-							<th style="width:1%;background-color:#454545; color:white;  font-size:15px; color:white;">IMAGE</th>
-							  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;ID</th>
-									  <th style="width:8%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;NAME</th>
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">GRADE</th>
-										 <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">UPLOAD&nbsp;BY</th>
+	<table id="example1" class="table  table-bordered table-striped">
+	<thead>
+                <tr>
+              <th style="width:1%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
+                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">First&nbsp;Name</th>
+				                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Middle&nbsp;Name</th>
+				<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Last&nbsp;Name</th>
+		<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">EmaiL</th>
+	
+			<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Contact&nbsp;Number</th>			
+						   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Date&nbsp;Apply</th>
+	   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Request&nbsp;Title</th>							
 
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">DATE&nbsp;ADDED</th>
-												<th style="width:12%;background-color:#454545; color:white;  font-size:15px; color:white;">ACTIONS</th>
-				  
+		            
+								  <!-- <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Download</th> -->
+	
+	  <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
+	  <!-- <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Passed</th>
+	  <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Not&nbsp;Qualified</th>
+                  -->
+                </tr>
+              </thead>
+           <tbody>
+                <?php
+   include('connect.php');
+              function formatMoney($number, $fractional=false) {
+                if ($fractional) {
+                  $number = sprintf('%.2f', $number);
+                }
+                while (true) {
+                  $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+                  if ($replaced != $number) {
+                    $number = $replaced;
+                  } else {
+                    break;
+                  }
+                }
+                return $number;
+              } 
+              ?>
+          
+           <?php
+		  // $get_id=$_GET['id'];
+		   include('db.php');
+		//    $department=$_SESSION['sess_department'];
+         $get_id=$_GET['id']; 
+               $query = mysql_query("select * from postingsender where Jobtitle ='$get_id' ORDER by item_id DESC
+			   ") or die(mysql_error());
+                        while ($row = mysql_fetch_array($query)) {
+                       $id=$row['item_id'];
+							$name=$row['item_image'];
+							$date=$row['item_date'];      
+            ?>
+			
+		
+      <tr>
+	   <td class="zoom">
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
+				 </td>
+	  
+	  
+           <!--td style="text-align:center;
+			  "><?php echo $row['item_id'];?></td-->
+       
+              <td style="text-align:center;
+			  "><?php echo $row['fname'];?></td>
+			    <td style="text-align:center;
+			  "><?php echo $row['mname'];?></td>
+			  
+	
+			  
+			  	    <td style="text-align:center;
+			  "><?php echo $row['lname'];?></td>
+			  
+			  
+			  		  
+			  	    <td style="text-align:center;
+			  "><?php echo $row['Email'];?></td>
+			  
+			  
+			    	    <td style="text-align:center;
+			  "><?php echo $row['Contact'];?></td>
+			  
+				    	    <td style="text-align:center;
+			  "><?php echo $row['item_date'];?></td>
+			  
+			  	    	    <td style="text-align:center;
+			  "><?php echo $row['Jobtitle'];?></td>
+			  
+			  
+       
+              <!--td style="width:37%;"><?php echo $row['item_image'];?></td-->
+			  
+			  			  
+	 
+		
+			  
+			  
+			  
+			  
+			  
+			                <!--td style="text-align:center;"><?php echo $row['item_date'];?></td-->
+          
+              <!--td><?php  $price=$row['price'];
+              echo 'PHP'.formatMoney($price,true);?></td-->
 
+			 
 			  
 			  
-							   
-							  </tr>
-							</thead>
-						 <tbody>
-							  <?php
-				 include('connect.php');
-							function formatMoney($number, $fractional=false) {
-							  if ($fractional) {
-								$number = sprintf('%.2f', $number);
-							  }
-							  while (true) {
-								$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-								if ($replaced != $number) {
-								  $number = $replaced;
-								} else {
-								  break;
-								}
-							  }
-							  return $number;
-							} 
-							?>
-						
-						 <?php
-						 include('db.php');
-						 $department=$_SESSION['sess_department'];
-						//  $get_id=$_GET['id']; 
+			  
+			  
+			  
+			<!-- <td style="text-align:center;">
 
-						$query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
-							
-							 ") or die(mysql_error());
-									  while ($row = mysql_fetch_array($query)) {
-									 $id=$row['item_id'];
-										  $names=$row['item_image'];
-										  $date=$row['item_date'];      
-						  ?>
-						  
-					
-					<tr>
-					 <td class="zoom">
-							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
-							   </td>
-					
-					
-						
-							<td style="text-align:center;
-							"><?php echo $row['item_id'];?></td>
-					 
-							<td style="width:37%;"><?php echo $row['item_image'];?></td>
-							
-													   <!-- <td style="text-align:center;
-							"><?php echo $row['department'];?></td> -->
-							
-							<td style="text-align:center;
-							"><?php echo $row['grade'];?></td>
-							
 
-								 <td style="text-align:center;
-							"><?php echo $row['upload_by'];?></td>
-							
-					
+
+						    	
+								
+										
+										
+										
+										
+				<a href="downloadinternal.php?filename=<?php echo $name;?>"  class="btn btn-info" title="Click to Download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-downloadss" style=" color:white"></span>Download</a>
+				</td> -->
+					<td>					
+											   
+						<a href="#<?php echo $row ['item_id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to mark as a Reserved"></span>Reserved</a>
+						</td>			
+						
+
+
+
+
+
+
+
+
+						
+										
+<!-- <td>					
+											   
+						<a href="#pas<?php echo $row ['item_id'];?>" class="btn btn-success" data-toggle="modal" title="Click to mark as a Passed"></span>Passed</a>
+				</td>		
+										
+<td>					
+											   
+						<a href="#nqsyae<?php echo $row ['item_id'];?>" class="btn btn-danger" data-toggle="modal" title="Click to mark as a Not Qualified"></span>Not Qualified</a>
+				</td>		 -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 	<!--Edit Item Modal -->
+                    <div id="<?php echo $row ['item_id'];?>" class="modal fade" role="dialog">
+                        <form method="post" class="form-horizontal" role="form">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_name">First Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="sended" name="sended" value="<?php echo $row ['fname'];?>" placeholder="Sended" readonly> </div>
+                                            <label class="control-label col-sm-2" for="item_code">Last Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control" id="item_code" name="mname" value="<?php echo $row ['mname']; ?>" placeholder="Middle Name" required> </div>
+												
+									
+										
+										
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <div class="col-sm-4">
+                                               <input type="text" readonly class="form-control" id="lname" name="lname" value="<?php echo $row ['lname'];?>" placeholder="Last Name">
+                                            </div>
+                                            <label class="control-label col-sm-2" for="item_category">Job Title:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control id="Jobtitle" name="Jobtitle" value="<?php echo $row ['Jobtitle'];?>" placeholder="Jobtitle">
+												</div>
+									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="ContactNumber" name="ContactNumber" value="<?php echo $row['Contact'];?>" placeholder="ContactNumber">
+									</div>
+									
+									
+									<label class="control-label col-sm-2" for="Email">Valid Email</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['Email'];?>" placeholder="Email">
+									</div>
+												
+                                        </div>
+                                    </div>
+									
+									
+										<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>
+												<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>	
+									
+									
+									
+                                    <div class="modal-footer">
+                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_itemz"><span class="glyphicon glyphicon-edit"></span> Mark As a Reserved</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
 							
 						
+                        </form>
+                
+	  </div>
+	  
+ 
+ 	  </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 	<!--Edit Item Modal -->
+                    <div id="pas<?php echo $row ['item_id'];?>" class="modal fade" role="dialog">
+                        <form method="post" class="form-horizontal" role="form">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_name">First Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="sended" name="sended" value="<?php echo $row ['fname'];?>" placeholder="Sended" readonly> </div>
+                                            <label class="control-label col-sm-2" for="item_code">Last Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control" id="item_code" name="mname" value="<?php echo $row ['mname']; ?>" placeholder="Middle Name" required> </div>
+												
+									
+										
+										
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <div class="col-sm-4">
+                                               <input type="text" readonly class="form-control" id="lname" name="lname" value="<?php echo $row ['lname'];?>" placeholder="Last Name">
+                                            </div>
+                                            <label class="control-label col-sm-2" for="item_category">Job Title:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control id="Jobtitle" name="Jobtitle" value="<?php echo $row ['Jobtitle'];?>" placeholder="Jobtitle">
+												</div>
+									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="ContactNumber" name="ContactNumber" value="<?php echo $row['Contact'];?>" placeholder="ContactNumber">
+									</div>
+									
+									
+									<label class="control-label col-sm-2" for="Email">Valid Email</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['Email'];?>" placeholder="Email">
+									</div>
+												
+                                        </div>
+                                    </div>
+									
+									
+										<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>
+												<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>	
+									
+									
+									
+                                    <div class="modal-footer">
+                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_passed"><span class="glyphicon glyphicon-edit"></span> Mark As a Passed</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
 							
-							
-										  <td style="text-align:center;"><?php echo $row['item_date'];?></td>
 						
-				
-			  
-			  
+                        </form>
+                    </div>
+	  
+	  
+ 
+ 
+ 
+ 
+ 
+ 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 	<!--Edit Item Modal -->
+                    <div id="nqsyae<?php echo $row ['item_id'];?>" class="modal fade" role="dialog">
+                        <form method="post" class="form-horizontal" role="form">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_name">First Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="sended" name="sended" value="<?php echo $row ['fname'];?>" placeholder="Sended" readonly> </div>
+                                            <label class="control-label col-sm-2" for="item_code">Last Name:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control" id="item_code" name="mname" value="<?php echo $row ['mname']; ?>" placeholder="Middle Name" required> </div>
+												
+									
+										
+										
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <div class="col-sm-4">
+                                               <input type="text" readonly class="form-control" id="lname" name="lname" value="<?php echo $row ['lname'];?>" placeholder="Last Name">
+                                            </div>
+                                            <label class="control-label col-sm-2" for="item_category">Job Title:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control id="Jobtitle" name="Jobtitle" value="<?php echo $row ['Jobtitle'];?>" placeholder="Jobtitle">
+												</div>
+									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="ContactNumber" name="ContactNumber" value="<?php echo $row['Contact'];?>" placeholder="ContactNumber">
+									</div>
+									
+									
+									<label class="control-label col-sm-2" for="Email">Valid Email</label>
+									<div class="col-sm-4">
+									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['Email'];?>" placeholder="Email">
+									</div>
+												
+                                        </div>
+                                    </div>
+									
+									
+										<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>
+												<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>	
+									
+									
+									
+                                    <div class="modal-footer">
+                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_nqsya"><span class="glyphicon glyphicon-edit"></span> Mark As a Not Qualified</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
 							
+						
+                        </form>
+                    </div>
+	  
+	  
+ 
+ 
+ 
+ 
+      </tr>
+      <?php } ?>
+	  
+	  
+	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_itemz'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
 							
-							
-							
-							
-						  <td style="text-align:center;">
-			  
-					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload</a>
-			  
-			  
-											  
-											  
-													  
-													  
-													  
-													  
-							  <a href="downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
-							  
-													  
-															 
-													  
-													  
-													  
-													  
-													  
-			  
-			  
+                           $sql = "INSERT INTO postingsenderreserved
+							    SELECT * from postingsender
+							      WHERE item_id='$item_id' ";
+								  
+								//  $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
 								   
-			   
-				
-				   
-				   
-					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
-				   
-			   </td>
-					</tr>
-					<?php } ?>
-											  </tbody>
-										  </table>
-			  
-			  
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  
+	  
+	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_itemz'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
+							
+                          // $sql = "INSERT INTO postingsenderreserved
+						//	    SELECT * from postingsender
+							 //     WHERE item_id='$item_id' ";
+								  
+								 $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
+								   
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  
+	  
+	  
+	  
+	  
+	  <!-- Passed-->
+	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_passed'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
+							
+                           $sql = "INSERT INTO postingsenderpassed
+							    SELECT * from postingsender
+							      WHERE item_id='$item_id' ";
+								  
+								//  $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
+								   
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  
+	  
+	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_passed'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
+							
+                          // $sql = "INSERT INTO postingsenderreserved
+						//	    SELECT * from postingsender
+							 //     WHERE item_id='$item_id' ";
+								  
+								 $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
+								   
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  <!-- NQ -->
+	  
+	  	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_nqsya'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
+							
+                           $sql = "INSERT INTO postingsendernotqualified
+							    SELECT * from postingsender
+							      WHERE item_id='$item_id' ";
+								  
+								//  $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
+								   
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  
+	  
+	  
+	  	<?php
+		
+
+                        if(isset($_POST['update_nqsya'])){
+                            $item_id = $_POST['item_id'];
+                            $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+							$Jobtitle =$_POST['Jobtitle'];
+							$Type=$_POST['Type'];
+							$Jobdescription=$_POST['Jobdescription'];
+							$item_image=$_POST['item_image'];
+							$item_date=$_POST['item_date'];
+							$Education=$_POST['Education'];
+							$dh=$_POST['dh'];
+							$category_id=$_POST['category_id'];
+							$Vacancy=$_POST['Vacancy'];
+							$status=$_POST['status'];
+							$img_name=$_POST['img_name'];
+							$img_path=$_POST['img_path'];
+							$img_type=$_POST['img_type'];
+							$WorkXP=$_POST['WorkXP'];
+							$Gender=$_POST['Gender'];
+							$Salary=$_POST['Salary'];
+							$skills=$_POST['skills'];
+							$fname=$_POST['fname'];
+							$mname=$_POST['mname'];
+							$Contact=$_POST['Contact'];
+							$Email=$_POST['Email'];
+							$upload_by=$_POST['upload_by'];
+							$department=$_POST['department'];
+							
+                          // $sql = "INSERT INTO postingsenderreserved
+						//	    SELECT * from postingsender
+							 //     WHERE item_id='$item_id' ";
+								  
+								 $sql = "DELETE FROM postingsender WHERE item_id='$item_id'";
+								   
+								
+
+//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
+//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
+							//	 $sql=" DELETE FROM postingsender
+								// WHERE item_id='$item_id'";
+								   
+								  echo '<script>window.location.href="myinbox.php"</script>';
+									  
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="myinbox.php"</script>';
+								  echo '<script>window.location.href="myinbox.php"</script>';
+                            } else {
+                                echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+	//	mysqli_query($dbcon,$savelisa);
+?>
+	  
+	  
+	  
+                                </tbody>
+                            </table>
 					  
 					  <!--- end -->
 					  
@@ -751,7 +1441,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

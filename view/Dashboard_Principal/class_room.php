@@ -61,7 +61,7 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        	Section
+        	Class Room
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 New
 </button>

@@ -92,7 +92,7 @@ if(mysqli_num_rows($result) > 0){
                                     <td>
 <!--MSK-00146 --> 
 <a href="#" onClick="showTeacher(this)" class="btn btn-primary btn-xs"  data-id="<?php echo $row["t_index"]; ?>">View Profile</a>
-<a href="#" onClick="showModal1(this)" class="btn btn-success btn-xs"  data-id="<?php echo $row["t_index"]; ?>" >Somthing</a>
+
                                     </td>
                                     
                                 </tr>

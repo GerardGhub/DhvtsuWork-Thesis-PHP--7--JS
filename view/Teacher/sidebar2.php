@@ -18,7 +18,7 @@ $image=$row['image_name'];
       
       <div class="user-panel">
       	<div class="pull-left image">
-        	<img src="../../<?php echo $image; ?>" class="img-circle" alt="User Image">
+        	<img src="../../<?php echo $image; ?>" class="img-round" alt="User Image">
         </div>
         <div class="pull-left info">
         	<p><?php echo $name; ?></p>

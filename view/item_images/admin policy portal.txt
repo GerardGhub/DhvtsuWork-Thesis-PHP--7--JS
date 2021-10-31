@@ -1,2 +1,0 @@
-gerard.singian     = gsingian   MIS
-faith               = lanser    HR Department

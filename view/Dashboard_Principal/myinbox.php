@@ -69,13 +69,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-		Download Modules
+        Modules
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Download Modules</a></li>
+            <li><a href="#">Modules</a></li>
     	</ol>
 	</section>
 
@@ -518,132 +518,140 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	<section class="content" > <!-- Start of table section -->
 	<form method="post" action="delete.php" >
 						  
-						  <table id="example1" class="table table-bordered table-striped">
-							<thead>
-							  <tr>
-							<th style="width:1%;background-color:#454545; color:white;  font-size:15px; color:white;">IMAGE</th>
-							  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;ID</th>
-									  <th style="width:8%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;NAME</th>
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">GRADE</th>
-										 <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">UPLOAD&nbsp;BY</th>
-
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">DATE&nbsp;ADDED</th>
-												<th style="width:12%;background-color:#454545; color:white;  font-size:15px; color:white;">ACTIONS</th>
-				  
-
-			  
-			  
-							   
-							  </tr>
-							</thead>
-						 <tbody>
-							  <?php
-				 include('connect.php');
-							function formatMoney($number, $fractional=false) {
-							  if ($fractional) {
-								$number = sprintf('%.2f', $number);
-							  }
-							  while (true) {
-								$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-								if ($replaced != $number) {
-								  $number = $replaced;
-								} else {
-								  break;
-								}
-							  }
-							  return $number;
-							} 
-							?>
-						
-						 <?php
-						 include('db.php');
-						 $department=$_SESSION['sess_department'];
-						//  $get_id=$_GET['id']; 
-
-						$query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
-							
-							 ") or die(mysql_error());
-									  while ($row = mysql_fetch_array($query)) {
-									 $id=$row['item_id'];
-										  $names=$row['item_image'];
-										  $date=$row['item_date'];      
-						  ?>
-						  
+	<table id="example1" class="table table-bordered table-striped">
+	<thead>
+                <tr>
+              <th style="width:2%;background-color:#454545; color:white;">Logo</th>
+               					     <th style="width:11%;background-color:#454545; color:white;">Request&nbsp;Title</th>
+				   
 					
-					<tr>
-					 <td class="zoom">
-							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
-							   </td>
-					
-					
-						
-							<td style="text-align:center;
-							"><?php echo $row['item_id'];?></td>
-					 
-							<td style="width:37%;"><?php echo $row['item_image'];?></td>
-							
-													   <!-- <td style="text-align:center;
-							"><?php echo $row['department'];?></td> -->
-							
-							<td style="text-align:center;
-							"><?php echo $row['grade'];?></td>
-							
-
-								 <td style="text-align:center;
-							"><?php echo $row['upload_by'];?></td>
-							
-					
-							
-						
-							
-							
-										  <td style="text-align:center;"><?php echo $row['item_date'];?></td>
-						
+			<th style="width:11%;background-color:#454545; color:white; ">No of Data</th>
 				
-			  
-			  
-							
-							
-							
-							
-							
-						  <td style="text-align:center;">
-			  
-					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload</a>
-			  
-			  
-											  
-											  
-													  
-													  
-													  
-													  
-							  <a href="downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
-							  
-													  
-															 
-													  
-													  
-													  
-													  
-													  
-			  
-			  
-								   
-			   
 				
-				   
-				   
-					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
-				   
-			   </td>
-					</tr>
-					<?php } ?>
-											  </tbody>
-										  </table>
+				
+	
+					
+					
+				  	<th style="width:11%;background-color:#454545; color:white;">Action</th>
+			
+                 
+                </tr>
+              </thead>
+      
+                 
+                               <?php
+
+              function formatMoney($number, $fractional=false) {
+                if ($fractional) {
+                  $number = sprintf('%.2f', $number);
+                }
+                while (true) {
+                  $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+                  if ($replaced != $number) {
+                    $number = $replaced;
+                  } else {
+                    break;
+                  }
+                }
+                return $number;
+              } 
+        ?>
+          
+           <?php
+	
+               $query = mysql_query("select distinct Jobtitle, Vacancy,item_id, category_id from posting") or die(mysql_error());
+                        while ($row = mysql_fetch_array($query)) {
+            $category_id=$row['category_id'];
+
+			$item_id=$row['item_id'];
+            ?>
+			
+			
+			
+      <tr>
+	     <td class="zoom">
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
+				 </td>
+	  
+	  
+	          
+	  
+	  
+
+	        <td><?php
 			  
-			  
+            $cat=$row['item_id'];
+            $query1 = mysql_query("select * from posting where item_id='$cat'") or die(mysql_error());
+            $row1 = mysql_fetch_array($query1);
+            echo $row1['Jobtitle'];
+            ?></td>
+			
+	  
+	  
+
+	  
+     
+			
+			
+			<!-- This is the final count for the menufinance -->
+
+			
+          <td style="text-align:center;width:12%;"><?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+          $cate=$row['Jobtitle'];
+ ;        
+                    $count_query = mysqli_query($connection,"select * from postingsender where Jobtitle='$cate'") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?></td>
+					
+					
+					
+				
+		  
+
+		  
+		  
+		  
+		  	     <!--td style="text-align:center;"><?php
+		    
+          $Subject_identity=$row['Subject_identity'];
+                    $count_query = mysql_query("select * from tomemorandum where Subject_identity='1' ORDER BY status='Unposted'") or die(mysql_error());        
+          $count = mysql_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?></td-->
+		  
+		  
+		  
+		  
+		  
+		  
+	
+		  <!-- Twoo Piece chiecken -->
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+        <td width="140" style="text-align:center; width:15%;">
+                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="internal.php?id=<?php echo $row['Jobtitle'];?>" class="btn btn-primary button button4">View Documents &nbsp;<i class="icon-list icon-large"></i></a>
+           </td>
+      </tr>
+      <?php } ?>
+                                </tbody>
+                            </table>
 					  
 					  <!--- end -->
 					  
@@ -692,11 +700,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 
 
 
-	  <!-- <?php
 
-include('../includes/config.php');
-
-?> -->
 
 
 
@@ -787,7 +791,7 @@ die(mysql_error());
 
 
 
-<?php include('../myfilemgr/dbcon.php'); ?>
+
 
 	
 

@@ -89,7 +89,7 @@ $password=$row1['password'];
                     <div class="panel-body"><!--panel-body -->
                     	<div class="row" id="my_profile">
                 			<div class="col-md-3"> 
-                				<img id="photo2" alt="User Pic" src="../../<?php echo $image; ?>" class="img-circle img-responsive"> 
+                				<img id="photo2" alt="User Pic" src="../../<?php echo $image; ?>" class="img-round img-responsive"> 
                 			</div>
                 			<div class=" col-md-9"> 
                   				<table class="table table-bordered table-striped">

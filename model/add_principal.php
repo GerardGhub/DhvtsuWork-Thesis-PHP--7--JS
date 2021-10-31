@@ -61,7 +61,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_principal")){
 					$msg+=2;  
 					// The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$email."','12345','Admin')";
+			                VALUES ('".$email."','$b_date','Admin')";
 					
 					mysqli_query($conn,$sql3);
 				}else{

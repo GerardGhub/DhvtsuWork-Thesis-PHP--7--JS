@@ -630,9 +630,6 @@ background-color:whitesmoke;
 		
 		
 		<?php
-include('connect.php');
- 
-//	include('confeg.php');
 
 
 	
@@ -1263,7 +1260,7 @@ die(mysql_error());
 
 
 
-<?php include('myfilemgr/dbcon.php'); ?>
+
 <!--style>
 .table tr th{
 	
@@ -1430,9 +1427,7 @@ $totalsubjects=$query->rowCount();
 		
 		
 				<?php
-include('connect.php');
- 
-//	include('confeg.php');
+
 
 
 	

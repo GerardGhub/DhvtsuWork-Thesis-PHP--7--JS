@@ -656,7 +656,7 @@ Makabansa</p>
 		
 		
 		<?php
-include('../ong/Admin/connect.php');
+
  
 
 
@@ -673,14 +673,14 @@ $ip=1;
 
 
 $query1=mysql_connect("localhost","root","");
-mysql_select_db("srms",$query1);
+mysql_select_db("std_db",$query1);
 
 $start=0;
 $limit=12;
 
 
 
-$query=mysql_query("SELECT * from posting where sended='posted'") or die (mysql_error());
+$query=mysql_query("SELECT * from posting where item_id='5'") or die (mysql_error());
 
 
      
@@ -699,16 +699,16 @@ while($query2=mysql_fetch_array($query))
 echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color:#008CBA;'>
             <div class='panel-heading' style='color:white;background-color : #033c73;'>
             <center> 
-<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>No. of Vacancies&nbsp;".$query2['Vacancy']."</textarea>
+<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>Online Inquiry Requisition</textarea>
 
 			</center>
 			
 			
             </div>
             <div class='panel-body'>
-           <a class='fancybox-buttons'href='../ong/item_images/".$query2['img_name']."' data-fancybox-group='button' title='Page ".$ip."- ".$query2['Jobtitle']."'>
+           <a class='fancybox-buttons'href='item_images/".$query2['img_name']."' data-fancybox-group='button' title='Page ".$ip."- ".$query2['Jobtitle']."'>
 	
-					<img src='../ong/item_images/".$query2['img_name']."' class='img img-thumbnail'  style='width:350px;height:190px;' />
+					<img src='item_images/".$query2['img_name']."' class='img img-thumbnail'  style='width:350px;height:190px;' />
 					</a>
 				
 					
@@ -716,7 +716,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 					
 		
 					
-						<a href='#edit".$query2['item_id']."' class='btn btn-block btn-success' data-toggle='modal'><span class='fa fa-cloud-download'></span>&nbsp;Apply now & Details&nbsp;".$query2['item_id']."</a>
+						<a href='#edit".$query2['item_id']."' class='btn btn-block btn-success' data-toggle='modal'><span class='fa fa-cloud-download'></span>&nbsp;Apply now & Details</a>
 							
 						
             </div>
@@ -740,7 +740,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 										
 										
 										<div class='form-group'>
-                                            <label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Job&nbsp;Title:</label>
+                                            <label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Request&nbsp;Title:</label>
                                             <div class='col-sm-4'>	
                                           <emp style='font-size:15px;'>".$query2['Jobtitle']."</emp></div>
 										   
@@ -761,7 +761,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
                                         <div class='form-group'>
 										
 										
-										  <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Job&nbsp;Description:</label>
+										  <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Description:</label>
                                             <div class='col-sm-8'>
                                                      <emp style='font-size:15px;'>".$query2['Jobdescription']."</emp> </div>
 													 
@@ -786,7 +786,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 										
 										
 											
-                                                 <label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Vacancy:</label>
+                                                 <label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Schedule:</label>
                                             <div class='col-sm-4'>	
                                           <emp style='font-size:15px;'>".$query2['Vacancy']."</emp></div>
 											
@@ -821,7 +821,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 										
 										
 													   
-                                            <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>WorkExperience:</label>
+                                            <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Issue Date:</label>
                                             <div class='col-sm-4'>
                                                      <emp style='font-size:17px;'>".$query2['WorkXP']."</emp> </div>
 										
@@ -837,7 +837,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 										
 										
 										
-										                    <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Gender</label>
+										                    <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Effective&nbsp;Date</label>
                                             <div class='col-sm-4'>
                                                      <emp style='font-size:17px;'>".$query2['Gender']."</emp> 
 													
@@ -853,12 +853,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 													 
 													 
 													 
-										                    <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Status</label>
-                                            <div class='col-sm-4'>
-                                                     <emp style='font-size:17px;'>".$query2['status']."</emp> 
-													
-													 
-													 </div>
+			
 													 
 										                    <label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Statusxx</label>
                                             <div class='col-sm-4'>
@@ -867,27 +862,12 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 													 
 													 </div>
 													 
-													               <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Salary</label>
-                                            <div class='col-sm-4'>
-                                                     <emp style='font-size:17px;'>".$query2['Salary']."</emp> 
-													
-													 
-													 </div>
+								
 													 
 													 
-													 		               <label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Salaryssax</label>
-                                            <div class='col-sm-4'>
-                                                     <emp style='font-size:17px; color:white;'>".$query2['Salary']."</emp> 
-													
-													 
-													 </div>
+											
 										
-												               <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Required&nbsp;Skills</label>
-                                            <div class='col-sm-8'>
-                                                     <emp style='font-size:17px;'>".$query2['skills']."</emp> 
-													
-													 
-													 </div>
+											
 										
 										
                                     </div>
@@ -1156,12 +1136,10 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
             <div style="color:white;background-color:#008CBA" class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <h4 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Apply Now!<br>
-Be sure your email and phone number is active.</center></h4>
+       <h4 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Request Now!<br>
+You must log in to proceed on request.</center></h4>
               </div>
-              <!--div class="modal-body"-->
-
-				<!-- operation of the first table start  here-->
+         
 	
 
 
@@ -1169,50 +1147,10 @@ Be sure your email and phone number is active.</center></h4>
 
 
 
-	  <?php
 
-include('../ong/Admin/includes/config.php');
-
-?>
-
-
-
-
-
-
-
-							  
-
-               
-
-                      
-                          
-
-							  
-							  
-							  
-							  
 
 
 											
-											
-											<!--Cointainer sa taas-->
-											
-											
-											
-
-
-           
-
-
-
-
-
-
-
-
-
-
 
 
 <?php
@@ -1222,7 +1160,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $name=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];
@@ -1257,138 +1195,87 @@ die(mysql_error());
 
 
 
-<!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"-->
 
 
 
 
 
-<?php include('../ong/Admin/myfilemgr/dbcon.php'); ?>
-<!--style>
-.table tr th{
-	
-	border:#eee 1px solid;
-	
-	position:relative;
-	#font-family:"Times New Roman", Times, serif;
-	font-size:12px;
-	text-transform:uppercase;
-	}
-	table tr td{
-	
-	border:#eee 1px solid;
-	color:#000;
-	position:relative;
-	#font-family:"Times New Roman", Times, serif;
-	font-size:12px;
-	
-	text-transform:uppercase;
-	}
-	
-#wb_Form1
-{
-   background-color: #00BFFF;
-   border: 0px #000 solid;
-  
-}
-#photo
-{
-   border: 1px #A9A9A9 solid;
-   background-color: #00BFFF;
-   color: #fff;
-   font-family:Arial;
-   font-size: 20px;
-}
-	</style-->
-	
-	<!--div class="alert alert-info">
-                              
-                      <         
-								&nbsp;&nbsp;@FILE MANAGER BY MISBOYSS
-                            </div-->
-							<fieldset style="background-color:lightgray;border-radius:20px;">
-							<center><b style="background-color:lightgray;text-align:center;font-size:17px;"> Send us your resume or CV</b></center>
-							</fieldset>
-							<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
-		
-			<form enctype="multipart/form-data" action="" id="wb_Form1" name="form" method="post">
-				<tr>
-				<td>
-				 <div class="controls">
-                                            <select name="Jobtitle" class="combo form-control" width="100" style="border: 1px solid gray;" required>
-											<option></option>
-											<!--select ongusers.id , ongusers.fname , ongusers.lastname , ongusers.user_image , friends.friends_id   from ongusers  , friends
-	where friends.my_friend_id = '$session_id' and ongusers.id = friends.my_id
-	OR friends.my_id = '$session_id' and ongusers.id = friends.my_friend_id-->
-															<?php
-														$query = $conn->query("select * from posting");
-															while($row = $query->fetch()){
-															//$friend_name = $row['fname']." ".$row['lastname'];
-															$Jobtitle = $row['Jobtitle'];
-															$friend_image = $row['user_image'];
-															$id = $row['id'];
-															?>
-                                              	<option value="<?php echo $Jobtitle; ?>"><?php echo $Jobtitle; ?></option>
-											<?php } ?>
-                                            </select>
-                                          </div>
-										  </td>
-										  </tr>
-				
-				<tr>
-					<td>
-					<input type="text" name="fname" placeholder="First Name" class="form-control" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="text" name="mname" placeholder="Middle Name" class="form-control" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="text" name="lname" placeholder="Last Name" class="form-control" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="text" name="Contact" placeholder="Contact Number - ex 639104763819" class="form-control" required>
-					</td>
-				</tr>
-				
-						<td>
-					<input type="text" name="Email" placeholder="Valid Email" class="form-control" required>
-					</td>
-				</tr>
-				
-				
-				
-				<tr>
-				<td>
-					<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
 
-					</td>
-					</tr>
-					<br>
-			
-					
-					
-					
-					<td style="display:none;">
-					<input type="text" name="upload_by" value="sdsd">
-					</td>
-				
-					
-					<!--td><input type="submit" class="btn btn-danger" value="SUBMIT" name="submitlaaarnie">
-			<a style="color:gray; font-size:23px; padding-top: 90px;">
-			<!--?php 
-$sql ="SELECT * from filemgrmis";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$totalsubjects=$query->rowCount();
-?><strong>Total of Files:
- <!--?php echo htmlentities($totalsubjects);?></strong></tr></td--><!--/p></a--></table>
+
+
+
+<fieldset style="background-color:lightgray;border-radius:20px;">
+<center><b style="background-color:lightgray;text-align:center;font-size:17px;"> Send us your documents</b></center>
+</fieldset>
+<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
+
+<form enctype="multipart/form-data" action="" id="wb_Form1" name="form" method="post">
+<tr>
+<td>
+<div class="controls">
+<select name="Jobtitle" class="combo form-control" width="100" style="border: 1px solid gray;" required>
+<option></option>
+
+<?php
+$query = $conn->query("select * from posting where sended='posted'");
+while($row = $query->fetch()){
+
+$Jobtitle = $row['Jobtitle'];
+$friend_image = $row['user_image'];
+$id = $row['id'];
+?>
+<option value="<?php echo $Jobtitle; ?>"><?php echo $Jobtitle; ?></option>
+<?php } ?>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="text" name="fname" placeholder="First Name" class="form-control" required>
+</td>
+</tr>
+<tr>
+<td>
+<input type="text" name="mname" placeholder="Middle Name" class="form-control" required>
+</td>
+</tr>
+<tr>
+<td>
+<input type="text" name="lname" placeholder="Last Name" class="form-control" required>
+</td>
+</tr>
+<tr>
+<td>
+<input type="text" name="Contact" placeholder="Contact Number - ex 639104763819" class="form-control" required>
+</td>
+</tr>
+
+<td>
+<input type="text" name="Email" placeholder="Valid Email" class="form-control" required>
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
+
+</td>
+</tr>
+<br>
+
+
+
+
+<td style="display:none;">
+<input type="text" name="upload_by" value="sdsd">
+</td>
+
+
+</table>
 
 
 
@@ -1401,20 +1288,14 @@ $totalsubjects=$query->rowCount();
           </div>
      
               <div class="modal-footer">
-               <!--a style="color:pink; font-size:20px; padding-top:90px;"><?php 
-$sql ="SELECT * from filemgrhr";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$totalsubjects=$query->rowCount();
-?><strong>Total of Files: <?php echo htmlentities($totalsubjects);?></strong></tr></td></p></a-->
+
 
 
 
 
 
              
-				   <button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
+				   <!-- <button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button> -->
 				   </form>
 				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
 				
@@ -1430,7 +1311,7 @@ $totalsubjects=$query->rowCount();
 		
 		
 				<?php
-include('../ong/Admin/connect.php');
+include('connect.php');
  
 
 
@@ -1453,14 +1334,7 @@ mysql_select_db("srms",$query1);
 $start=0;
 $limit=12;
 
-//if(isset($_GET['id']))
-//{
 
-//	$start=($ip-1)*$limit;
-
-//$get_id=$_GET['id']; 
-//}<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>".$query2['issuedate']."&nbsp;To&nbsp; ".$query2['effectivedate']."</textarea>
-  // $get_idm=$_GET['idm']; 
 
 $query=mysql_query("SELECT * from officepresident") or die (mysql_error());
 
@@ -1477,9 +1351,7 @@ $query=mysql_query("SELECT * from officepresident") or die (mysql_error());
 while($query2=mysql_fetch_array($query))
  
 {
-    //$buje= $query2['policy_title'];	
-//	$Position =$query2['policy_title'];
-	//$mainid =$query2['item_id'];
+
 echo "";
 		
 }

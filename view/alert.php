@@ -4,10 +4,10 @@
         	<div class="modal-content">
         		<div class="modal-header bg-primary">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Success!</strong> Your information has been successfully inserted in our database.
+        			<strong style="color:red;">Success!</strong> Saved Successfully!
         		</div>
       		</div>      
 		</div>
@@ -19,10 +19,10 @@
       		<div class="modal-content">
         		<div class="modal-header bg-primary">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Success!</strong> Your information has been successfully updated in our database.
+        			<strong style="color:red;">Success!</strong> Updated Successfully!
         		</div>
       		</div>
     	</div>
@@ -34,10 +34,10 @@
       		<div class="modal-content">
         		<div class="modal-header bg-primary">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Success!</strong> Your information has been successfully deleted in our database.
+        			<strong style="color:red;">Success!</strong> Deleted Successfully!
         		</div>
       		</div>
     	</div>
@@ -49,10 +49,10 @@
       		<div class="modal-content">
         		<div class="modal-header bg-primary">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
-        			<strong style="color:red;">Success!</strong> The student has been successfully leave in our database.
+        			<strong style="color:red;">Success!</strong> The student has been successfully leave.
         		</div>
       		</div>
     	</div>
@@ -64,7 +64,7 @@
         	<div class="modal-content">
         		<div class="modal-header bg-primary">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red;">Success!</strong> Petty Cash has been successfully Approved.
@@ -79,7 +79,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-purple-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Something is wrong!</strong> Check your Internet Connection and try again.
@@ -94,7 +94,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-green-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red;">Warnning!</strong> You didn't make any changes. <strong style="color:red;">:D</strong>
@@ -109,10 +109,10 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
-        			<strong style="color:red; font-size:14px">Warnning!</strong> This Classroom is already have in our Database.
+        			<strong style="color:red; font-size:14px">Warnning!</strong> This Classroom is already exist.
         		</div>
 			</div>
 		</div>
@@ -124,7 +124,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Grade is already have in our Database.
@@ -139,7 +139,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Subject is already have in our Database.
@@ -154,7 +154,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Exam is already have in our Database.
@@ -169,7 +169,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE!</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Index Number already have in our Database.
@@ -184,7 +184,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Email Address already have in our Database.
@@ -199,7 +199,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Index Number and Email Address already have in our Database.
@@ -214,7 +214,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Exam name already have in our Database.
@@ -229,7 +229,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> Your Attendance already have in our Database.
@@ -245,7 +245,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> Duplicate Record.
@@ -260,7 +260,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> At this time there already have class, in that classroom. 
@@ -275,7 +275,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> There haven't, default image upload folder.
@@ -290,7 +290,7 @@
       		<div class="modal-content">
         		<div class="modal-header bg-red-active">
           			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          			<h4>Information...!</h4>
+          			<h4>SAE</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<strong style="color:red; font-size:14px">Warnning!</strong> This Index Number haven't in our Database.

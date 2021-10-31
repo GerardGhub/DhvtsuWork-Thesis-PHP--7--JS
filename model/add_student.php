@@ -88,7 +88,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$email."','12345','Student')";
+			                VALUES ('".$email."','$b_date','Student')";
 					
 					mysqli_query($conn,$sql3);
 				}else{
@@ -147,9 +147,9 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 					$g_msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql7= "INSERT INTO user (email,password,type)
-			                VALUES ('".$g_email."','12345','Parents')";
+			                VALUES ('".$g_email."','$b_date','Parents')";
 					
-					mysqli_query($conn,$sql7);
+					mysqli_query($conn,$sql7); 
 				}else{
 					$g_msg+=3;  
 					//MSK-000143-7 Connection problem.

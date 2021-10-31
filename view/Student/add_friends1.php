@@ -89,9 +89,9 @@ $my_index=$_SESSION["index_number"];
 $my_type=$_SESSION["type"];
 ?>                        
             				<div class="">
-                            	<a href="#" onClick="showFriends('<?php echo $my_type; ?>','Student','<?php echo $my_index; ?>')" class="btn btn-md bg-navy-active"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Student</i></a>
-                                <a href="#" onClick="showFriends('<?php echo $my_type; ?>','Teacher','<?php echo $my_index; ?>')" class="btn btn-md bg-orange-active"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Teachers</i></a> 
-                                <a href="#" onClick="showFriends('<?php echo $my_type; ?>','Admin','<?php echo $my_index; ?>')" class="btn btn-md bg-green-active"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Admin</i></a>
+                            	<a href="#" onClick="showFriends('<?php echo $my_type; ?>','Student','<?php echo $my_index; ?>')" class="btn btn-md bg-primary"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Student</i></a>
+                                <a href="#" onClick="showFriends('<?php echo $my_type; ?>','Teacher','<?php echo $my_index; ?>')" class="btn btn-md bg-primary"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Teachers</i></a> 
+                                <a href="#" onClick="showFriends('<?php echo $my_type; ?>','Admin','<?php echo $my_index; ?>')" class="btn btn-md bg-primary"  data-id=""><i class="fa fa-user-plus" aria-hidden="true">Principal</i></a>
                             </div>
                             <table id="tableAddFriend" class="table">
                                 <thead>

@@ -69,13 +69,12 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-		Download Modules
-
+      Posted List
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Download Modules</a></li>
+            <li><a href="#">Request</a></li>
     	</ol>
 	</section>
 
@@ -518,148 +517,431 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	<section class="content" > <!-- Start of table section -->
 	<form method="post" action="delete.php" >
 						  
-						  <table id="example1" class="table table-bordered table-striped">
-							<thead>
-							  <tr>
-							<th style="width:1%;background-color:#454545; color:white;  font-size:15px; color:white;">IMAGE</th>
-							  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;ID</th>
-									  <th style="width:8%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;NAME</th>
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">GRADE</th>
-										 <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">UPLOAD&nbsp;BY</th>
-
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">DATE&nbsp;ADDED</th>
-												<th style="width:12%;background-color:#454545; color:white;  font-size:15px; color:white;">ACTIONS</th>
-				  
-
-			  
-			  
-							   
-							  </tr>
-							</thead>
-						 <tbody>
-							  <?php
-				 include('connect.php');
-							function formatMoney($number, $fractional=false) {
-							  if ($fractional) {
-								$number = sprintf('%.2f', $number);
-							  }
-							  while (true) {
-								$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-								if ($replaced != $number) {
-								  $number = $replaced;
-								} else {
-								  break;
-								}
-							  }
-							  return $number;
-							} 
-							?>
-						
-						 <?php
-						 include('db.php');
-						 $department=$_SESSION['sess_department'];
-						//  $get_id=$_GET['id']; 
-
-						$query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
+	<table id="example1" class="table table-bordered table-striped">
+	<thead>
+                <tr>
+	
+              <th style="width:1%;background-color:#454545; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
+           
+	   	<th style="width:5%;background-color:#454545; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">Job&nbsp;Title</th>							
+			 <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; border-radius:15px; color:white;">Date_Posted</th>
+		        
 							
-							 ") or die(mysql_error());
-									  while ($row = mysql_fetch_array($query)) {
-									 $id=$row['item_id'];
-										  $names=$row['item_image'];
-										  $date=$row['item_date'];      
-						  ?>
-						  
-					
-					<tr>
-					 <td class="zoom">
-							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
-							   </td>
-					
-					
-						
-							<td style="text-align:center;
-							"><?php echo $row['item_id'];?></td>
-					 
-							<td style="width:37%;"><?php echo $row['item_image'];?></td>
-							
-													   <!-- <td style="text-align:center;
-							"><?php echo $row['department'];?></td> -->
-							
-							<td style="text-align:center;
-							"><?php echo $row['grade'];?></td>
-							
-
-								 <td style="text-align:center;
-							"><?php echo $row['upload_by'];?></td>
-							
-					
-							
-						
-							
-							
-										  <td style="text-align:center;"><?php echo $row['item_date'];?></td>
-						
+		  <!--th style="width:4%;background-color:#46b8da; color:white; border-radius:15px; text-align:center; font-size:15px; color:white;">New Job List</th>
+	  <!--th style="width:4%;background-color:#337ab7; color:white; text-align:center; border-radius:15px; font-size:15px; color:white;">Details</th-->
+	  <th style="width:4%;background-color:#5cb85c; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">Unpost</th>
+	  <!--th style="width:4%;background-color:#d9534f; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">&nbsp;Edit</th-->
+                 
+                </tr>
+              </thead>
+           <tbody>
+                <?php
+   include('connect.php');
+              function formatMoney($number, $fractional=false) {
+                if ($fractional) {
+                  $number = sprintf('%.2f', $number);
+                }
+                while (true) {
+                  $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+                  if ($replaced != $number) {
+                    $number = $replaced;
+                  } else {
+                    break;
+                  }
+                }
+                return $number;
+              } 
+              ?>
+          
+           <?php
+		   include('db.php');
+		   $department=$_SESSION['sess_department'];
+        //    $get_id=$_GET['id']; 
+               $query = mysql_query("select * from posting where sended='posted' ORDER by item_id DESC
+			   ") or die(mysql_error());
+                        while ($row = mysql_fetch_array($query)) {
+                       $id=$row['item_id'];
+							$name=$row['item_image'];
+							$date=$row['item_date'];      
+            ?>
+			
 				
+      <tr>
+	   <td class="zoom" style="width:5%;">
+				<center> <img src="../item_images/<?php echo $row['Jobtitle'];?>.jpg" class="img img-rounded"  width="65" height="45" /></center>
+				 </td>
+	  
+	  
+           <!--td style="text-align:center;
+			  "><?php echo $row['item_id'];?></td-->
+       
+           
+			  
+			  		  
+		
+		
+			  
+			  	    	    <td style="text-align:center;
+			  "><?php echo $row['Jobtitle'];?></td>
 			  
 			  
+       
+   
+			  
+			  
+			  
+			  
+			  
+			                <td style="text-align:center;width:5%;"><?php echo $row['item_date'];?></td>
+  
+			 
+			  
+			  
+			  
+			  
+		
+									
+										
+				<td style="width:4%;">						
+										
+			<a href="#post<?php echo $row ['item_id'];?>"  class="<?php echo $row ['sended'];?> btn btn-success" data-toggle="modal" title="Click to Post"></span>Un<?php echo $row ['sended'];?></a>
+</td>
+
+	  
+	  
+	  
+	  
+	  
+		<div id='edit<?php echo $row ['item_id'];?>' class='modal fade' role='dialog'>
+                        <form method='post' class='form-horizontal' role='form'>
+                            <div class='modal-dialog modal-lg'>
+                           
+                                <div class='modal-content'>
+                                    <div class='modal-header'>
+                                    <div class='modal-header'>
+                                        <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                        <h4 class='modal-title'><?php echo $row['Jobtitle'];?></h4>
+                                    </div>
+                                    <div class='modal-body'>
+                                        <input type='hidden' name='edit_item_id' value='dsd'>
+                                        
+										
+										
+										<div class='form-group'>
+                                            <!--label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Job&nbsp;Title:</label-->
+                                            <div class='col-sm-4'>	
+                                          <div style='font-size:15px;'><b>Job&nbsp;Title&nbsp;:&nbsp;</b><?php echo $row ['Jobtitle'];?></div></div>
+										   
+										   
+										   
+										   
+										   
+                                          
+													 
+												 
+													 
+													 
+													 
+                                        </div>
+										
+										
+										
+                                        <div>
+										
+										
+										  <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Job&nbsp;Description:</label-->
+                                            <div class='col-sm-12'>
+                                                     <div style='font-size:15px;'><b> Job Description&nbsp;:&nbsp;</b><?php echo $row ['Jobdescription'];?>"</div> </div>
+													 
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+									
+											
+											
+											
+											
+                                             
+                                        </div>
+										
+										
+										
+											
+                                                 <!--label class='control-label col-sm-2' for='item_name' style='font-size:17px;'>Vacancy:</label-->
+                                            <div class='col-sm-4'>	
+                                          <div style='font-size:15px;'><b>Vacancy&nbsp;:&nbsp;</b><?php echo $row ['Vacancy'];?></div></div>
+											
+											     <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Educatioasan:</label-->
+                                            <!--div class='col-sm-4'>
+                                                     <div style='font-size:15px;color:white;'><?php echo $row ['Education'];?></div> </div-->
+										
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											   
+                                            <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Education:</label  -->
+                                            <div class='col-sm-12'>
+                                                     <div style='font-size:15px;'><b>Education&nbsp;:</b>&nbsp;<?php echo $row ['Education'];?></div> </div>
+										
+										
+												
+
+
+												
+                                            <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Genderxx:</label>
+                                            <div class='col-sm-4'>
+                                                     <div style='font-size:17px;color:white;'>".$query2['Jobtitle']."</div> </div-->
+										
+										
+										
+													   
+                                            <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>WorkExperience:</label-->
+                                            <div class='col-sm-12'>
+                                                     <div style='font-size:17px;'><b>Work&nbsp;Experience&nbsp;:&nbsp;</b><?php echo $row ['WorkXP'];?></div> </div>
+										
+										
+										
+													   
+                                            <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px; color:white;'>WorkExperiencexxx
+</label>
+                                            <div class='col-sm-4'>
+                                                     <div style='font-size:17px; color:white;'>".$query2['WorkXP']."</div> </div-->
+										
+										
+										
+										
+										
+										                    <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Gender</label-->
+                                            <!--div class='col-sm-12'>
+                                                     <div style='font-size:17px;'><b>Gender&nbsp;:&nbsp;</b>&nbsp;<!--?php echo $row ['Gender'];?></div> 
+													
+													 
+													 </div-->
+													 
+										                    <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Genderxx</label>
+                                            <div class='col-sm-4'>
+                                                     <div style='font-size:17px;color:white;'>".$query2['Gender']."</div> 
+													
+													 
+													 </div-->
+													 
+													 
+													 
+										                    <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Status</label-->
+                                            <div class='col-sm-12'>
+                                                     <emp style='font-size:17px;'><b>Status&nbsp:&nbsp;</b><?php echo $row ['status'];?></emp> 
+													
+													 
+													 </div>
+													 
+										                    <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Statusxx</label>
+                                            <div class='col-sm-4'>
+                                                     <emp style='font-size:17px;color:white;'>".$query2['status']."</emp> 
+													
+													 
+													 </div-->
+													 
+													               <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Salary</label-->
+                                            <div class='col-sm-12'>
+                                                     <emp style='font-size:17px;'><b>Salary&nbsp;:&nbsp;</b><?php echo $row ['Salary'];?></emp> 
+													
+													 
+													 </div>
+													 
+													 
+													 		               <label class='control-label col-sm-2' for='item_code' style='font-size:17px;color:white;'>Salaryssax</label>
+                                            <div class='col-sm-4'>
+                                                     <emp style='font-size:17px; color:white;'>".$query2['Salary']."</emp> 
+													
+													 
+													 </div>
+										
+												               <!--label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Required&nbsp;Skills</label-->
+                                            <div class='col-sm-12'>
+                                                     <emp style='font-size:17px;'><b>Required&nbsp;Skills&nbsp;:&nbsp;</b><?php echo $row ['skills'];?></emp> 
+													
+													 
+													 </div>
+										
+										
+                                    </div>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
 							
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+                                    <div class='modal-footer'>
+                                        <button type='submit' class='btn btn-primary' name='update_items' style='display:none;'><span class='glyphicon glyphicon-edit'></span> Edit</button>
+						
+                                      
+										<a data-toggle='modal' data-target='#uploadModalsamplexmemosuperjeje' data-toggle='modal'class='btn btn-primary'>Apply Now</a>
+										
+										
+                                        <button type='button' class='btn btn-warning' data-dismiss='modal'><span class='glyphicon glyphicon-remove-circle'></span> Cancel</button>
+                                    </div>
+									
+									
+									
+									
+                                </div>
+                        
+                        </form>
+						
+                    </div>
+					</div>
+					</div>
+					
+		
+			
+					<!--Edit Item Modal -->
+                    <div id="post<?php echo $row ['item_id'];?>" class="modal fade" role="dialog">
+                        <form method="post" class="form-horizontal" role="form">
+                            <div class="modal-dialog modal-lg">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Post&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_name">Status:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="sended" name="sended" value="unpost" placeholder="Sended" readonly> </div>
+                                            <label class="control-label col-sm-2" for="item_code">Vacancy:</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" readonly class="form-control" id="item_code" name="item_code" value="<?php echo $row ['Vacancy']; ?>" placeholder="Item Code" required> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <div class="col-sm-4">
+                                                <textarea class="form-control" rows="8" id="Jobdescription" name="item_description" placeholder="Description" readonly required style="width: 100%;">
+                                                            <?php echo $row ['Jobdescription']; ?>
+                                                        </textarea>
+                                            </div>
+                                            <label class="control-label col-sm-2" for="item_category">Skill:</label>
+                                            <div class="col-sm-4">
+                                                <textarea class="form-control" rows="8" id="Skills" name="Skills" placeholder="Skills" style="width:100%;" readonly><?php echo $row ['skills'];?></textarea> </div>
+                                        </div>
+                                    </div>
+									
+									
+										<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>
+												<br>
+								
+							<br>
+								
+							<br>	<br>
+								
+							<br>
+								
+							<br>	
+									
+									
+									
+                                    <div class="modal-footer">
+                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_item"><span class="glyphicon glyphicon-edit"></span> Unpost</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
 							
-							
-							
-							
-						  <td style="text-align:center;">
-			  
-					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload</a>
-			  
-			  
-											  
-											  
-													  
-													  
-													  
-													  
-							  <a href="downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
-							  
-													  
-															 
-													  
-													  
-													  
-													  
-													  
-			  
-			  
-								   
-			   
-				
-				   
-				   
-					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
-				   
-			   </td>
-					</tr>
-					<?php } ?>
-											  </tbody>
-										  </table>
-			  
-			  
-					  
-					  <!--- end -->
-					  
-				  <!-- /#wrapper -->										 
-															   
-															   
-															   
-															   
-															   
-			  
-			  
-			  
-			  
-			  
-			  
-			  
+						
+                        </form>
+                    </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  </tr>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+      <?php } ?>
+	  
+	  
+	  			<?php
+
+
+   //Update Items
+                        if(isset($_POST['update_item'])){
+                            $item_id = $_POST['item_id'];
+                            // $item_name = $_POST['item_name'];
+                            $item_code = $_POST['item_code'];
+                            // $item_category = $_POST['item_category'];
+                            $item_description = $_POST['item_description'];
+							$sended = $_POST['sended'];
+                            $sql = "UPDATE posting SET 
+                                sended='$sended' WHERE item_id='$item_id' ";
+								     echo '<script>window.location.href="postedlist.php"</script>';
+                            if ($conn->query($sql) === TRUE) {
+                                echo '<script>window.location.href="joblist.php"</script>';
+								  echo '<script>window.location.href="joblist.php"</script>';
+                            } else {
+                              //  echo "Error updating record: " . $conn->error;
+                            }
+                        }
+
+?>			
+			
+	  
+	  
+	  
+	  
+	  
+                                </tbody>
+                            </table>
 			  
 			  
 			  
