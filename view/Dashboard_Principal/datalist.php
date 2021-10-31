@@ -557,16 +557,10 @@ error_reporting(0);
 							$date=$row['item_date'];      
             ?>
 			
-				<!--?php 
-							$query=mysql_query("select * from filemgrmis ORDER BY item_id DESC")or die(mysql_error());
-							while($row=mysql_fetch_array($query)){
-							$item_id=$row['item_id']; original
-							$name=$row['item_image'];
-							$date=$row['item_date'];
-							?-->
+
       <tr>
 	   <td class="zoom" style="width:5%;">
-				<center> <img src="../item_images/<?php echo $row['Jobtitle'];?>.jpg" class="img img-rounded"  width="65" height="45" /></center>
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
 				 </td>
 	  
 	  

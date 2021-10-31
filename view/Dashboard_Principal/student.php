@@ -304,7 +304,7 @@ display:none;
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divPhone12">
-                                                	<input type="text" class="form-control" id="phone" name="phone" placeholder="111-111-111-11">
+                                                	<input type="text" class="form-control" id="phone" name="phone" placeholder="965-069-5252">
                                                 </div> 
                                         	</div>  
                                             <div class="form-group" id="divDOB">
@@ -391,7 +391,7 @@ display:none;
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divGPhone12">
-                                                	<input type="text" class="form-control" id="g_phone" name="g_phone" placeholder="111-111-1111" >
+                                                	<input type="text" class="form-control" id="g_phone" name="g_phone" placeholder="965-069-5252" >
                                                 </div> 
                                         	</div>
                                             <div class="form-group" id="divGDOB">
@@ -434,7 +434,7 @@ display:none;
                     	</div>
                        <div class="box-footer text-right">
                   			<input type="hidden" name="do" value="add_student"  />
-                    		<button style="width:150px;" type="submit" class="btn text-right btn-success asd" id="btnSubmit">Next</button><br>
+                    		<button style="width:150px;" type="submit" class="btn text-right btn-success asd" id="btnSubmit">Save</button><br>
                              
 <?php
 /*
