@@ -88,7 +88,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$email."','$b_date','Student')";
+			                VALUES ('".$index_number."','sae@$index_number','Student')";
 					
 					mysqli_query($conn,$sql3);
 				}else{
@@ -147,7 +147,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 					$g_msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql7= "INSERT INTO user (email,password,type)
-			                VALUES ('".$g_email."','$b_date','Parents')";
+			                VALUES ('".$g_index_number."','sae@$g_index_number','Parents')";
 					
 					mysqli_query($conn,$sql7); 
 				}else{
