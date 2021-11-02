@@ -4,7 +4,7 @@
 
 $dbcon=mysqli_connect("127.0.0.1","root","");
 
-mysqli_select_db($dbcon,"srms");
+mysqli_select_db($dbcon,"std_db");
 
 
 
@@ -24,10 +24,7 @@ $classname = $_POST['classname'];
 
 
 		
-	//$logs= $_POST['logs'];
-		
-	//$saveitem="insert into tblcheck (checkid,username,activity,department,dateaccess) VALUE ('','$classname','Add New HR //Memoradum.','$department',now())";
-		//			mysqli_query($dbcon,$saveitem);
+
 				
 	
 		

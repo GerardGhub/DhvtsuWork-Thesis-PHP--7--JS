@@ -1,13 +1,11 @@
 <?php 
-//mysql_connect("localhost", "root", "")or die("cannot connect to server"); 
-//mysql_select_db("polo")or die("cannot select DB");
 
 
 
 
 $dbcon=mysqli_connect("127.0.0.1","root","");
 
-mysqli_select_db($dbcon,"srms");
+mysqli_select_db($dbcon,"std_db");
 
 
 
@@ -17,15 +15,7 @@ mysqli_select_db($dbcon,"srms");
 
 
 
-$dbcon=mysqli_connect("127.0.0.1","root","");
 
-mysqli_select_db($dbcon,"srms");
-
-
-
-?>
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

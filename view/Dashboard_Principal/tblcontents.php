@@ -587,11 +587,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	    <td style="width:0%;"><?php echo $row['classname'];?></td>
 	      
 		  
-		      <!--td><?php $cat=$row['category_id'];
-              $query99 = mysql_query("select * from Subject where Subject_id='$cat'");
-              $row00 = mysql_fetch_array($query99);
-              echo $row00['Subject_name'];
-              ?></td-->
+		 
 			  
 		  
               <td style="text-align:center;"><?php $catss=$row['category_id'];
@@ -599,7 +595,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
               $row00 = mysql_fetch_array($query99);
               echo $row00['department'];
               ?></td>
-			        <!--td style="width:0%;"><?php echo $row['depsection'];?></td-->
+
 					
 								     <td style="text-align:center;"><?php $catss=$row['dep_sec'];
               $query99 = mysql_query("select * from misdepfinal where category_id='$catss'");
@@ -632,8 +628,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 			  
 			  
 			  
-			  
-              <!--td style="width:0%;"><?php echo $row['Subject_Date'];?></td-->
+	
 			  
 			  
 			
@@ -644,34 +639,16 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 
  
  
- 
-  <!--td style="width:10%;"><?php echo $row['Prepared_By'];?></td-->
+
  
  
  
  
  
  <! -- Comment co muna this 2 data in  hre -->
-      <!--td><?php
-			     include('connect.php');
-            $cats=$row['Prepared_By'];
-            $query7 = mysql_query("select * from empleyado where employee_id='$cats'") or die(mysql_error());
-            $row7 = mysql_fetch_array($query7);
-            echo $row7['Name'];
-            ?></td>
- 
- 
- 	      <td><?php
-			     include('connect.php');
-            $cat=$row['Noted_BY'];
-            $query7 = mysql_query("select * from empleyado where employee_id='$cat'") or die(mysql_error());
-            $row7 = mysql_fetch_array($query7);
-            echo $row7['Name'];
-            ?></td-->
+    
 			
-			<!-- Comment muna this last pages sample that will as referencess -->
-			
-			<!--td> Data muna sa kabila ng lahat ng sakripisyo</td-->
+	
 			
 			      <td style="text-align:center; width:4%;"><?php
 		     include('connect.php');
@@ -876,7 +853,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

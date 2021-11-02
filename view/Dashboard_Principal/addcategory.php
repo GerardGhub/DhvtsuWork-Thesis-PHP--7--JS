@@ -4,7 +4,7 @@
 
 $dbcon=mysqli_connect("127.0.0.1","root","");
 
-mysqli_select_db($dbcon,"srms");
+mysqli_select_db($dbcon,"std_db");
 
 
 
@@ -16,20 +16,14 @@ if(isset($_POST['item_saved']))
 {
 $classname = $_POST['classname'];
 $dep_sec = $_POST['dep_sec'];
-//$department =$_SESSION['sess_department'];
- //$department = $_POST['department'];
+
  
  $check_item="select category_id from miscategory WHERE category_id='category_id'";
     $run_query=mysqli_query($dbcon,$check_item);
 
 
 
-		
-	//$logs= $_POST['logs'];
-		
-	//$saveitem="insert into tblcheck (checkid,username,activity,department,dateaccess) VALUE //('','$classname','Add New MIS Category.','MIS',now())";
-		//			mysqli_query($dbcon,$saveitem);
-				
+
 	
 		
 
@@ -57,7 +51,7 @@ $dep_sec = $_POST['dep_sec'];
 ?>
 
 
- >
+ 
 
 
 

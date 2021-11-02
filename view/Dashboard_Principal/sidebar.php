@@ -132,7 +132,7 @@ $image=$row['image_name'];
         </li>
      
    
-        <!-- <li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
             <span style="color:white;">Announcement Post</span>
@@ -147,9 +147,9 @@ $image=$row['image_name'];
 
            
           </ul>
-        </li> -->
+        </li> 
 
-        <!-- <li class="treeview">
+         <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
             <span style="color:white;">Module Management</span>
@@ -171,7 +171,7 @@ $image=$row['image_name'];
            
            
           </ul>
-        </li> -->
+        </li>
 
     
     
@@ -217,7 +217,7 @@ $image=$row['image_name'];
             <div style="color:white;background-color:#008CBA" class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add New Department Sections</center></h2>
+                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add New Sections</center></h2>
               </div>
               <div class="modal-body">
          
@@ -335,7 +335,7 @@ $image=$row['image_name'];
             <div style="color:white;background-color:#008CBA" class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add Category title MIS</center></h2>
+                <h2 style="color:white" class="modal-title" id="myModalLabel" style="text-align:center;"><center>Add Category Module</center></h2>
               </div>
               <div class="modal-body">
          
@@ -384,7 +384,7 @@ $image=$row['image_name'];
 								
 								
                            
-							 <p style="color:pink; text-align:center;"><i><b>/*Note: You Must Add Category Before Adding a New  Policy</i></b></p>
+							 <p style="color:pink; text-align:center;"><i><b>/*Note: You Must Add Category Before Adding a New  Module</i></b></p>
 							</div>
 							
 							

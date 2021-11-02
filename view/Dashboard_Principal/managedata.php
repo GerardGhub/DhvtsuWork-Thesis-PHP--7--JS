@@ -7,7 +7,19 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 ?>
 			  <?php
 
-require_once 'config.php';
+$DB_HOST = '127.0.0.1';
+$DB_USER = 'root';
+$DB_PASS = '';
+$DB_NAME = 'std_db';
+
+try{
+	$DB_con = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}",$DB_USER,$DB_PASS);
+	$DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e){
+	echo $e->getMessage();
+}
+
 
 if(isset($_GET['delete_id']))
 {
@@ -738,26 +750,7 @@ die(mysql_error());
 
 							<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
 		
-			<tr>
-			<td><form enctype="multipart/form-data" action="" id="wb_Form1" name="form" method="post">
-				
-					<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
 
-					</td>
-
-					</tr>
-					<tr>
-					<td>
-						<p>Select Grade</p>
-					<input type="text" class="form-control" name="grade" placeholder="Grade">
-</td>
-</tr>
-					<tr>
-<td>
-<button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
-					
-</td>
-</tr>
 					<br>
 					<td style="display:none;">
 					<input type="text" name="upload_by" value="<?php echo $name; ?>">
@@ -782,33 +775,7 @@ $totalsubjects=$query->rowCount();
 
 
           </div>
-     
-              <div class="modal-footer">
-               <a style="color:pink; font-size:20px; padding-top:90px;"><?php 
-$sql ="SELECT * from filemgrfinance";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$totalsubjects=$query->rowCount();
-?><strong>Total of Files: <?php echo htmlentities($totalsubjects);?></strong></tr></td></p></a>
 
-
-
-
-
-                <!--button class="btn btn-success btn-md" name="item_save"></button-->
-				   <button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
-				   </form>
-				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
-				
-				
-				
-					 </fieldset>
-				   </form>
-              </div>
-            </div>
-          </div>
-        </div>
 		
 
 	<!-- //MSK-00103 Modal-Update form -->  

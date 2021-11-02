@@ -485,7 +485,19 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 
 error_reporting( ~E_NOTICE );
 
-require_once 'config.php';
+$DB_HOST = '127.0.0.1';
+$DB_USER = 'root';
+$DB_PASS = '';
+$DB_NAME = 'std_db';
+
+try{
+	$DB_con = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}",$DB_USER,$DB_PASS);
+	$DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e){
+	echo $e->getMessage();
+}
+
 
 if(isset($_GET['edit_id']) && !empty($_GET['edit_id']))
 {
@@ -711,7 +723,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

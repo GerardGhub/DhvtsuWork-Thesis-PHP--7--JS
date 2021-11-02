@@ -624,7 +624,7 @@ $ip=1;
 
 
 $query1=mysql_connect("localhost","root","");
-mysql_select_db("srms",$query1);
+mysql_select_db("std_db",$query1);
 
 $start=0;
 $limit=12;
@@ -776,7 +776,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

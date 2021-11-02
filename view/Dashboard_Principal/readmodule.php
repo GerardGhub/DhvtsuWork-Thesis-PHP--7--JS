@@ -613,70 +613,14 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 					
 					
 					
-					<!-- pangdawang copyy nanin g system -->
+
 					
-					          <!--td style="text-align:center;"><?php
-		     include('connect.php');
-          $Subject_identity=$row['Subject_identity'];
-                    $count_query = mysql_query("select * from tomemorandum where Subject_identity='$Subject_identity'") or die(mysql_error());        
-          $count = mysql_num_rows($count_query);
-          
-                    ?>
-					
-					
-					
-                    <?php echo $count; ?></td-->
-					
-					
-				<!-- One p[iece Chicken -->	
-					
-          <!--td style="text-align:center;">  
-		  <?php
-		     include('connect.php');
-          $item_category=$row['item_category'];
-          $result5 = mysql_query("SELECT sum(price) FROM tb_equipment where item_category='$item_category'");
-          while($row5 = mysql_fetch_array($result5))
-            { 
-            $tprice=$row5['sum(price)']; 
-          echo formatMoney($tprice,true);
-            }
-          ?>
-          </td-->
-		  
-		     <!--td style="text-align:center;"><?php
-		     include('connect.php');
-          $Subject_identity=$row['Subject_identity'];
-                    $count_query = mysql_query("select * from tomemorandum where Status='Posted' ORDER BY Subject_identity='2'") or die(mysql_error());        
-          $count = mysql_num_rows($count_query);
-          
-                    ?>
-					
-					
+
 		
-					
-                    <?php echo $count; ?></td-->
-		  
-		  		<!--	
-				
-				select * from tomemorandum where Subject_identity='$Subject_identity' ORDER BY status='Posted'
-				
-				
-				select * from tomemorandum where Status='Unposted' ORDER BY Subject_identity='2'    -->
-		  
-		  
-		  
-		  	     <!--td style="text-align:center;"><?php
-		     include('connect.php');
-          $Subject_identity=$row['Subject_identity'];
-                    $count_query = mysql_query("select * from tomemorandum where Subject_identity='1' ORDER BY status='Unposted'") or die(mysql_error());        
-          $count = mysql_num_rows($count_query);
-          
-                    ?>
+
 					
 					
-					
-                    <?php echo $count; ?></td-->
-		  
+
 		  
 		  
 		  
@@ -808,7 +752,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

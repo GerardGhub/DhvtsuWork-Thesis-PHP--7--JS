@@ -1,3 +1,5 @@
+
+		
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
@@ -5,10 +7,47 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
+<?php
+
+// require_once 'config.php';
+
+if(isset($_GET['delete_id']))
+{
+	$DB_HOST = '127.0.0.1';
+	$DB_USER = 'root';
+	$DB_PASS = '';
+	$DB_NAME = 'std_db';
+	
+	try{
+		$DB_con = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}",$DB_USER,$DB_PASS);
+		$DB_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+	
+	$stmt_select = $DB_con->prepare('SELECT category_id FROM misdepfinal WHERE category_id =:category_id');
+	$stmt_select->execute(array(':category_id'=>$_GET['delete_id']));
+	$imgRow=$stmt_select->fetch(PDO::FETCH_ASSOC);
+	unlink("../item_images/".$imgRow['item_image']);
+	
+
+	$stmt_delete = $DB_con->prepare('DELETE FROM misdepfinal WHERE category_id =:category_id');
+	$stmt_delete->bindParam(':category_id',$_GET['delete_id']);
+	$stmt_delete->execute();
+	
+	header("Location: managesection.php");
+}
+
+?>  
 <?php include_once('head.php'); ?>
+
 <?php include_once('header_admin.php'); ?>
+
 <?php include_once('sidebar.php'); ?>
+
 <?php include_once('../alert.php'); ?>
+
 
 <style>
 
@@ -606,28 +645,7 @@ include("config.php");
 			  
 			  
 			  
-			  <?php
-
-require_once 'config.php';
-
-if(isset($_GET['delete_id']))
-{
-	
-	$stmt_select = $DB_con->prepare('SELECT category_id FROM misdepfinal WHERE category_id =:category_id');
-	$stmt_select->execute(array(':category_id'=>$_GET['delete_id']));
-	$imgRow=$stmt_select->fetch(PDO::FETCH_ASSOC);
-	unlink("../item_images/".$imgRow['item_image']);
-	
-
-	$stmt_delete = $DB_con->prepare('DELETE FROM misdepfinal WHERE category_id =:category_id');
-	$stmt_delete->bindParam(':category_id',$_GET['delete_id']);
-	$stmt_delete->execute();
-	
-	header("Location: managesection.php");
-}
-
-?>  
-			  
+	  
 			  
 			  
 			  
@@ -759,26 +777,7 @@ die(mysql_error());
 
 							<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
 		
-			<tr>
-			<td><form enctype="multipart/form-data" action="" id="wb_Form1" name="form" method="post">
-				
-					<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
-
-					</td>
-
-					</tr>
-					<tr>
-					<td>
-						<p>Select Grade</p>
-					<input type="text" class="form-control" name="grade" placeholder="Grade">
-</td>
-</tr>
-					<tr>
-<td>
-<button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
-					
-</td>
-</tr>
+	
 					<br>
 					<td style="display:none;">
 					<input type="text" name="upload_by" value="<?php echo $name; ?>">

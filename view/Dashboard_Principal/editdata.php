@@ -595,7 +595,7 @@ if(isset($_POST['btn_save_updates']))
 	 
 	 
     <tr>
-    	<td><label class="control-label">Policy Title</label></td>
+    	<td><label class="control-label">Module Title</label></td>
         <td><input class="form-control" type="text" name="policy_title" value="<?php echo $policy_title; ?>" required /></td>
     </tr>
 	
@@ -716,7 +716,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];
@@ -726,6 +726,7 @@ if(isset($_POST['submitlaarnie'])!=""){
   $upload_by=$_POST['upload_by'];
   $grade=$_POST['grade'];
   $department=$_POST['department'];
+
 
   $caption1=$_POST['caption'];
   $link=$_POST['link'];
@@ -1382,22 +1383,7 @@ $('#btnYesRG').click(function() {
 
 </script>
 
-<!--redirect your own url when clicking browser back button -->
-<script>
-(function(window, location) {
-history.replaceState(null, document.title, location.pathname+"#!/history");
-history.pushState(null, document.title, location.pathname);
 
-window.addEventListener("popstate", function() {
-  if(location.hash === "#!/history") {
-    history.replaceState(null, document.title, location.pathname);
-    setTimeout(function(){
-      location.replace(".././index.php");//path to when click back button
-    },0);
-  }
-}, false);
-}(window, location));
-</script>
 
 
 

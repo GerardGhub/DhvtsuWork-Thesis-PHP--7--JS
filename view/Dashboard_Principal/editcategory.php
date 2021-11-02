@@ -1432,22 +1432,7 @@ $('#btnYesRG').click(function() {
 
 </script>
 
-<!--redirect your own url when clicking browser back button -->
-<script>
-(function(window, location) {
-history.replaceState(null, document.title, location.pathname+"#!/history");
-history.pushState(null, document.title, location.pathname);
 
-window.addEventListener("popstate", function() {
-  if(location.hash === "#!/history") {
-    history.replaceState(null, document.title, location.pathname);
-    setTimeout(function(){
-      location.replace(".././index.php");//path to when click back button
-    },0);
-  }
-}, false);
-}(window, location));
-</script>
 
 
 

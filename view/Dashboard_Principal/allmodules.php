@@ -557,12 +557,18 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						
 						 <?php
 						 include('db.php');
-						 $department=$_SESSION['sess_department'];
+						//  $department=$_SESSION['sess_department'];
 						//  $get_id=$_GET['id']; 
 
-						$query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
+
+						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
 							
-							 ") or die(mysql_error());
+						// ")
+						$query = mysql_query("select * from filemgrfinance  ORDER by item_id DESC
+							
+							 ")
+							 
+							 or die(mysql_error());
 									  while ($row = mysql_fetch_array($query)) {
 									 $id=$row['item_id'];
 										  $names=$row['item_image'];
@@ -751,8 +757,9 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
+
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];
   $type=$_FILES['photo']['type'];
