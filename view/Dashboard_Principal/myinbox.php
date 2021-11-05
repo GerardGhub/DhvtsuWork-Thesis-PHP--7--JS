@@ -69,13 +69,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        Modules
+      Inquiry Inbox
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Modules</a></li>
+            <li><a href="#">Inquiry Inbox</a></li>
     	</ol>
 	</section>
 
@@ -581,7 +581,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	        <td><?php
 			  
             $cat=$row['item_id'];
-            $query1 = mysql_query("select * from posting where item_id='$cat'") or die(mysql_error());
+            $query1 = mysql_query("select * from std_db.posting where item_id='$cat'") or die(mysql_error());
             $row1 = mysql_fetch_array($query1);
             echo $row1['Jobtitle'];
             ?></td>
@@ -600,8 +600,8 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 $connection=mysqli_connect('localhost','root','','std_db');
 
           $cate=$row['Jobtitle'];
- ;        
-                    $count_query = mysqli_query($connection,"select * from postingsender where Jobtitle='$cate'") or die(mysqli_error());        
+       
+                    $count_query = mysqli_query($connection,"select * from std_db.postingsender where Jobtitle='$cate'") or die(mysqli_error());        
           $count = mysqli_num_rows($count_query);
           
                     ?>
@@ -617,28 +617,11 @@ $connection=mysqli_connect('localhost','root','','std_db');
 
 		  
 		  
-		  
-		  	     <!--td style="text-align:center;"><?php
-		    
-          $Subject_identity=$row['Subject_identity'];
-                    $count_query = mysql_query("select * from tomemorandum where Subject_identity='1' ORDER BY status='Unposted'") or die(mysql_error());        
-          $count = mysql_num_rows($count_query);
-          
-                    ?>
-					
-					
-					
-                    <?php echo $count; ?></td-->
+		
 		  
 		  
 		  
-		  
-		  
-		  
-	
-		  <!-- Twoo Piece chiecken -->
-		  
-		  
+
 		  
 		  
 		  
@@ -755,7 +738,7 @@ date_default_timezone_set("Asia/Singapore");
 
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=srms', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

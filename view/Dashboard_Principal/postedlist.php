@@ -523,7 +523,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	
               <th style="width:1%;background-color:#454545; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
            
-	   	<th style="width:5%;background-color:#454545; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;">Job&nbsp;Title</th>							
+	   	<th style="width:5%;background-color:#454545; border-radius:15px; color:white; text-align:center; font-size:15px; color:white;"Request&nbsp;Title</th>							
 			 <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; border-radius:15px; color:white;">Date_Posted</th>
 		        
 							
@@ -555,7 +555,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
           
            <?php
 		   include('db.php');
-		   $department=$_SESSION['sess_department'];
+		//    $department=$_SESSION['sess_department'];
         //    $get_id=$_GET['id']; 
                $query = mysql_query("select * from posting where sended='posted' ORDER by item_id DESC
 			   ") or die(mysql_error());
@@ -568,7 +568,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 				
       <tr>
 	   <td class="zoom" style="width:5%;">
-				<center> <img src="../item_images/<?php echo $row['Jobtitle'];?>.jpg" class="img img-rounded"  width="65" height="45" /></center>
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
 				 </td>
 	  
 	  
@@ -837,20 +837,20 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
                                             <label class="control-label col-sm-2" for="item_name">Status:</label>
                                             <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="sended" name="sended" value="unpost" placeholder="Sended" readonly> </div>
-                                            <label class="control-label col-sm-2" for="item_code">Vacancy:</label>
+                                            <label class="control-label col-sm-2" for="item_code">Schedule:</label>
                                             <div class="col-sm-4">
                                                 <input type="text" readonly class="form-control" id="item_code" name="item_code" value="<?php echo $row ['Vacancy']; ?>" placeholder="Item Code" required> </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <label class="control-label col-sm-2" for="item_description">Description:</label>
                                             <div class="col-sm-4">
                                                 <textarea class="form-control" rows="8" id="Jobdescription" name="item_description" placeholder="Description" readonly required style="width: 100%;">
                                                             <?php echo $row ['Jobdescription']; ?>
                                                         </textarea>
                                             </div>
-                                            <label class="control-label col-sm-2" for="item_category">Skill:</label>
+                                            <label class="control-label col-sm-2" for="item_category">Others:</label>
                                             <div class="col-sm-4">
-                                                <textarea class="form-control" rows="8" id="Skills" name="Skills" placeholder="Skills" style="width:100%;" readonly><?php echo $row ['skills'];?></textarea> </div>
+                                                <textarea class="form-control" rows="8" id="Skills" name="Skills" placeholder="Others" style="width:100%;" readonly><?php echo $row ['skills'];?></textarea> </div>
                                         </div>
                                     </div>
 									

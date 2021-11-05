@@ -982,7 +982,7 @@ error_reporting(0);
                                             </div>
                                             <label class="control-label col-sm-2" for="item_category">Others/Requirements:</label>
                                             <div class="col-sm-4">
-                                                <textarea class="form-control" rows="8" id="Skills" name="skills"placeholder="Skills" style="width:100%;"><?php echo $row ['skills'];?></textarea> </div>
+                                                <textarea class="form-control" rows="8" id="Skills" name="skills"placeholder="Others Requirements" style="width:100%;"><?php echo $row ['skills'];?></textarea> </div>
                                         </div>
                                     </div>
 									
@@ -1140,59 +1140,10 @@ if (isset($_POST['update_posted'])){
             <div style="color:white;background-color:#008CBA" class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <h3 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Add New Job Vacancy</center></h3>
+       <h3 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Add New Request</center></h3>
               </div>
-              <!--div class="modal-body"-->
-
-				<!-- operation of the first table start  here-->
-	
-
 
 <div class="well" style="color:black;">
-
-
-
-
-
-
-
-
-
-
-
-							  
-
-               
-
-                      
-                          
-
-							  
-							  
-							  
-							  
-
-
-											
-											
-											<!--Cointainer sa taas-->
-											
-											
-											
-
-
-           
-
-
-
-
-
-
-
-
-
-
-
 
 	<?php
 $conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
@@ -1217,13 +1168,12 @@ $status =$_POST['status'];
 $Salary =$_POST['Salary'];
 $skills =$POST['skills'];
   
-  //move_uploaded_file($temp,"item_images/".$name);
 
 $query=$conn->query("INSERT INTO posting (Jobtitle,Jobdescription,Vacancy,Education,WorkXp,Gender,status,Salary,skills) VALUES ('$Jobtitle','$Jobdescription','$Vacancy','$Education','$WorkXP','$Gender','$status','$Salary','$skills')");
 if($query){
 	
  
- echo "<script>window.open('joblist.php','_self')</script>";
+ echo "<script>window.open('datalist.php','_self')</script>";
 
 }
 else{
@@ -1233,23 +1183,6 @@ die(mysql_error());
 ?>
 		
 
-
-
-
-<!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"-->
-
-
-
-
-
-
-
-	
-	<!--div class="alert alert-info">
-                              
-                      <         
-								&nbsp;&nbsp;@FILE MANAGER BY MISBOYSS
-                            </div-->
 							<fieldset style="background-color:lightgray;border-radius:20px;">
 							<!--center><b style="background-color:lightgray;text-align:center;font-size:17px;"> Send us your resume or CV</b></center-->
 							</fieldset>
@@ -1260,17 +1193,17 @@ die(mysql_error());
 				
 				<tr>
 					<td>
-					<input type="text" name="Jobtitle" placeholder="Job Title" autofocus class="form-control" required>
+					<input type="text" name="Jobtitle" placeholder="Request Title" autofocus class="form-control" required>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<textarea name="Jobdescription" rows="3" placeholder="Job Description" class="form-control" required></textarea>
+					<textarea name="Jobdescription" rows="3" placeholder="Description" class="form-control" required></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="Vacancy" placeholder="Vacancy" class="form-control" required>
+					<input type="text" name="Vacancy" placeholder="Schedule" class="form-control" required>
 					</td>
 				</tr>
 				<tr>
@@ -1284,38 +1217,31 @@ die(mysql_error());
 					</td>
 				</tr>
 				
-	<tr>			
-	<td>
+<!-- <tr>			
+<td>
 <input type="text" name="Gender" placeholder="Gender" class="form-control" required>
 </td>	
-		</tr>		
-				<tr>
-				<td>
-				<input type="text" name="status" placeholder="Status" class="form-control" required>
-				</td>
-				</tr>
-				
-				<tr>
-				<td>
-				<input type="text" name="Salary" placeholder="Salary" class="form-control" required>
-				</td>
-				</tr>
-				
-				<tr>
-				<td>
-				<textarea placeholder="Required Skills" name="skills" class="form-control" required></textarea>
-				</td>
-				</tr>
-				
-				
-				<!--tr>
-				<td>
-					<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
+</tr>		
+<tr>
+<td>
+<input type="text" name="status" placeholder="Status" class="form-control" required>
+</td>
+</tr>
 
-					</td>
-					</tr-->
-					<br>
-			
+<tr>
+<td>
+<input type="text" name="Salary" placeholder="Salary" class="form-control" required>
+</td>
+</tr>
+
+<tr>
+<td>
+<textarea placeholder="Required Skills" name="skills" class="form-control" required></textarea>
+<!-- </td> -->
+				<!-- </tr> --> 
+				
+				
+	
 					
 					
 					

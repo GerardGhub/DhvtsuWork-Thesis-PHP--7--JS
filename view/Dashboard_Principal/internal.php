@@ -700,11 +700,11 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 										
 										
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="item_description">Job&nbsp;Description:</label>
+                                            <label class="control-label col-sm-2" for="item_description">Description:</label>
                                             <div class="col-sm-4">
                                                <input type="text" readonly class="form-control" id="lname" name="lname" value="<?php echo $row ['lname'];?>" placeholder="Last Name">
                                             </div>
-                                            <label class="control-label col-sm-2" for="item_category">Job Title:</label>
+                                            <label class="control-label col-sm-2" for="item_category">Request Title:</label>
                                             <div class="col-sm-4">
                                                 <input type="text" readonly class="form-control id="Jobtitle" name="Jobtitle" value="<?php echo $row ['Jobtitle'];?>" placeholder="Jobtitle">
 												</div>

@@ -141,6 +141,7 @@ $image=$row['image_name'];
             </span>
           </a>
           <ul class="treeview-menu">
+          <li><a href="requestinquiry.php"><i class="fa fa-circle-o"></i> Request InQuiry</a></li>
           	<li><a href="myinbox.php"><i class="fa fa-circle-o"></i> Inbox</a></li>
             <li><a href="datalist.php"><i class="fa fa-circle-o"></i> Data List</a>
             <li><a href="postedlist.php"><i class="fa fa-circle-o"></i> Posts List</a>
