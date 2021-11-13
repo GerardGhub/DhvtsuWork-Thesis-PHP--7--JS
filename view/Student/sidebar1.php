@@ -8,12 +8,13 @@ include_once('../../controller/config.php');
 
 $index=$_SESSION["index_number"];
 
-$sql="SELECT * FROM student WHERE index_number='$index'";
+// $sql="SELECT * FROM student WHERE index_number='$index'";
+$sql="Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number WHERE sa.index_number='$index'";
 $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
-
+$grade_id=$row['grade_id'];
 ?>      
       
       <div class="user-panel">
@@ -23,6 +24,7 @@ $image=$row['image_name'];
         <div class="pull-left info">
         	<p><?php echo $name; ?></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->

@@ -5,9 +5,9 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
-<?php include_once('head.php'); ?>
-<?php include_once('header_admin.php'); ?>
-<?php include_once('sidebar.php'); ?>
+<?php include_once('../Dashboard_Principal/head.php'); ?>
+<?php include_once('../Dashboard_Principal/header_admin.php'); ?>
+<?php include_once('sidebar1.php'); ?>
 <?php include_once('../alert.php'); ?>
 
 <style>
@@ -225,7 +225,7 @@ $("#form1").submit(function (e) {
 			
 	}else{
 		
-	}
+	}\
 	
 	if(hall_charge == ''){
 		//MSK-00099-name
@@ -538,7 +538,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 							</thead>
 						 <tbody>
 							  <?php
-				 include('connect.php');
+				 include('../Dashboard_Principal/connect.php');
 							function formatMoney($number, $fractional=false) {
 							  if ($fractional) {
 								$number = sprintf('%.2f', $number);
@@ -564,7 +564,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
 							
 						// ")
-						$query = mysql_query("select * from filemgrfinance  ORDER by item_id DESC
+						$query = mysql_query("select f.item_id , f.item_image, f.item_date, f.upload_by, f.department,g.name as grade from filemgrfinance f LEFT JOIN grade g ON f.grade = g.id where g.id='$grade_id'  ORDER by item_id DESC
 							
 							 ")
 							 
@@ -625,7 +625,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 													  
 													  
 													  
-							  <a href="downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
+							  <a href="../Dashboard_Principal/downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
 							  
 													  
 															 
@@ -641,7 +641,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 				
 				   
 				   
-					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
+
 				   
 			   </td>
 					</tr>

@@ -5,7 +5,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
-<?php include_once('head.php'); ?>
+<?php include_once('../head.php'); ?>
 <?php include_once('header_admin.php'); ?>
 <?php include_once('sidebar.php'); ?>
 <?php include_once('../alert.php'); ?>
@@ -819,7 +819,7 @@ die(mysql_error());
 			$cat_query = mysql_query("SELECT * FROM grade");
 			while($cat_row = mysql_fetch_array($cat_query)){
 			?>
-	<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
+	<option value="<?php echo $cat_row['id']; ?>"><?php echo $cat_row['name']; ?></option>
 			<?php  } ?>
  
 
