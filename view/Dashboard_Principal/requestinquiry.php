@@ -309,7 +309,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 					
 		
 					
-						<a href='#edit".$query2['item_id']."' class='btn btn-block btn-success' data-toggle='modal'><span class='fa fa-cloud-download'></span>&nbsp;Apply now & Details&nbsp;".$query2['item_id']."</a>
+						<a href='#edit".$query2['item_id']."' class='btn btn-block btn-success' data-toggle='modal'><span class='fa fa-cloud-download'></span>&nbsp;Apply now</a>
 							
 						
             </div>
@@ -394,7 +394,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 											
 											
 											
-											
+											<br>
 											   
                                             <label class='control-label col-sm-2' for='item_code' style='font-size:17px;'>Education:</label>
                                             <div class='col-sm-2'>
@@ -429,7 +429,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
                                         <button type='submit' class='btn btn-primary' name='update_item' style='display:none;'><span class='glyphicon glyphicon-edit'></span> Edit</button>
 						
                                       
-										<a data-toggle='modal' data-target='#uploadModalsamplexmemosuperjeje' data-toggle='modal'class='btn btn-primary'>Apply Now</a>
+										<a data-toggle='modal' data-target='#uploadModalsamplexmemosuperjeje' data-toggle='modal'class='btn btn-primary'>Request Now</a>
 										
 										
                                         <button type='button' class='btn btn-warning' data-dismiss='modal'><span class='glyphicon glyphicon-remove-circle'></span> Cancel</button>
@@ -607,6 +607,7 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
        <h4 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Request Now!<br>
 Be sure your email and phone number is active.</center></h4>
+
               </div>
 
 	
@@ -723,42 +724,7 @@ die(mysql_error());
 
 
 
-<!--style>
-.table tr th{
-	
-	border:#eee 1px solid;
-	
-	position:relative;
-	#font-family:"Times New Roman", Times, serif;
-	font-size:12px;
-	text-transform:uppercase;
-	}
-	table tr td{
-	
-	border:#eee 1px solid;
-	color:#000;
-	position:relative;
-	#font-family:"Times New Roman", Times, serif;
-	font-size:12px;
-	
-	text-transform:uppercase;
-	}
-	
-#wb_Form1
-{
-   background-color: #00BFFF;
-   border: 0px #000 solid;
-  
-}
-#photo
-{
-   border: 1px #A9A9A9 solid;
-   background-color: #00BFFF;
-   color: #fff;
-   font-family:Arial;
-   font-size: 20px;
-}
-	</style-->
+
 	
 	<!--div class="alert alert-info">
                               
@@ -766,7 +732,7 @@ die(mysql_error());
 								&nbsp;&nbsp;@FILE MANAGER BY MISBOYSS
                             </div-->
 							<fieldset style="background-color:lightgray;border-radius:20px;">
-							<center><b style="background-color:lightgray;text-align:center;font-size:17px;"> Send us your resume or CV</b></center>
+							<center><b style="background-color:lightgray;text-align:center;font-size:17px;"> Send us your documents</b></center>
 							</fieldset>
 							<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
 		
@@ -776,9 +742,7 @@ die(mysql_error());
 				 <div class="controls">
                                             <select name="Jobtitle" class="combo form-control" width="100" style="border: 1px solid gray;" required>
 											<option></option>
-											<!--select ongusers.id , ongusers.fname , ongusers.lastname , ongusers.user_image , friends.friends_id   from ongusers  , friends
-	where friends.my_friend_id = '$session_id' and ongusers.id = friends.my_id
-	OR friends.my_id = '$session_id' and ongusers.id = friends.my_friend_id-->
+
 															<?php
 														$query = $conn->query("select * from posting where sended='posted'");
 															while($row = $query->fetch()){
@@ -796,27 +760,27 @@ die(mysql_error());
 				
 				<tr>
 					<td>
-					<input type="text" name="fname" placeholder="First Name" class="form-control" required>
+					<input type="text" name="fname" value="<?php echo $name; ?>" placeholder="First Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="mname" placeholder="Middle Name" class="form-control" required>
+					<input type="text" name="mname" value="<?php echo $full_name; ?>" placeholder="Middle Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="lname" placeholder="Last Name" class="form-control" required>
+					<input type="text" name="lname" value="<?php echo $full_name; ?>" placeholder="Last Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="Contact" placeholder="Contact Number - ex 639104763819" class="form-control" required>
+					<input type="text" name="Contact" value="<?php echo $phone_number; ?>" placeholder="Contact Number - ex 639104763819" class="form-control" required>
 					</td>
 				</tr>
 				
 						<td>
-					<input type="text" name="Email" placeholder="Valid Email" class="form-control" required>
+					<input type="text" name="Email" value="<?php echo $email; ?>" placeholder="Valid Email" class="form-control" required>
 					</td>
 				</tr>
 				

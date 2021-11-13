@@ -13,7 +13,9 @@ $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
-
+$full_name=$row['full_name'];
+$phone_number=$row['phone'];
+$email=$row['email'];
 ?>      
       
       <div class="user-panel">
