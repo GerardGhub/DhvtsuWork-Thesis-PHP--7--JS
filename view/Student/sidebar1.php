@@ -91,6 +91,27 @@ $image=$row['image_name'];
             <li><a href="my_attendance_history.php"><i class="fa fa-circle-o"></i> My Attendance History</a></li>
           </ul>
         </li> -->
+
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+            <span style="color:white;">Module Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+
+           
+            <li><a href="readmodule.php"><i class="fa fa-circle-o"></i>View All Modules</a>
+            <li><a href="allmodules.php"><i class="fa fa-circle-o"></i>Download Modules</a>
+
+           
+           
+          </ul>
+        </li>
+
          <li>
           <a href="my_payments.php">
             <i class="fa fa-money"></i> <span>My Payments</span>
@@ -124,6 +145,9 @@ $image=$row['image_name'];
           </ul>
         </li>
       </ul>
+
+
+      
     </section>
     <!-- /.sidebar -->
   </aside>

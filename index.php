@@ -50,27 +50,27 @@ if(isset($_arguments["do"])&& ($_arguments["do"] != "")){
 		$page = "model/update_student_exam_mark.php";
 	}else if(($_arguments["do"] == "update_student_exam_mark2")){//MSK-000143-update_student_exam_mark2
 		$page = "model/update_student_exam_mark2.php";
-	}else if(($_arguments["do"] == "add_teacher_salary")){//MSK-000143-add_teacher_salary add_attendents
+	}else if(($_arguments["do"] == "add_teacher_salary")){//-add_teacher_salary add_attendents
 		$page = "model/add_teacher_salary.php";
-	}else if(($_arguments["do"] == "add_attendance")){//MSK-000143-add_attendance
+	}else if(($_arguments["do"] == "add_attendance")){//-add_attendance
 		$page = "model/add_attendance.php";
-	}else if(($_arguments["do"] == "user_login")){//MSK-000143-user_login
+	}else if(($_arguments["do"] == "user_login")){//-user_login
 		$page = "model/user_login.php";
-	}else if(($_arguments["do"] == "add_petty_cash")){//MSK-000143-add_petty_cash
+	}else if(($_arguments["do"] == "add_petty_cash")){//-add_petty_cash
 		$page = "model/add_petty_cash.php";
-	}else if(($_arguments["do"] == "add_events")){//MSK-000143-add_events 
+	}else if(($_arguments["do"] == "add_events")){//-add_events 
 		$page = "model/add_events.php";
-	}else if(($_arguments["do"] == "update_events")){//MSK-000143-update_events
+	}else if(($_arguments["do"] == "update_events")){//-update_events
 		$page = "model/update_events.php";
-	}else if(($_arguments["do"] == "update_admin_profile")){//MSK-000143-update_admin_profile  
+	}else if(($_arguments["do"] == "update_admin_profile")){//-update_admin_profile  
 		$page = "model/update_admin_profile.php";
-	}else if(($_arguments["do"] == "update_teacher_profile")){//MSK-000143-update_teacher_profile
+	}else if(($_arguments["do"] == "update_teacher_profile")){//-update_teacher_profile
 		$page = "model/update_teacher_profile.php";
-	}else if(($_arguments["do"] == "update_student_profile")){//MSK-000143-update_student_profile
+	}else if(($_arguments["do"] == "update_student_profile")){//-update_student_profile
 		$page = "model/update_student_profile.php";
-	}else if(($_arguments["do"] == "update_parents_profile")){//MSK-000143-update_parents_profile
+	}else if(($_arguments["do"] == "update_parents_profile")){//-update_parents_profile
 		$page = "model/update_parents_profile.php";
-	}else if(($_arguments["do"] == "add_group_message")){//MSK-000143-add_group_message
+	}else if(($_arguments["do"] == "add_group_message")){//-add_group_message
 		$page = "model/add_group_message.php";
 	}																				
 }else{

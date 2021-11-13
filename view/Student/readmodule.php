@@ -69,13 +69,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-		Download Modules
+        Modules
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Download Modules</a></li>
+            <li><a href="#">Modules</a></li>
     	</ol>
 	</section>
 
@@ -518,136 +518,131 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	<section class="content" > <!-- Start of table section -->
 	<form method="post" action="delete.php" >
 						  
-						  <table id="example1" class="table table-bordered table-striped">
-							<thead>
-							  <tr>
-							<th style="width:1%;background-color:#454545; color:white;  font-size:15px; color:white;">IMAGE</th>
-							  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;ID</th>
-									  <th style="width:8%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;NAME</th>
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">GRADE</th>
-										 <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">UPLOAD&nbsp;BY</th>
-
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">DATE&nbsp;ADDED</th>
-												<th style="width:12%;background-color:#454545; color:white;  font-size:15px; color:white;">ACTIONS</th>
-				  
-
-			  
-			  
-							   
-							  </tr>
-							</thead>
-						 <tbody>
-							  <?php
-				 include('connect.php');
-							function formatMoney($number, $fractional=false) {
-							  if ($fractional) {
-								$number = sprintf('%.2f', $number);
-							  }
-							  while (true) {
-								$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-								if ($replaced != $number) {
-								  $number = $replaced;
-								} else {
-								  break;
-								}
-							  }
-							  return $number;
-							} 
-							?>
-						
-						 <?php
-						 include('db.php');
-						//  $department=$_SESSION['sess_department'];
-						//  $get_id=$_GET['id']; 
-
-
-						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
-							
-						// ")
-						$query = mysql_query("select * from filemgrfinance  ORDER by item_id DESC
-							
-							 ")
-							 
-							 or die(mysql_error());
-									  while ($row = mysql_fetch_array($query)) {
-									 $id=$row['item_id'];
-										  $names=$row['item_image'];
-										  $date=$row['item_date'];      
-						  ?>
-						  
-					
-					<tr>
-					 <td class="zoom">
-							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
-							   </td>
-					
-					
-						
-							<td style="text-align:center;
-							"><?php echo $row['item_id'];?></td>
-					 
-							<td style="width:37%;"><?php echo $row['item_image'];?></td>
-							
-													   <!-- <td style="text-align:center;
-							"><?php echo $row['department'];?></td> -->
-							
-							<td style="text-align:center;
-							"><?php echo $row['grade'];?></td>
-							
-
-								 <td style="text-align:center;
-							"><?php echo $row['upload_by'];?></td>
-							
-					
-							
-						
-							
-							
-										  <td style="text-align:center;"><?php echo $row['item_date'];?></td>
-						
+	<table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+              <th style="width:5%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Image</th>
+                <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
+				   <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Sections</th>
+			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Module</th>
 				
-			  
-			  
-							
-							
-							
-							
-							
-						  <td style="text-align:center;">
-			  
-					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload</a>
-			  
-			  
-											  
-											  
-													  
-													  
-													  
-													  
-							  <a href="downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
-							  
-													  
-															 
-													  
-													  
-													  
-													  
-													  
-			  
-			  
-								   
-			   
 				
-				   
-				   
-					   <a rel="tooltip" class="btn btn-danger"href="delete.php?del=<?php echo $row['item_id']?>"  onclick="return confirm('Are you sure to remove this Selected File?')"><span class="glyphicon glyphicon-trash" style="color:white" ></span>&nbsp; Delete</a>
-				   
-			   </td>
-					</tr>
-					<?php } ?>
-											  </tbody>
-										  </table>
+				
+				<!--h style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Posted</th>
+				
+					<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">UnPosted</th-->
+					
+					
+					
+					
+					
+				  	<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Action</th>
+		
+                </tr>
+              </thead>
+      
+                 
+                               <?php
+
+              function formatMoney($number, $fractional=false) {
+                if ($fractional) {
+                  $number = sprintf('%.2f', $number);
+                }
+                while (true) {
+                  $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+                  if ($replaced != $number) {
+                    $number = $replaced;
+                  } else {
+                    break;
+                  }
+                }
+                return $number;
+              } 
+        ?>
+          
+           <?php
+		   include('connect.php');
+		   
+               $query = mysql_query("select distinct department, category_id from misdepfinal where blink='1'") or die(mysql_error());
+                        while ($row = mysql_fetch_array($query)) {
+            $category_id=$row['category_id'];
+            $department=$row['department'];
+            ?>
+			
+			
+			
+      <tr>
+	     <td class="zoom" style="text-align:center;">
+				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="50" height="50" /></center>
+				 </td>
+	  
+	  
+	  <td> MIS Department</td>
+	  
+	  
+	  
+
+	  
+              <td><?php
+			     include('connect.php');
+            $cat=$row['category_id'];
+            $query7 = mysql_query("select * from misdepfinal where category_id='$cat'") or die(mysql_error());
+            $row7 = mysql_fetch_array($query7);
+            echo $row7['classname'];
+            ?></td>
+			
+			
+			
+			
+			<!-- This is the final count for the menufinance -->
+			
+			
+          <td style="text-align:center;"><?php
+		     include('connect.php');
+          $category_idoppa=$row['category_id'];
+              //      $count_query = mysql_query("select * from opcategory where category_id='$category_idoppa'") or //die(//mysql_error());        
+                    $count_query = mysql_query("select * from miscategory where dep_sec='$category_idoppa'") or die(mysql_error());        
+          $count = mysql_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?></td>
+					
+					
+					
+					
+
+					
+
+		
+
+					
+					
+
+		  
+		  
+		  
+		  
+		  
+	
+		  <!-- Twoo Piece chiecken -->
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+        <td width="140" style="text-align:center;">
+                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="tblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7['classname'];?>&nbsp;Modules<i class="icon-list icon-large"></i></a>
+           </td>
+      </tr>
+      <?php } ?>
+                                </tbody>
+                            </table>
 			  
 			  
 					  
@@ -759,7 +754,6 @@ date_default_timezone_set("Asia/Singapore");
 <?php
 $conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
-
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];
   $type=$_FILES['photo']['type'];
@@ -811,25 +805,7 @@ die(mysql_error());
 					<tr>
 					<td>
 						<p>Select Grade</p>
-
-                                <!--input  class="form-control" placeholder="Section" name="item_price" type="text" required-->
-                           <select  class="form-control"  name="grade" required>
-						   <?php
-						   include('connect.php');
-			$cat_query = mysql_query("SELECT * FROM grade");
-			while($cat_row = mysql_fetch_array($cat_query)){
-			?>
-	<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
-			<?php  } ?>
- 
-
- 
-</select>
-							 
-						
-							
-<!-- 
-					<input type="text" class="form-control" name="grade" placeholder="Grade"> -->
+					<input type="text" class="form-control" name="grade" placeholder="Grade">
 </td>
 </tr>
 					<tr>
