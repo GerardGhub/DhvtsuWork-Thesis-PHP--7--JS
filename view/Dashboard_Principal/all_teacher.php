@@ -615,15 +615,15 @@ if(mysqli_num_rows($result7) > 0){
 	$cant_remove7=0;
 }
 
-$sql8="SELECT * FROM petty_cash WHERE received_by='$index' AND received_type='Teacher'";	
+// $sql8="SELECT * FROM petty_cash WHERE received_by='$index' AND received_type='Teacher'";	
    
-$result8=mysqli_query($conn,$sql8);
+// $result8=mysqli_query($conn,$sql8);
 
-if(mysqli_num_rows($result8) > 0){
-	$cant_remove8=1;
-}else{
-	$cant_remove8=0;
-}
+// if(mysqli_num_rows($result8) > 0){
+// 	$cant_remove8=1;
+// }else{
+// 	$cant_remove8=0;
+// }
 
 $sql9="SELECT * FROM petty_cash_history WHERE received_by='$index' AND received_type='Teacher'";	
    
@@ -649,14 +649,14 @@ if(mysqli_num_rows($result10) > 0){
 if($cant_remove1 > 0 || $cant_remove2 > 0 || $cant_remove3 > 0 || $cant_remove4 > 0 || $cant_remove5 > 0 || $cant_remove6 > 0 || $cant_remove7 > 0 || $cant_remove8 > 0 || $cant_remove9 > 0 || $cant_remove10 > 0){
 	
 	echo '<a href="#modalUpdateform" onClick="showModal(this)" class="btn btn-warning btn-xs" data-id="'.$id.'" data-toggle="modal">Edit</a>';
-	echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
+	// echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
 	echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
 	
 }else{
 	
 	echo '<a href="#modalUpdateform" onClick="showModal(this)" class="btn btn-warning btn-xs" data-id="'.$id.'" data-toggle="modal">Edit</a>';
 	echo ' <a href="#" class="confirm-delete btn btn-danger btn-xs"  data-id="'.$id.'">Delete</a>';
-	echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
+	// echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
 	echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
 	
 }

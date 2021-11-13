@@ -615,15 +615,15 @@ if(mysqli_num_rows($result7) > 0){
 	$cant_remove7=0;
 }
 
-$sql8="SELECT * FROM petty_cash WHERE received_by='$index' AND received_type='Teacher'";	
+// $sql8="SELECT * FROM petty_cash WHERE received_by='$index' AND received_type='Teacher'";	
    
-$result8=mysqli_query($conn,$sql8);
+// $result8=mysqli_query($conn,$sql8);
 
-if(mysqli_num_rows($result8) > 0){
-	$cant_remove8=1;
-}else{
-	$cant_remove8=0;
-}
+// if(mysqli_num_rows($result8) > 0){
+// 	$cant_remove8=1;
+// }else{
+// 	$cant_remove8=0;
+// }
 
 $sql9="SELECT * FROM petty_cash_history WHERE received_by='$index' AND received_type='Teacher'";	
    
