@@ -6,7 +6,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 }
 ?>
 <?php include_once('../Dashboard_Principal/head.php'); ?>
-<?php include_once('../Dashboard_Principal/header_admin.php'); ?>
+<?php include_once('header_student.php'); ?>
 <?php include_once('sidebar1.php'); ?>
 <?php include_once('../alert.php'); ?>
 

@@ -519,31 +519,32 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 	<form method="post" action="delete.php" >
 						  
 	<table id="example1" class="table table-bordered table-striped">
-              <thead>
+	<thead>
                 <tr>
-              <th style="width:5%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Image</th>
-                <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
-				   <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Sections</th>
-			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Module</th>
-				
-				
-				
-				<!--h style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Posted</th>
-				
-					<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">UnPosted</th-->
-					
-					
-					
-					
-					
-				  	<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Action</th>
-		
+              <!--th style="width:5%;background-color:#4545450; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Image</th-->
+                <th style="width:11%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Subject</th>
+			<th style="width:5%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
+				<th style="width:5%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Section</th>
+				<th style="width:11%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Revision</th>
+				  	<th style="width:11%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Issued&nbsp;Date</th>
+			<th style="width:3%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Effective&nbsp;Date</th>
+			
+			
+			
+			
+			
+					<th style="width:3%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">No&nbsp;of&nbsp;Pages</th>
+	
+	
+	
+				 
+                <th style="width:11%;background-color:whitesmoke; color:black; text-align:center; font-family:Times New Roman, Times, serif;">Actions</th-->
+                 
                 </tr>
               </thead>
-      
-                 
-                               <?php
-
+           <tbody>
+                <?php
+   include('../Dashboard_Principal/connect.php');
               function formatMoney($number, $fractional=false) {
                 if ($fractional) {
                   $number = sprintf('%.2f', $number);
@@ -558,93 +559,193 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
                 }
                 return $number;
               } 
-        ?>
+              ?>
           
            <?php
 		   include('../Dashboard_Principal/connect.php');
 		   
-               $query = mysql_query("select distinct department, category_id from misdepfinal where blink='1'") or die(mysql_error());
+           $get_id=$_GET['id']; 
+		  
+               $query = mysql_query("select distinct category_id ,classname ,dep_sec,depsection from miscategory where dep_sec='$get_id'") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
-            $category_id=$row['category_id'];
-            $department=$row['department'];
+                        // $item_id = $row['item_id'];    
+   $category_id = $row['category_id']; 
+//    $policy_title = $row['policy_title']
+   
             ?>
-			
-			
-			
       <tr>
-	     <td class="zoom" style="text-align:center;">
-				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="50" height="50" /></center>
-				 </td>
 	  
 	  
-	  <td> MIS Department</td>
 	  
 	  
 	  
 
 	  
-              <td><?php
-			     include('../Dashboard_Principal/connect.php');
-            $cat=$row['category_id'];
-            $query7 = mysql_query("select * from misdepfinal where category_id='$cat'") or die(mysql_error());
-            $row7 = mysql_fetch_array($query7);
-            echo $row7['classname'];
-            ?></td>
+	  
+	  
+	
+	    <td style="width:0%;"><?php echo $row['classname'];?></td>
+	      
+		  
+		 
+			  
+		  
+              <td style="text-align:center;"><?php $catss=$row['category_id'];
+              $query99 = mysql_query("select * from mis where category_id='$catss'");
+              $row00 = mysql_fetch_array($query99);
+              echo $row00['department'];
+              ?></td>
+
+					
+								     <td style="text-align:center;"><?php $catss=$row['dep_sec'];
+              $query99 = mysql_query("select * from misdepfinal where category_id='$catss'");
+              $row00 = mysql_fetch_array($query99);
+              echo $row00['classname'];
+              ?></td>
+		  
+		  
+			           <td style="text-align:center;width:4%;"><?php $catss=$row['category_id'];
+              $query99 = mysql_query("select * from mis where category_id='$catss'");
+              $row00 = mysql_fetch_array($query99);
+              echo $row00['revisionno'];
+              ?></td>
+			  
+			  
+			  
+			           <td style="text-align:center;width:4%;"><?php $catss=$row['category_id'];
+              $query99 = mysql_query("select * from mis where category_id='$catss'");
+              $row00 = mysql_fetch_array($query99);
+              echo $row00['issuedate'];
+              ?></td>
+			  
+			  
+			  
+			             <td style="text-align:center;width:4%;"><?php $catss=$row['category_id'];
+              $query99 = mysql_query("select * from mis where category_id='$catss'");
+              $row00 = mysql_fetch_array($query99);
+              echo $row00['effectivedate'];
+              ?></td>
+			  
+			  
+			  
+	
+			  
+			  
 			
+			  
+			  
+			  
+			  
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ <! -- Comment co muna this 2 data in  hre -->
+    
 			
+	
 			
-			
-			<!-- This is the final count for the menufinance -->
-			
-			
-          <td style="text-align:center;"><?php
+			      <td style="text-align:center; width:4%;"><?php
 		     include('../Dashboard_Principal/connect.php');
           $category_idoppa=$row['category_id'];
-              //      $count_query = mysql_query("select * from opcategory where category_id='$category_idoppa'") or //die(//mysql_error());        
-                    $count_query = mysql_query("select * from miscategory where dep_sec='$category_idoppa'") or die(mysql_error());        
+            //        $count_query = mysql_query("select * from officepresident where category_id='$category_idoppa'") or //die(mysql_error());        
+                    $count_query = mysql_query("select * from mis where category_id='$category_idoppa'") or die(mysql_error());        
           $count = mysql_num_rows($count_query);
           
                     ?>
+				
 					
-					
-					
-                    <?php echo $count; ?></td>
-					
-					
-					
-					
+                    <?php echo $count; ?> Pages</td>
+			
+			
+			
+			
+			
+              <!--td><?php  $price=$row['price'];
+              echo 'PHP'.formatMoney($price,true);?></td-->
+             
+              <td style="width:10%;">
+			  
+			  
+			  
+			  <!-- <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="../../ong/Admin/userportal/Customers/getmymispolicies.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Module?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a>  -->
 
-					
+     
 
-		
 
-					
-					
+			 <a rel="tooltip" class="btn btn-info" id="v<?php echo $id; ?>" href="getmodules.php?id=<?php echo $row ['category_id']; ?>" title="Click for Edit" onclick="return confirm('Are you sure you want to Read the Selected Module?')">Read Module&nbsp;<span class="glyphicon glyphicon-export" style="font-size:17px; color:white;"></span></a> 
 
-		  
-		  
-		  
-		  
-		  
-	
-		  <!-- Twoo Piece chiecken -->
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-        <td width="140" style="text-align:center;">
-                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="tblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7['classname'];?>&nbsp;Modules<i class="icon-list icon-large"></i></a>
-           </td>
+
+
+
+
+									 
+							
+
+
+							
+		 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+ 
+
+	 
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+  <!--a  rel="tooltip"  class="btn btn-success" title="View" id="v<?php echo $id; ?>"  href="view_equipment.php?id=<?php echo $item_id;?>" class="btn btn-light"><span class="glyphicon glyphicon-search" style="font-size:17px;color:white"></span></i></a-->
+  
+  
+
+  <!--
+  Comment mna ang print this january 2019
+  
+  a  rel="tooltip"  class="btn btn-primary" title="Print the Sticker" id="v<?php echo $id; ?>"  href="fixedasset_reportsticker.php?id<?php echo $item_category;?>" class="btn btn-light"><span class="glyphicon glyphicon-print" style="font-size:17px; color:white"></span></i></a-->
+  
+  
+  
+  			  <!-- Comment muna this delete section -->
+			  
+         <!--a rel="tooltip" class="btn btn-danger" title="Delete" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete?')" href="delete_equipment.php?id=<?php echo $item_id;?>" data-toggle="modal"    class="btn btn-light"><span class="glyphicon glyphicon-trash" style="font-size:17px; color:white"></span><i class="icon-tr
+  ash icon-large" readonly></i></a-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+         </td>
+ 
       </tr>
       <?php } ?>
                                 </tbody>
                             </table>
-			  
-			  
 					  
 					  <!--- end -->
 					  

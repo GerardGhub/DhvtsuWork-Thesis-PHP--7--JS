@@ -5,10 +5,208 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
+
 <?php include_once('../Dashboard_Principal/head.php'); ?>
 <?php include_once('header_student.php'); ?>
 <?php include_once('sidebar1.php'); ?>
 <?php include_once('../alert.php'); ?>
+
+<script src="jsmodule/js/datatables.min.js"></script>
+    <script type="text/javascript" src="../Dashboard_Principal/jsmodule/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../Dashboard_Principal/jsmodule/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="../Dashboard_Principal/jsmodule/jquery.fancybox.css?v=2.1.5" media="screen" />	
+	<link rel="stylesheet" type="text/css" href="../Dashboard_Principal/jsmodule/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="../Dashboard_Principal/jsmodule/jquery.fancybox-buttons.js?v=1.0.5"></script>
+	<link rel="stylesheet" type="text/css" href="../Dashboard_Principal/jsmodule/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="../Dashboard_Principal/jsmodule/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+	<script type="text/javascript" src="../Dashboard_Principal/jsmodule/jquery.fancybox-media.js?v=1.0.6"></script>
+
+
+
+
+<script type="text/javascript">
+
+
+
+	
+	
+$(document).ready(function() {
+	/*
+	 *  Simple image gallery. Uses default settings
+	 */
+
+	$('.fancybox').fancybox();
+
+	/*
+	 *  Different effects
+	 */
+
+	// Change title type, overlay closing speed
+	$(".fancybox-effects-a").fancybox({
+		helpers: {
+			title : {
+				type : 'outside'
+			},
+			overlay : {
+				speedOut : 0
+			}
+		}
+	});
+
+	// Disable opening and closing animations, change title type
+	$(".fancybox-effects-b").fancybox({
+		openEffect  : 'none',
+		closeEffect	: 'none',
+
+		helpers : {
+			title : {
+				type : 'over'
+			}
+		}
+	});
+
+	// Set custom style, close if clicked, change title type and overlay color
+	$(".fancybox-effects-c").fancybox({
+		wrapCSS    : 'fancybox-custom',
+		closeClick : true,
+
+		openEffect : 'none',
+
+		helpers : {
+			title : {
+				type : 'inside'
+			},
+			overlay : {
+				css : {
+					'background' : 'rgba(238,238,238,0.85)'
+				}
+			}
+		}
+	});
+
+	// Remove padding, set opening and closing animations, close if clicked and disable overlay
+	$(".fancybox-effects-d").fancybox({
+		padding: 0,
+
+		openEffect : 'elastic',
+		openSpeed  : 600,
+
+		closeEffect : 'elastic',
+		closeSpeed  : 400,
+
+		closeClick : true,
+
+		
+	});
+
+	/*
+	 *  Button helper. Disable animations, hide close button, change title type and content
+	 */
+
+	$('.fancybox-buttons').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+
+		prevEffect : 'none',
+		nextEffect : 'none',
+
+		closeBtn  : false,
+
+		helpers : {
+			title : {
+				type : 'inside'
+			},
+			buttons	: {}
+		},
+
+		afterLoad : function() {
+			this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+		}
+	});
+
+
+	/*
+	 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+	 */
+
+	$('.fancybox-thumbs').fancybox({
+		prevEffect : 'none',
+		nextEffect : 'none',
+
+		closeBtn  : false,
+		arrows    : false,
+		nextClick : true,
+
+		helpers : {
+			thumbs : {
+				width  : 50,
+				height : 50
+			}
+		}
+	});
+
+	/*
+	 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+	*/
+	$('.fancybox-media')
+		.attr('rel', 'media-gallery')
+		.fancybox({
+			openEffect : 'none',
+			closeEffect : 'none',
+			prevEffect : 'none',
+			nextEffect : 'none',
+
+			arrows : false,
+			helpers : {
+				media : {},
+				buttons : {}
+			}
+		});
+
+	/*
+	 *  Open manually
+	 */
+
+	$("#fancybox-manual-a").click(function() {
+		$.fancybox.open('1_b.jpg');
+	});
+
+	$("#fancybox-manual-b").click(function() {
+		$.fancybox.open({
+			href : 'iframe.html',
+			type : 'iframe',
+			padding : 5
+		});
+	});
+
+	
+	
+	
+	
+	$("#fancybox-manual-c").click(function() {
+		$.fancybox.open([
+			{
+				href : '1_b.jpg',
+				title : 'My title'
+			}, {
+				href : '2_b.jpg',
+				title : '2nd title'
+			}, {
+				href : '3_b.jpg'
+			}
+		], {
+			helpers : {
+				thumbs : {
+					width: 75,
+					height: 50
+				}
+			}
+		});
+	});
+
+
+});
+</script>
 
 <style>
 
@@ -69,10 +267,18 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-        Modules
+        Modules :
+		<td><b>
+								   <?php include('../Dashboard_Principal/connect.php');
+			$get_id=$_GET['id'];
+          //  $cats=$row['Prepared_By'];
+            $query7 = mysql_query("select * from miscategory where category_id='$get_id'") or die(mysql_error());
+            $row7 = mysql_fetch_array($query7);
+            echo $row7['classname']; 
 
+?>			</td> </b>
         </h1>
-		
+		<br>
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Modules</a></li>
@@ -182,126 +388,7 @@ body {
         </div><!-- /.modal-dialog -->   
     </div><!--/.modal-modalInsertform -->
     
-<script>
 
-$("#form1").submit(function (e) {
-//MSK-000098-form submit
-	
-	var name = $('#name').val();	
-	var admission_fee = $('#admission_fee').val();
-	var hall_charge = $('#hall_charge').val();
-	
-	if(name == ''){
-		//MSK-00099-name
-		$("#btnSubmit").attr("disabled", true);
-		$('#divGrade').addClass('has-error has-feedback');	
-		$('#divGrade').append('<span id="spanName" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The grade is required" ></span>');	
-			
-		$("#name").keydown(function() {
-			//MSK-00100-name  
-			$("#btnSubmit").attr("disabled", false);	
-			$('#divGrade').removeClass('has-error has-feedback');
-			$('#spanName').remove();
-			
-		});
-			
-	}else{
-		
-	}
-	
-	if(admission_fee == ''){
-		//MSK-00099-name
-		$("#btnSubmit").attr("disabled", true);
-		$('#divAdmissionFee').addClass('has-error has-feedback');	
-		$('#divAdmissionFee').append('<span id="spanAdmissionFee" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The admission fee is required" ></span>');	
-			
-		$("#admission_fee").keydown(function() {
-			//MSK-00100-name  
-			$("#btnSubmit").attr("disabled", false);	
-			$('#divAdmissionFee').removeClass('has-error has-feedback');
-			$('#spanAdmissionFee').remove();
-			
-		});
-			
-	}else{
-		
-	}
-	
-	if(hall_charge == ''){
-		//MSK-00099-name
-		$("#btnSubmit").attr("disabled", true);
-		$('#divHallCharge').addClass('has-error has-feedback');	
-		$('#divHallCharge').append('<span id="spanHallCharge" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The hall charge is required" ></span>');	
-			
-		$("#hall_charge").keydown(function() {
-			//MSK-00100-name  
-			$("#btnSubmit").attr("disabled", false);	
-			$('#divHallCharge').removeClass('has-error has-feedback');
-			$('#spanHallCharge').remove();
-			
-		});
-			
-	}else{
-		
-	}
-
-	if(name == '' || admission_fee == ''){
-		//MSK-000098- form validation failed
-		$("#btnSubmit").attr("disabled", true);
-		e.preventDefault();
-		return false;
-			
-	}else{
-		$("#btnSubmit").attr("disabled", false);
-	}
-
-
-});
-
-function eMarkRG(grade){
-	
-	$('#modalUpdateform1').modal('hide');
-	$('#modalInsertform').modal('show');
-	document.getElementById("grade_id").value =grade;
-	
-};
-function cTablePage(page){
-//MSK-000135	
-	var currentPage1 = (page-1)*10;
-	
-	$(function(){
-		$("#example1").DataTable({
-			"displayStart": currentPage1,    
-			"bDestroy": true       
-   		});
-						
-	});
-					  
-	window.scrollTo(0,document.body.scrollHeight);
-	
-};
-
-function showeMark1(grade,page){
-	
-	cTablePage(page);
-	
-	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
-		xhttp.onreadystatechange = function() {
-				
-			if (this.readyState == 4 && this.status == 200) {
-					//MSK-00107 
-				document.getElementById('divEMG').innerHTML = this.responseText;//MSK-000132
-				$('#modalUpdateform1').data('id1', grade).modal('show');
-											
-			}
-				
-		};	
-			
-		xhttp.open("GET", "emarks_range_grade_update_form.php?grade="+grade +"&page="+page , true);												
-		xhttp.send();//MSK-00105-Ajax End
-	 
-};
-</script>   
 
 <!--run Insert alert using PHP & JS/jQuery  -->          
 <?php
@@ -515,160 +602,97 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 <!-- table for view all records -->
  
 	<!-- Main content BUJE -->
-	<section class="content" > <!-- Start of table section -->
-	<form method="post" action="delete.php" >
-						  
-	<table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-              <th style="width:5%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Image</th>
-                <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
-				   <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Sections</th>
-			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Module</th>
-				
-				
-				
-				<!--h style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Posted</th>
-				
-					<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">UnPosted</th-->
-					
-					
-					
-					
-					
-				  	<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Action</th>
-		
-                </tr>
-              </thead>
-      
-                 
-                               <?php
-
-              function formatMoney($number, $fractional=false) {
-                if ($fractional) {
-                  $number = sprintf('%.2f', $number);
-                }
-                while (true) {
-                  $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-                  if ($replaced != $number) {
-                    $number = $replaced;
-                  } else {
-                    break;
-                  }
-                }
-                return $number;
-              } 
-        ?>
-          
-           <?php
-		   include('../Dashboard_Principal/connect.php');
-		   
-               $query = mysql_query("select distinct department, category_id from misdepfinal where blink='1'") or die(mysql_error());
-                        while ($row = mysql_fetch_array($query)) {
-            $category_id=$row['category_id'];
-            $department=$row['department'];
-            ?>
-			
-			
-			
-      <tr>
-	     <td class="zoom" style="text-align:center;">
-				<center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="50" height="50" /></center>
-				 </td>
-	  
-	  
-	  <td> MIS Department</td>
-	  
-	  
-	  
-
-	  
-              <td><?php
-			     include('../Dashboard_Principal/connect.php');
-            $cat=$row['category_id'];
-            $query7 = mysql_query("select * from misdepfinal where category_id='$cat'") or die(mysql_error());
-            $row7 = mysql_fetch_array($query7);
-            echo $row7['classname'];
-            ?></td>
-			
-			
-			
-			
-			<!-- This is the final count for the menufinance -->
-			
-			
-          <td style="text-align:center;"><?php
-		     include('../Dashboard_Principal/connect.php');
-          $category_idoppa=$row['category_id'];
-              //      $count_query = mysql_query("select * from opcategory where category_id='$category_idoppa'") or //die(//mysql_error());        
-                    $count_query = mysql_query("select * from miscategory where dep_sec='$category_idoppa'") or die(mysql_error());        
-          $count = mysql_num_rows($count_query);
-          
-                    ?>
-					
-					
-					
-                    <?php echo $count; ?></td>
-					
-					
-					
-					
-
-					
-
-		
-
-					
-					
-
-		  
-		  
-		  
-		  
-		  
-	
-		  <!-- Twoo Piece chiecken -->
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-        <td width="140" style="text-align:center;">
-                <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="tblcontents.php?id=<?php echo $row['category_id'];?>" class="btn btn-primary button button4">View <?php echo $row7['classname'];?>&nbsp;Modules<i class="icon-list icon-large"></i></a>
-           </td>
-      </tr>
-      <?php } ?>
-                                </tbody>
-                            </table>
-			  
-			  
-					  
-					  <!--- end -->
-					  
-				  <!-- /#wrapper -->										 
-															   
-															   
-															   
-															   
-															   
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
+	<section class="contents" > <!-- Start of table section -->
+	 
 						
-			  </form>
+	<?php
+ include('../Dashboard_Principal/connect.php');
+ 
+	// include('confeg.php');
 
+
+	
+
+		
+							
+
+
+
+
+$ip=1;
+
+
+
+$query1=mysql_connect("localhost","root","");
+mysql_select_db("std_db",$query1);
+
+$start=0;
+$limit=12;
+
+//if(isset($_GET['id']))
+//{
+
+//	$start=($ip-1)*$limit;
+
+$get_id=$_GET['id']; 
+//}
+  // $get_idm=$_GET['idm']; 
+
+$query=mysql_query("SELECT distinct category_id, item_id, item_image, policy_title, revisionno, img_name, issuedate,effectivedate, department FROM mis WHERE category_id='$get_id'") or die (mysql_error());
+
+
+     
+		
+   
+        
+
+
+
+
+
+while($query2=mysql_fetch_array($query))
+ 
+{
+	
+	echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color:#008CBA;'>
+            <div class='panel-heading' style='color:white;background-color : #033c73;'>
+            <center> 
+<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>".$query2['issuedate']."&nbsp;To&nbsp; ".$query2['effectivedate']."</textarea>
+
+			</center>
+			
+			
+            </div>
+            <div class='panel-body'>
+           <a class='fancybox-buttons' href='../item_images/".$query2['img_name']."' data-fancybox-group='button' title='Page ".$ip."- ".$query2['policy_title']."'>
+	
+					<img src='../item_images/".$query2['img_name']."' class='img img-thumbnail'  style='width:350px;height:190px;' />
+					</a>
+				
+					
+					<center><h4>  ".$query2['department']." </h4></center>
+					
+		
+					
+						<a class='btn btn-block btn-danger' title='Download Selected Module?' href='#downloadfile.php?file=../item_images/".$query2['item_image']."'><span class='fa fa-cloud-download'></span>&nbsp;RevisionNo&nbsp;".$query2['revisionno']."</a>
+							
+						
+            </div>
+          </div>
+        </div>";
+
+			
+	
+}
+
+
+
+
+		// $stmt=$dbcon->prepare('#');
+		// $stmt->execute();
+		
+	
+	?>
 		
 		
 		
@@ -1434,7 +1458,7 @@ window.addEventListener("popstate", function() {
 }(window, location));
 </script>
 
-
+		
 
 </div><!-- /.content-wrapper -->  
                              
