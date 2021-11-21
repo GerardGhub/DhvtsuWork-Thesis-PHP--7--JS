@@ -129,7 +129,7 @@ $grade_id=$row['grade_id'];
           </a>
           <ul class="treeview-menu">
             <li><a href="my_exam_marks.php"><i class="fa fa-circle-o"></i> My Exam Marks</a></li>
-            <li><a href="my_exam_marks_history.php"><i class="fa fa-circle-o"></i> My Exam Marks History</a></li>
+            <!-- <li><a href="my_exam_marks_history.php"><i class="fa fa-circle-o"></i> My Exam Marks History</a></li> -->
             <li><a href="my_exam_timetable.php"><i class="fa fa-circle-o"></i>My Exam Timetable</a></li>
           </ul>
         </li>

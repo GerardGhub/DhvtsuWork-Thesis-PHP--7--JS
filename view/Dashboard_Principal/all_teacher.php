@@ -650,14 +650,14 @@ if($cant_remove1 > 0 || $cant_remove2 > 0 || $cant_remove3 > 0 || $cant_remove4 
 	
 	echo '<a href="#modalUpdateform" onClick="showModal(this)" class="btn btn-warning btn-xs" data-id="'.$id.'" data-toggle="modal">Edit</a>';
 	// echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
-	echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
+	// echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
 	
 }else{
 	
 	echo '<a href="#modalUpdateform" onClick="showModal(this)" class="btn btn-warning btn-xs" data-id="'.$id.'" data-toggle="modal">Edit</a>';
 	echo ' <a href="#" class="confirm-delete btn btn-danger btn-xs"  data-id="'.$id.'">Delete</a>';
 	// echo ' <a href="#" onClick="addSalary(this)" class="btn btn-success btn-xs"  data-id="'.$index.','.$id.'">Add Salary</a>';
-	echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
+	// echo ' <a href="#" onClick="viewPayments(this)" class="btn btn-info btn-xs"  data-id="'.$index.'">View Payments</a>';
 	
 }
 

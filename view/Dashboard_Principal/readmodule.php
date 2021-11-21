@@ -522,7 +522,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
               <thead>
                 <tr>
               <th style="width:5%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Image</th>
-                <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th>
+                <!-- <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Department</th> -->
 				   <th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">Sections</th>
 			<th style="width:11%;background-color:#454545; color:white; text-align:center; font-family:Times New Roman, Times, serif;">No of Module</th>
 				
@@ -577,8 +577,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 				 </td>
 	  
 	  
-	  <td> MIS Department</td>
-	  
+	
 	  
 	  
 

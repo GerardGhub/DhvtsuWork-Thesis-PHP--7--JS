@@ -564,9 +564,12 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
 							
 						// ")
-						$query = mysql_query("select * from filemgrfinance  ORDER by item_id DESC
+						$query = mysql_query("select f.item_id , f.item_image, f.item_date, f.upload_by, f.department,g.name as grade from filemgrfinance f LEFT JOIN grade g ON f.grade = g.id
 							
 							 ")
+							//  $query = mysql_query("select * from filemgrfinance  ORDER by item_id DESC
+							
+							//  ")
 							 
 							 or die(mysql_error());
 									  while ($row = mysql_fetch_array($query)) {

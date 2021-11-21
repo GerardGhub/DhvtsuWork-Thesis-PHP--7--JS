@@ -116,7 +116,7 @@ $image=$row['image_name'];
           </a>
           <ul class="treeview-menu">
             <li><a href="my_sons_exam_marks.php"><i class="fa fa-circle-o"></i> My Son's Exam Marks</a></li>
-            <li><a href="my_sons_exam_marks_history.php"><i class="fa fa-circle-o"></i> My Son's  Exam Marks History</a></li>
+            <!-- <li><a href="my_sons_exam_marks_history.php"><i class="fa fa-circle-o"></i> My Son's  Exam Marks History</a></li> -->
             <li><a href="my_sons_exam_timetable.php"><i class="fa fa-circle-o"></i>My Son's Exam Timetable</a></li>
           </ul>
         </li>

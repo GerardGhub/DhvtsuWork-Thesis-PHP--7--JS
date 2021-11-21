@@ -61,7 +61,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_teacher")){
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$email."','$b_date','Teacher')";
+			                VALUES ('".$email."','$index_number','Teacher')";
 					
 					mysqli_query($conn,$sql3);
 				}else{

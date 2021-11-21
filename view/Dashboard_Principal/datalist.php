@@ -1213,7 +1213,7 @@ die(mysql_error());
 				</tr>
 				<tr>
 						<td>
-					<textarea name="WorkXP" placeholder="Work Experience" class="form-control" required></textarea>
+					<textarea name="WorkXP" placeholder="Remarks" class="form-control" required></textarea>
 					</td>
 				</tr>
 				

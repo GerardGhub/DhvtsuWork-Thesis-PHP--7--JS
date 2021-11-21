@@ -671,7 +671,7 @@ if($cant_remove1 > 0 || $cant_remove2 > 0 || $cant_remove3 > 0 || $cant_remove4 
                                     <input class="form-control" type="text" id="name1" name="name" autocomplete="off">
                                 </div>
                                 <div class="form-group" id="divAFeeUpdate">
-                                    <label for="">Admission Fee($)</label>
+                                    <label for="">Admission Fee(₱)</label>
                                     <input class="form-control" type="text" id="admission_fee1" name="admission_fee" autocomplete="off">
                                 </div>
                                 <div class="form-group" id="divHChargeUpdate">

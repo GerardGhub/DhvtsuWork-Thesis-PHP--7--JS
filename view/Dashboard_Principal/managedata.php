@@ -522,8 +522,8 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
                 <tr>
                   <th>Image</th>
                   <th style="width:265px;">Subject</th>
-				  <th>Department</th>
-			
+				  <!-- <th>Department</th>
+			 -->
 				  <th style="width:59px;">Revision</th>
 				  	  <th style="width:93px;">Issued Date</th>
 					    <th>Effective Date</th>
@@ -560,7 +560,7 @@ include("config.php");
             echo $row7['classname']; 
 
 ?>			</td>
-				 <td><?php echo $department; ?></td>
+				 <!-- <td><?php echo $department; ?></td> -->
 				 
 		
 				 	 <td><?php echo $revisionno; ?></td>

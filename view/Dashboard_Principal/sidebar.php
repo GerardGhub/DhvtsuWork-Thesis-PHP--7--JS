@@ -111,11 +111,11 @@ $email=$row['email'];
           </a>
         </li>
    
-        <li>
+        <!-- <li>
           <a href="student_payment.php">
             <i class="fa fa-money"></i> <span style="color:white;">Student Payment</span>
           </a>
-        </li>
+        </li> -->
       
         <li class="treeview">
           <a href="#">
@@ -129,7 +129,7 @@ $email=$row['email'];
             <li><a href="exam.php"><i class="fa fa-circle-o"></i>Create Exam</a></li>
             <li><a href="exam_timetable.php"><i class="fa fa-circle-o"></i> Exam Timetable</a></li>
             <li><a href="student_exam_marks.php"><i class="fa fa-circle-o"></i>Student Exam Marks</a></li>
-            <li><a href="student_exam_marks_history.php"><i class="fa fa-circle-o"></i>Student Exam Marks History</a></li>
+            <!-- <li><a href="student_exam_marks_history.php"><i class="fa fa-circle-o"></i>Student Exam Marks History</a></li> -->
           </ul>
         </li>
      
