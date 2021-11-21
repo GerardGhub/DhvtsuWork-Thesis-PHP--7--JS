@@ -516,7 +516,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
  
 	<!-- Main content BUJE -->
 	<section class="content" > <!-- Start of table section -->
-	<form method="post" action="delete.php" >
+	<form method="post" action="allmodules.php" >
 						  
 						  <table id="example1" class="table table-bordered table-striped">
 							<thead>
@@ -616,16 +616,12 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						  <td style="text-align:center;">
 			  
 					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload</a>
+			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload Module</a>
 			  
 			  
 											  
-											  
-													  
-													  
-													  
-													  
-							  <a href="../Dashboard_Principal/downloadsunday.php?filename=<?php echo $names;?>"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
+			  <!-- <button onclick="myFunction()" type="submit" name="submitlogs" class="btn btn-success btn-md">Submit</button> -->
+<a onclick="myFunction()" href="downloadsunday.php?filename=<?php echo $names;?>" type="submit" name="submitlogs"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
 							  
 													  
 															 
@@ -661,6 +657,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 															   
 			  
 			  
+
 			  
 			  
 			  
@@ -674,7 +671,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						
 			  </form>
 
-		
+
 		
 		
 	</section> <!-- End of table section --> 
@@ -703,51 +700,6 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 include('../includes/config.php');
 
 ?> -->
-
-
-
-
-
-
-
-							  
-
-               
-
-                      
-                          
-
-							  
-							  
-							  
-							  
-
-
-											
-											
-											<!--Cointainer sa taas-->
-											
-											
-											
-
-
-                                                 
-                                                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php
@@ -787,8 +739,37 @@ die(mysql_error());
 ?>
 
 
+<?php
+$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
+if(isset($_POST['submitlogs'])!=""){
 
-<!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"-->
+  $names=$_FILES['photo']['name'];
+  $size=$_FILES['photo']['size'];
+  $type=$_FILES['photo']['type'];
+  $temp=$_FILES['photo']['tmp_name'];
+  $date = date('Y-m-d H:i:s');
+  $upload_by=$_POST['upload_by'];
+  $grade=$_POST['grade'];
+  $department=$_POST['department'];
+  $caption1=$_POST['caption'];
+  $link=$_POST['link'];
+  $department =$_SESSION['department'];
+  
+  move_uploaded_file($temp,"../item_images/".$names);
+
+$query=$conn->query("INSERT INTO filemgrfinance (item_image,item_date,upload_by,department,grade) VALUES ('$names','$date','$name','$department','$grade')");
+if($query){
+
+ echo "<script>window.open('allmodules.php','_self')</script>";
+
+}
+else{
+die(mysql_error());
+}
+}
+?>
+
+
 
 
 
@@ -876,7 +857,6 @@ $totalsubjects=$query->rowCount();
 
 
 
-                <!--button class="btn btn-success btn-md" name="item_save"></button-->
 				   <button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
 				   </form>
 				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
@@ -891,485 +871,15 @@ $totalsubjects=$query->rowCount();
         </div>
 		
 
-	<!-- //MSK-00103 Modal-Update form -->  
-	<div class="modal msk-fade" id="modalUpdateform" tabindex="-1" role="dialog" aria-labelledby="modalUpdateform" aria-hidden="true">  
-  		<div class="modal-dialog">
-    		<div class="container">
-            	<div class="row ">	
-           			<div class="col-md-6">
-                		<div class="panel">
-        					<div class="panel-heading bg-primary">              
-        						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-          						<h4 class="modal-title custom_align" id="Heading">Edit Grade</h4>
-   							</div>
-                            <div class="panel-body"> <!-- Start of modal body--> 
-                                <div class="form-group" id="divGradeUpdate">
-                                    <label for="">Grade</label>
-                                    <input class="form-control" type="text" id="name1" name="name" autocomplete="off">
-                                </div>
-                                <div class="form-group" id="divAFeeUpdate">
-                                    <label for="">Admission Fee($)</label>
-                                    <input class="form-control" type="text" id="admission_fee1" name="admission_fee" autocomplete="off">
-                                </div>
-                                <div class="form-group" id="divHChargeUpdate">
-                                    <label for="">Hall Charge(%)</label>
-                                    <input class="form-control" type="text" id="hall_charge1" name="hall_charge" autocomplete="off">
-                                </div>
-                            </div><!--/.modal body-->
-                            <div class="panel-footer bg-gray-light">
-                                <input type="hidden" name="id" id="id" value="">
-                                <button type="button" onClick="Updategrade(this)" id="btnSubmit1" class="btn btn-info" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>    
-                            </div><!--/.panel-footer--> 
-            			</div><!--/.panel-->
-            		</div><!--/.col-md-6-->
-            	</div><!--/.row-->                                        
-        	</div><!-- /.modal-content -->  		 
-		</div><!-- /.modal-dialog -->            
-	</div><!--/.Modal-Update form -->   
-    
-<script>
-function showModal(Updateform){
-//MSK-00104
-	
-	var Id = $(Updateform).data("id");  
-		
-	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start 1 
-  		xhttp.onreadystatechange = function() {
-    		if (this.readyState == 4 && this.status == 200) {
-				//MSK-00107 
-				var myArray1 = eval( xhttp.responseText );
-				
-				document.getElementById("id").value =myArray1[0];
-				document.getElementById("name1").value =myArray1[1];
-				document.getElementById("admission_fee1").value =myArray1[2];
-				document.getElementById("hall_charge1").value =myArray1[3];
-
-    		}
-			
-  		};	
-		
-    xhttp.open("GET", "../../model/get_grade.php?id=" + Id , true);												
-  	xhttp.send();//MSK-00105-Ajax End
-	 
-};
+		<script>
+function myFunction() {
   
-function Updategrade(){
-//MSK-000108
-	
-	var Id1 = document.getElementById('id').value;
-	var name1 = document.getElementById('name1').value;
-	var admission_fee1 = document.getElementById('admission_fee1').value;
-	var hall_charge1 = document.getElementById('hall_charge1').value;
-	
-	if(name1 == ''){
-		//MSK-00109-name
-		$("#btnSubmit1").attr("disabled", true);
-		$('#divGradeUpdate').addClass('has-error has-feedback');	
-		$('#divGradeUpdate').append('<span id="spanNameUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The grade is required" ></span>');	
-			
-		$("#name1").keydown(function() {
-			//MSK-00110-name 
-			$("#btnSubmit1").attr("disabled", false);	
-			$('#divGradeUpdate').removeClass('has-error has-feedback');
-			$('#spanNameUpdate').remove();
-			
-		});	
-	}else{
-		
-	}
-	
-	if(admission_fee1 == ''){
-		//MSK-00109-name
-		$("#btnSubmit1").attr("disabled", true);
-		$('#divAFeeUpdate').addClass('has-error has-feedback');	
-		$('#divAFeeUpdate').append('<span id="spanAFeeUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The admission fee is required" ></span>');	
-			
-		$("#admission_fee1").keydown(function() {
-			//MSK-00110-name 
-			$("#btnSubmit1").attr("disabled", false);	
-			$('#divAFeeUpdate').removeClass('has-error has-feedback');
-			$('#spanAFeeUpdate').remove();
-			
-		});	
-	}else{
-		
-	}
-	
-	if(hall_charge1 == ''){
-		//MSK-00109-name
-		$("#btnSubmit1").attr("disabled", true);
-		$('#divHChargeUpdate').addClass('has-error has-feedback');	
-		$('#divHChargeUpdate').append('<span id="spanHChargeUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The hall charge is required" ></span>');	
-			
-		$("#hall_charge1").keydown(function() {
-			//MSK-00110-name 
-			$("#btnSubmit1").attr("disabled", false);	
-			$('#divHChargeUpdate').removeClass('has-error has-feedback');
-			$('#spanHChargeUpdate').remove();
-			
-		});	
-	}else{
-		
-	}
-	
-	
-	if(name1 == '' || admission_fee1 == '' || hall_charge1 == ''){
-		//MSK-000098-validation failed
-		$("#btnSubmit1").attr("disabled", true);
-		e.preventDefault();
-		return false;
-			
-	}else{
-		
-		var do1 = "update_grade";	
-		
-		var xhttp = new XMLHttpRequest();//MSK-00111-Ajax Start  
-			xhttp.onreadystatechange = function() {
-				
-				if (this.readyState == 4 && this.status == 200) {
-					//MSK-000112
-					var myArray2 = eval(xhttp.responseText);
-					
-					var msg = myArray2[4];
-					
-					if(msg==1){//MSK-000113
-						
-						document.getElementById("td1_"+Id1 ).innerHTML =myArray2[1];//MSK-000114
-						document.getElementById("td2_"+Id1 ).innerHTML =myArray2[2];
-						document.getElementById("td3_"+Id1 ).innerHTML =myArray2[3];
-						$("#modalUpdateform").modal('hide');
-						Update_alert(msg);//MSK-000116
-						
-					}
-					
-					if(msg==2){//MSK-000118
-						
-						$("#modalUpdateform").modal('hide');
-						Update_alert(msg);
-						
-					}
-		
-					if(msg==3){//MSK-000119
-						
-						$("#modalUpdateform").modal('hide');
-						Update_alert(msg);
-		
-					}
-					
-					if(msg==4){//MSK-000120
-						
-						$("#modalUpdateform").modal('hide');
-						Update_alert(msg);
-		
-					}
-								
-			
-				}
-					
-			};
-			xhttp.open("GET", "../../model/update_grade.php?id=" + Id1 + "&name="+name1 + "&admission_fee="+admission_fee1 + "&hall_charge="+hall_charge1 + "&do="+do1, true);												
-			xhttp.send();//MSK-00111-Ajax End
-		
-	}
-			
-};
-
-
-function Update_alert(msg){
-//MSK-000117	
-	if(msg==1){
-		
-    	var myModal = $('#update_Success');
-		myModal.modal('show');
-		
-		clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-			
-    	}, 3000));
-    	
-				
-	}
-	
-	if(msg==2){
-		
-    	var myModal = $('#connection_Problem');
-		myModal.modal('show');
-		
-    	clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-    	}, 3000));
-				
-	}
-	
-	if(msg==3){
-
-    	var myModal = $('#update_error1');
-		myModal.modal('show');
-		
-    	clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-    	}, 3000));
-				
-	}
-	
-	if(msg==4){
-		
-    	var myModal = $('#grade_Duplicated');
-		myModal.modal('show');
-		
-    	clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-    	}, 3000));
-				
-	}
-	
-};
-
-</script>   
-   
-	<!-- //MSK-000124 Modal-Delete Confirm Popup -->
-	<div class="modal msk-fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-    		<div class="modal-content">
-				<div class="modal-header" style="background-color:red;">
-        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        			<h4 class="modal-title" id="frm_title">Delete</h4>
-      			</div>
-				<div class="modal-body bgColorWhite">
-        			Are you sure that you want to delete the Record ?
-        		</div>
-      			<div class="modal-footer">
-					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000125 -->
-        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
-      			</div>
-    		</div>
-  		</div>
-	</div>
-<script>
-
-$('body').on('click', '.confirm-delete', function (e){
-//MSK-000122	
-	
-    e.preventDefault();
-    var id = $(this).data('id');
-	$('#deleteConfirm').data('id1', id).modal('show');//MSK-000123
- 	
-});
-
-$('#btnYes').click(function() {
-//MSK-000126
-   
-    var id = $('#deleteConfirm').data('id1');	
-	var do1 = "delete_record";	
-	
-	var info = $('#example1').DataTable().page.info();
-	var currentPage= (info.page + 1);
-	
-	var xhttp = new XMLHttpRequest();//MSK-000127-Ajax Start  
-  		xhttp.onreadystatechange = function() {
-			
-    		if (this.readyState == 4 && this.status == 200) {
-				//MSK-000129
-				var myArray = eval( xhttp.responseText );
-					
-				if(myArray[0]==1){//MSK-000130
-				
-					$("#deleteConfirm").modal('hide');	        		
-					var page = myArray[1];
-						
-					var xhttp1 = new XMLHttpRequest();//MSK-000131-Start Ajax  
-						xhttp1.onreadystatechange = function() {		
-				
-							if (this.readyState == 4 && this.status == 200) {
-										
-								document.getElementById('table1').innerHTML = this.responseText;//MSK-000132
-								cTablePage(page);//MSK-000133
-								Delete_alert(myArray[0]);//MSK-000134	
-							
-							}
-								
-						};
-						
-						xhttp1.open("GET", "show_grade_table.php" , true);												
-  						xhttp1.send();//MSK-000131-End Ajax
-				
-					}
-		
-					if(myArray[0]==2){//MSK-000137
-			
-						$("#deleteConfirm").modal('hide');
-						Delete_alert(myArray[0]);//MSK-000138
-				
-					}
-
-
-    		}
-			
-  		};	
-    xhttp.open("GET", "../../model/delete_grade.php?id=" + id + "&do="+do1 + "&page="+currentPage , true);												
-  	xhttp.send();//MSK-000127-Ajax End
-	 			   		
-});
-
-function Delete_alert(msg){
-//MSK-000136	
-	if(msg==1){
-		
-    	var myModal = $('#delete_Success');
-		myModal.modal('show');
-		
-		clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-			
-    	}, 3000));
-			
-	}
-	
-	if(msg==2){
-		
-    	var myModal = $('#connection_Problem');
-		myModal.modal('show');
-		
-    	clearTimeout(myModal.data('hideInterval'));
-    	myModal.data('hideInterval', setTimeout(function(){
-    		myModal.modal('hide');
-    	}, 3000));
-				
-	}
-
-};	
-
+	alert("sdsd");
+}
 </script>
 
-    <div id="divEMG">  
-          
-    </div>
 
-<script>
-function showModal1(Viewform){
-	
-	var grade = $(Viewform).data("id"); 
-	
-	var info = $('#example1').DataTable().page.info();
-	var currentPage= (info.page + 1);
-	
-	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
-		xhttp.onreadystatechange = function() {
-				
-			if (this.readyState == 4 && this.status == 200) {
-					//MSK-00107 
-				document.getElementById('divEMG').innerHTML = this.responseText;//MSK-000132
-				$('#modalUpdateform1').data('id1', grade).modal('show');
-											
-			}
-				
-		};	
-			
-		xhttp.open("GET", "emarks_range_grade_update_form.php?grade="+grade +"&page="+currentPage , true);												
-		xhttp.send();//MSK-00105-Ajax End
-	 
-};
 
-function editRangeGrade(viewRG){
-	
-	var myArray = $(viewRG).data("id").split(',');
-	
-	var id = myArray[0];
-	var count = myArray[1];
-	
-	var markRange= document.getElementById('rangeU_td_'+count).innerHTML;
-	var markGrade= document.getElementById('gradeU_td_'+count).innerHTML;
-	
-	var do1="show_range_grade_text";
-	
-	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
-  		xhttp.onreadystatechange = function() {
-    		
-			if (this.readyState == 4 && this.status == 200) {
-							
-				document.getElementById('trU_'+count).innerHTML = this.responseText;//MSK-000137		
-				$('#edit_RG_'+count).hide();
-				$('#delete_RG_'+count).hide();
-				
-				$('#action_'+count).append('<a id="update_RG_'+count+'" onclick="updateRangeGrade(this)" data-id="'+id+','+count+'" class="glyphicon glyphicon-ok btn btn-success btn-xs" ></a>');			
-			}
-				
-		};	
-							
-    	xhttp.open("GET", "range_grade_text.php?id="+id + "&count="+count +"&range="+markRange +"&grade="+markGrade +"&do="+do1, true);												
-  		xhttp.send();//MSK-00135-Ajax End	
-	
-};
-
-function updateRangeGrade(updateRG){
-	
-var myArray1 = $(updateRG).data("id").split(',');
-	
-	var id = myArray1[0];
-	var count = myArray1[1];
-		
-	var range = $('#rangeText_'+count).val();
-	var grade = $('#gradeText_'+count).val();
-
-	var do1="update_emarks_range_grade";
-
-	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
-  		xhttp.onreadystatechange = function() {
-    		
-			if (this.readyState == 4 && this.status == 200) {
-				
-				var myArray = eval(xhttp.responseText);
-				var msg=myArray[0];
-				
-				if(msg == 1){
-					$('#update_RG_'+count).remove();
-					
-					$('#rangeText_'+count).remove();
-					$('#gradeText_'+count).remove();
-					
-					$('#rangeU_td_'+count).html(range);
-					$('#gradeU_td_'+count).html(grade);
-					
-					$('#action_'+count).append('<a href="#" id="edit_RG_'+count+'" onclick="editRangeGrade(this)" data-id="'+id+','+count+'" class="label-warning "><span class="glyphicon glyphicon-edit "></span></a> <a href="#" id="delete_RG_'+count+'" data-id="'+id+'" class="confirm-delete-RG label-danger"><span class="glyphicon glyphicon-remove "></span></a>');
-					
-				}
-							
-			}
-				
-		};	
-							
-    	xhttp.open("GET", "../../model/update_emarks_range_grade.php?id="+id +"&range="+range +"&grade="+grade +"&do="+do1, true);												
-  		xhttp.send();//MSK-00135-Ajax End
-		
-};
-</script>
-	<!-- //MSK-000124 Modal-Delete Confirm Popup -->
-	<div class="modal msk-fade" id="deleteConfirmRG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-    		<div class="modal-content">
-				<div class="modal-header bg-primary">
-        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        			<h4 class="modal-title" id="frm_title">Delete</h4>
-      			</div>
-				<div class="modal-body bgColorWhite">
-        			 Do you want to Delete this Record?
-        		</div>
-      			<div class="modal-footer">
-					<a href="#" style="margin-left:10px;" id="btnYesRG" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000125 -->
-        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
-      			</div>
-    		</div>
-  		</div>
-	</div>
-    
-    <div id="divEMG2">
-    
-    </div>
 
 <script>
 $('body').on('click', '.confirm-delete-RG', function (e){
