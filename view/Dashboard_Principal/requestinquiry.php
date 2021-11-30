@@ -292,7 +292,7 @@ while($query2=mysql_fetch_array($query))
 echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color:#008CBA;'>
             <div class='panel-heading' style='color:white;background-color : #033c73;'>
             <center> 
-<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>No. of Vacancies&nbsp;".$query2['Vacancy']."</textarea>
+<textarea style='text-align:center;background-color: white;' class='form-control' rows='1' disabled>SAE Schedule: &nbsp;".$query2['Vacancy']."</textarea>
 
 			</center>
 			
@@ -599,16 +599,16 @@ echo "<div class='col-sm-3'><div class='panel panel-default' style='border-color
 		
 			
 		
-								<!-- Mediul Modal kiki-->
-        <div class="modal fade" id="uploadModalsamplexmemosuperjeje" tabindex="-1" width="250" role="dialog" aria-labelledby="myMediulModalLabel">
-          <div class="modal-dialog modal-md">
-            <div style="color:white;background-color:#008CBA" class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <h4 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Request Now!<br>
-Be sure your email and phone number is active.</center></h4>
+	<!-- Mediul Modal kiki-->
+	<div class="modal fade" id="uploadModalsamplexmemosuperjeje" tabindex="-1" width="250" role="dialog" aria-labelledby="myMediulModalLabel">
+	<div class="modal-dialog modal-md">
+	<div style="color:white;background-color:#008CBA" class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 style="color:white;" class="modal-title" id="myModalLabel"><center class="#fa fa-servera" style="text-align:center;">Request Now!<br>
+	Be sure your email and phone number is active.</center></h4>
 
-              </div>
+	</div>
 
 	
 
@@ -740,6 +740,7 @@ die(mysql_error());
 				<tr>
 				<td>
 				 <div class="controls">
+				 <label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Type of Request</label>
                                             <select name="Jobtitle" class="combo form-control" width="100" style="border: 1px solid gray;" required>
 											<option></option>
 
@@ -760,26 +761,31 @@ die(mysql_error());
 				
 				<tr>
 					<td>
+					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">First Name</label>
 					<input type="text" name="fname" value="<?php echo $name; ?>" placeholder="First Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
+					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Middle Name</label>
 					<input type="text" name="mname" value="<?php echo $full_name; ?>" placeholder="Middle Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
+					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Last Name</label>
 					<input type="text" name="lname" value="<?php echo $full_name; ?>" placeholder="Last Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
+					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Phone Number</label>
 					<input type="text" name="Contact" value="<?php echo $phone_number; ?>" placeholder="Contact Number - ex 639104763819" class="form-control" required>
 					</td>
 				</tr>
 				
 						<td>
+						<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Email</label>
 					<input type="text" name="Email" value="<?php echo $email; ?>" placeholder="Valid Email" class="form-control" required>
 					</td>
 				</tr>
@@ -788,6 +794,7 @@ die(mysql_error());
 				
 				<tr>
 				<td>
+				<i><label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Supporting Documents</label></i>
 					<input type="file" name="photo" style="width:550px;" id="photo"  required="required">
 
 					</td>
