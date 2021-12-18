@@ -109,7 +109,7 @@ $image=$row['image_name'];
         <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
-            <span>Friends</span>
+            <span>Communication Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -117,6 +117,7 @@ $image=$row['image_name'];
           <ul class="treeview-menu">
           	<li><a href="add_friends2.php"><i class="fa fa-circle-o"></i> Add Friends</a></li>
             <li><a href="my_friends2.php"><i class="fa fa-circle-o"></i> My Friends</a></li>
+            <li><a href="groupchat.php"><i class="fa fa-circle-o"></i> Group Chat</a>
           </ul>
         </li>
          <li class="treeview">

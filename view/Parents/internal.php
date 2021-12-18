@@ -5,9 +5,9 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
-<?php include_once('head.php'); ?>
-<?php include_once('header_admin.php'); ?>
-<?php include_once('sidebar.php'); ?>
+<?php include_once('../Dashboard_Principal/head.php'); ?>
+<?php include_once('header_parents.php'); ?>
+<?php include_once('sidebar3.php'); ?>
 <?php include_once('../alert.php'); ?>
 
 <style>
@@ -111,17 +111,14 @@ body {
 
 		   <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Releasing Day(s)</th>							
 
-		            
-		            
-
+	
 	  <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
 
-            
                 </tr>
               </thead>
            <tbody>
                 <?php
-   include('connect.php');
+   include('../Dashboard_Principal/connect.php');
               function formatMoney($number, $fractional=false) {
                 if ($fractional) {
                   $number = sprintf('%.2f', $number);
@@ -142,8 +139,9 @@ body {
 		  // $get_id=$_GET['id'];
 		   include('db.php');
 
+		$index=$_SESSION["index_number"];
 		 $get_id = isset($_GET['id']) ? $_GET['id'] : '';
-               $query = mysql_query("select * from postingsender where Jobtitle ='$get_id' ORDER by item_id DESC
+               $query = mysql_query("select * from postingsender where Jobtitle ='$get_id' and requestor_id='$index' ORDER by item_id DESC
 			   ") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
                        $id=$row['item_id'];
@@ -158,8 +156,7 @@ body {
 				 </td>
 	  
 	  
-           <!--td style="text-align:center;
-			  "><?php echo $row['item_id'];?></td-->
+      
        
               <td style="text-align:center;
 			  "><?php echo $row['fname'];?></td>
@@ -186,6 +183,7 @@ body {
 			  	    	    <td style="text-align:center;
 			  "><?php echo $row['Jobtitle'];?></td>
 			  
+			  
 			  <td style="text-align:center;
 			  "><?php
 			 $date1 = new DateTime($row['claimed_date']);
@@ -196,8 +194,40 @@ body {
 			 // shows the total amount of days (not divided into years, months and days like above)
 echo "" . $interval->days . " days ";
 			 ?></td>
+
+              
 			  
-       
+			  			  
+	 
+		
+			  
+			  
+			  
+			  
+			  
+			                <!--td style="text-align:center;"><?php echo $row['item_date'];?></td-->
+          
+              <!--td><?php  $price=$row['price'];
+              echo 'PHP'.formatMoney($price,true);?></td-->
+
+			 
+			  
+			  
+			  
+			  
+			  
+			<!-- <td style="text-align:center;">
+
+
+
+						    	
+								
+										
+										
+										
+										
+				<a href="downloadinternal.php?filename=<?php echo $name;?>"  class="btn btn-info" title="Click to Download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-downloadss" style=" color:white"></span>Download</a>
+				</td> -->
 					<td>					
 											   
 						<a href="#<?php echo $row ['item_id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to mark as a Reserved"></span>Reserved</a>
@@ -283,18 +313,8 @@ echo "" . $interval->days . " days ";
 									<label class="control-label col-sm-2" for="ContactNumber">Claimed To</label>
 
 <div class="col-sm-4">
-<select  class="form-control"  name="claimed_to" required>
-<?php
-include('connect.php');
-$cat_query = mysql_query("SELECT * FROM teacher");
-while($cat_row = mysql_fetch_array($cat_query)){
-?>
-<option value="<?php echo $cat_row['full_name']; ?>"><?php echo $cat_row['full_name']; ?></option>
-<?php  } ?>
-
-
-
-</select>		
+<input type="text"  class="form-control"  name="claimed_to" value="<?php echo $row['claimed_to']; ?>" required readonly>
+	
 
 
 
@@ -303,7 +323,7 @@ while($cat_row = mysql_fetch_array($cat_query)){
 </div>
 <label class="control-label col-sm-2" for="ContactNumber">Claimed Date</label>
 <div class="col-sm-4">
-<input type="date"  class="form-control"  name="claimed_date" value="<?php echo $row['claimed_date']; ?>" required>
+<input type="date"  class="form-control"  name="claimed_date" value="<?php echo $row['claimed_date']; ?>" required readonly>
 
 
 									
@@ -327,7 +347,7 @@ while($cat_row = mysql_fetch_array($cat_query)){
 									
 									
                                     <div class="modal-footer">
-                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_itemz_reserved2"><span class="glyphicon glyphicon-edit"></span> Update Appointment Schedule</button>
+                                        <!-- <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_itemz_reserved2"><span class="glyphicon glyphicon-edit"></span> Update Appointment Schedule</button> -->
                                         <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
                                     </div>
                                 </div>

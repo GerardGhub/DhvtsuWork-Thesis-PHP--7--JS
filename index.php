@@ -10,6 +10,8 @@ if(count($_POST) > 0){
 if(isset($_arguments["do"])&& ($_arguments["do"] != "")){
 	if(($_arguments["do"] == "add_classroom")){//-add_classroom
 		$page = "model/add_classroom.php";
+}else if(($_arguments["do"] == "add_section")){//-add_section
+		$page = "model/add_section.php";
 	}else if(($_arguments["do"] == "add_grade")){//-add_grade
 		$page = "model/add_grade.php";
 	}else if(($_arguments["do"] == "add_subject")){//-add_subject

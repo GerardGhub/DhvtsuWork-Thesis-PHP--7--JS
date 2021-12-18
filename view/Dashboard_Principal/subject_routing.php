@@ -98,7 +98,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                                 <th class="col-md-1">Grade</th>
                                 <th class="col-md-1">Subject</th>
                                 <th class="col-md-4">Teacher</th>
-                                <th class="col-md-1">Fee($)</th>
+                                <th class="col-md-1">Fee(₱)</th>
                                 <th class="col-md-2">Action</th>
                             </thead>
                         	<tbody>
@@ -235,9 +235,9 @@ if(mysqli_num_rows($result) > 0){
 									</select>
         						</div> 
                                 
-                                <div class="form-group" id="divFee">
-                					<label for="" >Fee($)</label>
-        							<input type="text" class="form-control" id="fee" name="fee"  placeholder="Enter subject fee" autocomplete="off"/>
+                                <div class="form-group" id="divFee" style="display:none;">
+                					<label for="" >Fee(₱)</label>
+        							<input type="text" class="form-control" id="fee" name="fee" value="0"  placeholder="Enter subject fee" autocomplete="off"/>
         						</div>  
                
             				</div><!--/.modal body-->

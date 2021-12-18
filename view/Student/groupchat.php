@@ -9,7 +9,30 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 <?php include_once('header_student.php'); ?>
 <?php include_once('sidebar1.php'); ?>
 <?php include_once('../alert.php'); ?>
+<?php include_once('../Dashboard_Principal/connect.php'); ?>
+<?php
+if(isset($_POST['submit']))
+{
+$con = mysql_connect("localhost","root","");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+	else
+	{
+	         header('Location:Groupmessenger2.php');	
+	}
+mysql_select_db("std_db", $con);
+		$message=$_POST['message'];
+		$sender=$_POST['sender'];
+		$image_user=$_POST['image_user'];
+		$department=$_POST['department'];
+		$grade_id=$_POST['grade_id'];
+		$section=$_POST['section'];
+		mysql_query("INSERT INTO message(message, sender, image_user,department,grade_id,section)VALUES('$message', '$sender', '$image_user','$department','$grade_id','$section')");
+}
 
+?>
 <style>
 
 body { 
@@ -29,6 +52,10 @@ body {
    position: absolute;
    left: 25%; 
 }
+
+
+
+
 
 @media only screen and (max-width: 500px) {
 	
@@ -62,20 +89,130 @@ body {
     to {top:0; opacity:1}
 }
 
+
+.refresh {
+    border: 3px solid whitesmoke;
+ white-space: -moz-pre-wrap;
+    color: green;
+    font-family: tahoma;
+    font-size: 16px;
+	font-color:black;
+    height: 580px;
+    overflow: auto;
+    width: 1600px;
+	padding:10px;
+	background-color:#FFFFFF;
+}
+
+#post_button{
+	border: 1px solid black;
+	background-color:#3366FF;
+	width: 200px;
+	color:white;
+	font-weight: bold;
+	margin-left: 175px; padding-top: 8px; padding-bottom: 4px;
+	cursor:pointer;
+}
+#textb{
+	border: 6px solid skyblue;
+	border-left: 1px solid skyblue;
+		border-right: 1px solid skyblue;
+		size:100px;
+	width:100%;
+	height: 10px;
+	margin-top: 14px; padding-top: 9px; padding-bottom: 50px; padding-right: 0px; width:2550%; size:50;
+}
+#texta{
+	border: 10px solid #3366FF;
+	border-left: 4px solid #3366FF;
+
+	width: 190px;
+	margin-bottom: 10px;
+	padding:5px;
+}
+.wordWrap {
+    word-wrap: break-word;      /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;      /* current browsers */
+}
+
+
+
+
+
+p{
+border-top: 1px solid #EEEEEE;
+margin-top: 0px; margin-bottom: 5px; padding-top: 5px;
+}
+span{
+	
+}
+
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+
+.zoom {
+    padding: 0px;
+
+    transition: transform .2s;
+
+    margin: 0 auto;
+}
+
+
+
+
+
+
+.button {
+ // background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 25px;}
+.button5 {border-radius: 70%;}
+
 </style>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
+
 	<!-- Content Header (Page header) -->
     <section class="content-header">
-    	<h1>
-		Download Modules
 
+	<?php
+	
+	$query = mysql_query("select * from user where type='Admin' || type='Teacher' || type='Parents' || type='Student'") or die(mysql_error());
+			 while ($row = mysql_fetch_array($query)) {
+				$count = mysql_num_rows($query);
+			 }
+ ?>
+
+               
+    	<h1>
+   Principal & Teacher & Student Group Chat
+   <h4 class="btn btn-primary" style="font-size:22px; background-color:#4267b2; width:1599px;"> <img src="..\item_images\saelogo.jpg" height="100"width="100" style="background-color:red;   border-radius: 25px;"></img><emp style="color:whitesmoke;  background-colorfont-family:"Lucida Console", Monaco, monospace;"><b>SAE Groupchat Messenger</b></emp><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<emp style="color:whitesmoke; text-align:center;">Active now&nbsp;<i class="	fa fa-circle-thin" style="background-color:orange;color:orange;border-radius: 70%;"></i></emp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<emp style="color:yellow; font-size:12px;">     <?php echo $count; ?> members on this group</emp></h4>
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Download Modules</a></li>
+            <li><a href="#">Inquiry Inbox</a></li>
     	</ol>
 	</section>
 
@@ -225,7 +362,7 @@ $("#form1").submit(function (e) {
 			
 	}else{
 		
-	}\
+	}
 	
 	if(hall_charge == ''){
 		//MSK-00099-name
@@ -516,186 +653,72 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
  
 	<!-- Main content BUJE -->
 	<section class="content" > <!-- Start of table section -->
-	<form method="post" action="allmodules.php" >
-						  
-						  <table id="example1" class="table table-bordered table-striped">
-							<thead>
-							  <tr>
-							<th style="width:1%;background-color:#454545; color:white;  font-size:15px; color:white;">IMAGE</th>
-							  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;ID</th>
-									  <th style="width:8%;background-color:#454545; color:white;  font-size:15px; color:white;">FILE&nbsp;NAME</th>
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">GRADE</th>
-										 <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">UPLOAD&nbsp;BY</th>
-
-									  <th style="width:5%;background-color:#454545; color:white;  font-size:15px; color:white;">DATE&nbsp;ADDED</th>
-												<th style="width:12%;background-color:#454545; color:white;  font-size:15px; color:white;">ACTIONS</th>
-				  
-
-			  
-			  
-							   
-							  </tr>
-							</thead>
-						 <tbody>
-							  <?php
-				 include('../Dashboard_Principal/connect.php');
-							function formatMoney($number, $fractional=false) {
-							  if ($fractional) {
-								$number = sprintf('%.2f', $number);
-							  }
-							  while (true) {
-								$replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
-								if ($replaced != $number) {
-								  $number = $replaced;
-								} else {
-								  break;
-								}
-							  }
-							  return $number;
-							} 
-							?>
-						
-						 <?php
-						 include('db.php');
-						//  $department=$_SESSION['sess_department'];
-						//  $get_id=$_GET['id']; 
 
 
-						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
-							
-						// ")
-						$query = mysql_query("select f.item_id , f.item_image, f.item_date, f.upload_by, f.department,g.name as grade from filemgrfinance f LEFT JOIN grade g ON f.grade = g.id where g.id='$grade_id'  ORDER by item_id DESC
-							
-							 ")
-							 
-							 or die(mysql_error());
-									  while ($row = mysql_fetch_array($query)) {
-									 $id=$row['item_id'];
-										  $names=$row['item_image'];
-										  $date=$row['item_date'];      
-						  ?>
-						  
-					
-					<tr>
-					 <td class="zoom">
-							  <center> <img src="../item_images/saelogo.jpg" class="img img-rounded"  width="65" height="45" /></center>
-							   </td>
-					
-					
-						
-							<td style="text-align:center;
-							"><?php echo $row['item_id'];?></td>
-					 
-							<td style="width:37%;"><?php echo $row['item_image'];?></td>
-							
-													   <!-- <td style="text-align:center;
-							"><?php echo $row['department'];?></td> -->
-							
-							<td style="text-align:center;
-							"><?php echo $row['grade'];?></td>
-							
 
-								 <td style="text-align:center;
-							"><?php echo $row['upload_by'];?></td>
-							
-					
-							
-						
-							
-							
-										  <td style="text-align:center;"><?php echo $row['item_date'];?></td>
-						
-				
-			  
-			  
-							
-							
-							
-							
-							
-						  <td style="text-align:center;">
-			  
-					<a rel="tooltip" class="btn btn-success"  title="Click to Upload files"  stytle="text-align:center;" id="<?php echo $id; ?>" onclick="return confirm('Are you sure you want to Add a New Data?')" a data-toggle="modal" data-target="#uploadModalsamplexmemosuperjeje" data-toggle="modal"    class="btn btn-light"><span class="
-			  glyphicon glyphicon-cloud-upload" style="text-align:center; color:white"></span><i class="icon-trash icon-large"></i>&nbsp;Upload Module</a>
-			  
-			  
-											  
-
-<a onclick="myFunction()" href="downloadsunday.php?filename=<?php echo $names;?>" type="submit" name="submitlogs"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
-							  
-													  
-															 
-													  
-													  
-													  
-													  
-													  
-			  
-			  
-								   
-			   
-				
-				   
-				   
-
-				   
-			   </td>
-					</tr>
-					<?php } ?>
-											  </tbody>
-										  </table>
-			  
-			  
-					  
-					  <!--- end -->
-					  
-				  <!-- /#wrapper -->										 
-															   
-															   
-															   
-															   
-															   
-			  
-			  
-
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-						
-			  </form>
-
-
-		
-		
-	</section> <!-- End of table section --> 
-	 <?php 
-$con = mysql_connect("localhost","root","");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-	else
-	{
-	        //  header('Location:Groupmessenger2.php');	
-	}
-mysql_select_db("std_db", $con);
 	
-$index=$_SESSION["index_number"];
-   
-		mysql_query("INSERT INTO module_dl_logs(user_index_id, module_name,grade_id,section)VALUES('$index', '$names','$grade_id','$section')");
+	<div id="page-wrapper">
+            
 
 
 
+
+
+
+
+<form method="POST" name="" action="">
+<emp style="display:none;">
+<input name="sender" type="text" id="texta" value="<?php echo $name ?> "/>
+<input type="text" name="image_user" value="<?php echo $image;?>">
+<input type="text" name="grade_id" value="<?php echo $grade_id;?>">
+<input type="text" name="section" value="<?php echo $section;?>">
+<input type="text" name="department" value="Student">
+</emp>
+<div class="refresh">
+<?php
+
+
+
+$query = mysql_query("SELECT * FROM message where grade_id='0' ORDER BY id DESC") or die(mysql_error());
+
+
+while($row = mysql_fetch_array($query))
+  {
+ echo '<p style="word-wrap: break-word;">'.'<img src="../../'.$row['image_user'].'" class="zoom" width="70" height="70"<img/>'.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.'<span style="font-weight: bold;
+	color: #3B5998;">'.$row['sender'].'</span><b>'. '&nbsp;&nbsp;' . $row['message'].'</b></p><b style="color:black; font-size:10px; text-align:right:90px;">'. $row['timesend'].'</b><br><b style="font-size:14px;">' . $row['department'].'</b>';
+  }
+
+// mysql_close($con);
 ?>
 
 
+</div>
+<br style="background-color:red;">
+
+
+<center><input type="text" name="message"  class="form-control" autofocus style="color:black; width:900px; word-wrap: break-word;" placeholder="Type a message <?php echo $name;?>..." id="textb" required/></center>
+
+<br>
+<input name="submit" class="button button-4"  style="display:none;" type="submit" value="Chat" id="usermsg" />
+</form>
+</body>
+
+
+
+	
+
+
+   <tr>
+
+
+
+
+         </div>
+		     
+		
+		
+	</section> <!-- End of table section --> 
+          
 
 			  						<!-- Mediul Modal kiki-->
 									  <div class="modal fade" id="uploadModalsamplexmemosuperjeje" tabindex="-1" width="250" role="dialog" aria-labelledby="myMediulModalLabel">
@@ -715,11 +738,52 @@ $index=$_SESSION["index_number"];
 
 
 
-	  <!-- <?php
 
-include('../includes/config.php');
 
-?> -->
+
+
+
+
+
+
+							  
+
+               
+
+                      
+                          
+
+							  
+							  
+							  
+							  
+
+
+											
+											
+											<!--Cointainer sa taas-->
+											
+											
+											
+
+
+                                                 
+                                                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php
@@ -731,7 +795,6 @@ date_default_timezone_set("Asia/Singapore");
 <?php
 $conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
 if(isset($_POST['submitlaarnie'])!=""){
-
   $names=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];
   $type=$_FILES['photo']['type'];
@@ -759,43 +822,14 @@ die(mysql_error());
 ?>
 
 
-<?php
-$conn=new PDO('mysql:host=localhost; dbname=std_db', 'root', '') or die(mysql_error());
-if(isset($_POST['submitlogs'])!=""){
 
-  $names=$_FILES['photo']['name'];
-  $size=$_FILES['photo']['size'];
-  $type=$_FILES['photo']['type'];
-  $temp=$_FILES['photo']['tmp_name'];
-  $date = date('Y-m-d H:i:s');
-  $upload_by=$_POST['upload_by'];
-  $grade=$_POST['grade'];
-  $department=$_POST['department'];
-  $caption1=$_POST['caption'];
-  $link=$_POST['link'];
-  $department =$_SESSION['department'];
-  
-  move_uploaded_file($temp,"../item_images/".$names);
-
-$query=$conn->query("INSERT INTO filemgrfinance (item_image,item_date,upload_by,department,grade) VALUES ('$names','$date','$name','$department','$grade')");
-if($query){
-
- echo "<script>window.open('allmodules.php','_self')</script>";
-
-}
-else{
-die(mysql_error());
-}
-}
-?>
+<!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"-->
 
 
 
 
 
 
-
-<?php include('../myfilemgr/dbcon.php'); ?>
 
 	
 
@@ -812,25 +846,7 @@ die(mysql_error());
 					<tr>
 					<td>
 						<p>Select Grade</p>
-
-                                <!--input  class="form-control" placeholder="Section" name="item_price" type="text" required-->
-                           <select  class="form-control"  name="grade" required>
-						   <?php
-						   include('connect.php');
-			$cat_query = mysql_query("SELECT * FROM grade");
-			while($cat_row = mysql_fetch_array($cat_query)){
-			?>
-	<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
-			<?php  } ?>
- 
-
- 
-</select>
-							 
-						
-							
-<!-- 
-					<input type="text" class="form-control" name="grade" placeholder="Grade"> -->
+					<input type="text" class="form-control" name="grade" placeholder="Grade">
 </td>
 </tr>
 					<tr>
@@ -877,6 +893,7 @@ $totalsubjects=$query->rowCount();
 
 
 
+                <!--button class="btn btn-success btn-md" name="item_save"></button-->
 				   <button type="submit" name="submitlaarnie" class="btn btn-success btn-md">Submit</button>
 				   </form>
 				 <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Cancel</button>
@@ -891,15 +908,485 @@ $totalsubjects=$query->rowCount();
         </div>
 		
 
-		<script>
-function myFunction() {
+	<!-- //MSK-00103 Modal-Update form -->  
+	<div class="modal msk-fade" id="modalUpdateform" tabindex="-1" role="dialog" aria-labelledby="modalUpdateform" aria-hidden="true">  
+  		<div class="modal-dialog">
+    		<div class="container">
+            	<div class="row ">	
+           			<div class="col-md-6">
+                		<div class="panel">
+        					<div class="panel-heading bg-primary">              
+        						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          						<h4 class="modal-title custom_align" id="Heading">Edit Grade</h4>
+   							</div>
+                            <div class="panel-body"> <!-- Start of modal body--> 
+                                <div class="form-group" id="divGradeUpdate">
+                                    <label for="">Grade</label>
+                                    <input class="form-control" type="text" id="name1" name="name" autocomplete="off">
+                                </div>
+                                <div class="form-group" id="divAFeeUpdate">
+                                    <label for="">Admission Fee($)</label>
+                                    <input class="form-control" type="text" id="admission_fee1" name="admission_fee" autocomplete="off">
+                                </div>
+                                <div class="form-group" id="divHChargeUpdate">
+                                    <label for="">Hall Charge(%)</label>
+                                    <input class="form-control" type="text" id="hall_charge1" name="hall_charge" autocomplete="off">
+                                </div>
+                            </div><!--/.modal body-->
+                            <div class="panel-footer bg-gray-light">
+                                <input type="hidden" name="id" id="id" value="">
+                                <button type="button" onClick="Updategrade(this)" id="btnSubmit1" class="btn btn-info" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>    
+                            </div><!--/.panel-footer--> 
+            			</div><!--/.panel-->
+            		</div><!--/.col-md-6-->
+            	</div><!--/.row-->                                        
+        	</div><!-- /.modal-content -->  		 
+		</div><!-- /.modal-dialog -->            
+	</div><!--/.Modal-Update form -->   
+    
+<script>
+function showModal(Updateform){
+//MSK-00104
+	
+	var Id = $(Updateform).data("id");  
+		
+	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start 1 
+  		xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+				//MSK-00107 
+				var myArray1 = eval( xhttp.responseText );
+				
+				document.getElementById("id").value =myArray1[0];
+				document.getElementById("name1").value =myArray1[1];
+				document.getElementById("admission_fee1").value =myArray1[2];
+				document.getElementById("hall_charge1").value =myArray1[3];
+
+    		}
+			
+  		};	
+		
+    xhttp.open("GET", "../../model/get_grade.php?id=" + Id , true);												
+  	xhttp.send();//MSK-00105-Ajax End
+	 
+};
   
-	alert("sdsd");
-}
+function Updategrade(){
+//MSK-000108
+	
+	var Id1 = document.getElementById('id').value;
+	var name1 = document.getElementById('name1').value;
+	var admission_fee1 = document.getElementById('admission_fee1').value;
+	var hall_charge1 = document.getElementById('hall_charge1').value;
+	
+	if(name1 == ''){
+		//MSK-00109-name
+		$("#btnSubmit1").attr("disabled", true);
+		$('#divGradeUpdate').addClass('has-error has-feedback');	
+		$('#divGradeUpdate').append('<span id="spanNameUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The grade is required" ></span>');	
+			
+		$("#name1").keydown(function() {
+			//MSK-00110-name 
+			$("#btnSubmit1").attr("disabled", false);	
+			$('#divGradeUpdate').removeClass('has-error has-feedback');
+			$('#spanNameUpdate').remove();
+			
+		});	
+	}else{
+		
+	}
+	
+	if(admission_fee1 == ''){
+		//MSK-00109-name
+		$("#btnSubmit1").attr("disabled", true);
+		$('#divAFeeUpdate').addClass('has-error has-feedback');	
+		$('#divAFeeUpdate').append('<span id="spanAFeeUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The admission fee is required" ></span>');	
+			
+		$("#admission_fee1").keydown(function() {
+			//MSK-00110-name 
+			$("#btnSubmit1").attr("disabled", false);	
+			$('#divAFeeUpdate').removeClass('has-error has-feedback');
+			$('#spanAFeeUpdate').remove();
+			
+		});	
+	}else{
+		
+	}
+	
+	if(hall_charge1 == ''){
+		//MSK-00109-name
+		$("#btnSubmit1").attr("disabled", true);
+		$('#divHChargeUpdate').addClass('has-error has-feedback');	
+		$('#divHChargeUpdate').append('<span id="spanHChargeUpdate" class="glyphicon glyphicon-remove form-control-feedback set-width-tooltip" data-toggle="tooltip"    title="The hall charge is required" ></span>');	
+			
+		$("#hall_charge1").keydown(function() {
+			//MSK-00110-name 
+			$("#btnSubmit1").attr("disabled", false);	
+			$('#divHChargeUpdate').removeClass('has-error has-feedback');
+			$('#spanHChargeUpdate').remove();
+			
+		});	
+	}else{
+		
+	}
+	
+	
+	if(name1 == '' || admission_fee1 == '' || hall_charge1 == ''){
+		//MSK-000098-validation failed
+		$("#btnSubmit1").attr("disabled", true);
+		e.preventDefault();
+		return false;
+			
+	}else{
+		
+		var do1 = "update_grade";	
+		
+		var xhttp = new XMLHttpRequest();//MSK-00111-Ajax Start  
+			xhttp.onreadystatechange = function() {
+				
+				if (this.readyState == 4 && this.status == 200) {
+					//MSK-000112
+					var myArray2 = eval(xhttp.responseText);
+					
+					var msg = myArray2[4];
+					
+					if(msg==1){//MSK-000113
+						
+						document.getElementById("td1_"+Id1 ).innerHTML =myArray2[1];//MSK-000114
+						document.getElementById("td2_"+Id1 ).innerHTML =myArray2[2];
+						document.getElementById("td3_"+Id1 ).innerHTML =myArray2[3];
+						$("#modalUpdateform").modal('hide');
+						Update_alert(msg);//MSK-000116
+						
+					}
+					
+					if(msg==2){//MSK-000118
+						
+						$("#modalUpdateform").modal('hide');
+						Update_alert(msg);
+						
+					}
+		
+					if(msg==3){//MSK-000119
+						
+						$("#modalUpdateform").modal('hide');
+						Update_alert(msg);
+		
+					}
+					
+					if(msg==4){//MSK-000120
+						
+						$("#modalUpdateform").modal('hide');
+						Update_alert(msg);
+		
+					}
+								
+			
+				}
+					
+			};
+			xhttp.open("GET", "../../model/update_grade.php?id=" + Id1 + "&name="+name1 + "&admission_fee="+admission_fee1 + "&hall_charge="+hall_charge1 + "&do="+do1, true);												
+			xhttp.send();//MSK-00111-Ajax End
+		
+	}
+			
+};
+
+
+function Update_alert(msg){
+//MSK-000117	
+	if(msg==1){
+		
+    	var myModal = $('#update_Success');
+		myModal.modal('show');
+		
+		clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+			
+    	}, 3000));
+    	
+				
+	}
+	
+	if(msg==2){
+		
+    	var myModal = $('#connection_Problem');
+		myModal.modal('show');
+		
+    	clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+    	}, 3000));
+				
+	}
+	
+	if(msg==3){
+
+    	var myModal = $('#update_error1');
+		myModal.modal('show');
+		
+    	clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+    	}, 3000));
+				
+	}
+	
+	if(msg==4){
+		
+    	var myModal = $('#grade_Duplicated');
+		myModal.modal('show');
+		
+    	clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+    	}, 3000));
+				
+	}
+	
+};
+
+</script>   
+   
+	<!-- //MSK-000124 Modal-Delete Confirm Popup -->
+	<div class="modal msk-fade" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+				<div class="modal-header" style="background-color:red;">
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<h4 class="modal-title" id="frm_title">Delete</h4>
+      			</div>
+				<div class="modal-body bgColorWhite">
+        			Are you sure that you want to delete the Record ?
+        		</div>
+      			<div class="modal-footer">
+					<a href="#" style='margin-left:10px;' id="btnYes" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000125 -->
+        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+<script>
+
+$('body').on('click', '.confirm-delete', function (e){
+//MSK-000122	
+	
+    e.preventDefault();
+    var id = $(this).data('id');
+	$('#deleteConfirm').data('id1', id).modal('show');//MSK-000123
+ 	
+});
+
+$('#btnYes').click(function() {
+//MSK-000126
+   
+    var id = $('#deleteConfirm').data('id1');	
+	var do1 = "delete_record";	
+	
+	var info = $('#example1').DataTable().page.info();
+	var currentPage= (info.page + 1);
+	
+	var xhttp = new XMLHttpRequest();//MSK-000127-Ajax Start  
+  		xhttp.onreadystatechange = function() {
+			
+    		if (this.readyState == 4 && this.status == 200) {
+				//MSK-000129
+				var myArray = eval( xhttp.responseText );
+					
+				if(myArray[0]==1){//MSK-000130
+				
+					$("#deleteConfirm").modal('hide');	        		
+					var page = myArray[1];
+						
+					var xhttp1 = new XMLHttpRequest();//MSK-000131-Start Ajax  
+						xhttp1.onreadystatechange = function() {		
+				
+							if (this.readyState == 4 && this.status == 200) {
+										
+								document.getElementById('table1').innerHTML = this.responseText;//MSK-000132
+								cTablePage(page);//MSK-000133
+								Delete_alert(myArray[0]);//MSK-000134	
+							
+							}
+								
+						};
+						
+						xhttp1.open("GET", "show_grade_table.php" , true);												
+  						xhttp1.send();//MSK-000131-End Ajax
+				
+					}
+		
+					if(myArray[0]==2){//MSK-000137
+			
+						$("#deleteConfirm").modal('hide');
+						Delete_alert(myArray[0]);//MSK-000138
+				
+					}
+
+
+    		}
+			
+  		};	
+    xhttp.open("GET", "../../model/delete_grade.php?id=" + id + "&do="+do1 + "&page="+currentPage , true);												
+  	xhttp.send();//MSK-000127-Ajax End
+	 			   		
+});
+
+function Delete_alert(msg){
+//MSK-000136	
+	if(msg==1){
+		
+    	var myModal = $('#delete_Success');
+		myModal.modal('show');
+		
+		clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+			
+    	}, 3000));
+			
+	}
+	
+	if(msg==2){
+		
+    	var myModal = $('#connection_Problem');
+		myModal.modal('show');
+		
+    	clearTimeout(myModal.data('hideInterval'));
+    	myModal.data('hideInterval', setTimeout(function(){
+    		myModal.modal('hide');
+    	}, 3000));
+				
+	}
+
+};	
+
 </script>
 
+    <div id="divEMG">  
+          
+    </div>
 
+<script>
+function showModal1(Viewform){
+	
+	var grade = $(Viewform).data("id"); 
+	
+	var info = $('#example1').DataTable().page.info();
+	var currentPage= (info.page + 1);
+	
+	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
+		xhttp.onreadystatechange = function() {
+				
+			if (this.readyState == 4 && this.status == 200) {
+					//MSK-00107 
+				document.getElementById('divEMG').innerHTML = this.responseText;//MSK-000132
+				$('#modalUpdateform1').data('id1', grade).modal('show');
+											
+			}
+				
+		};	
+			
+		xhttp.open("GET", "emarks_range_grade_update_form.php?grade="+grade +"&page="+currentPage , true);												
+		xhttp.send();//MSK-00105-Ajax End
+	 
+};
 
+function editRangeGrade(viewRG){
+	
+	var myArray = $(viewRG).data("id").split(',');
+	
+	var id = myArray[0];
+	var count = myArray[1];
+	
+	var markRange= document.getElementById('rangeU_td_'+count).innerHTML;
+	var markGrade= document.getElementById('gradeU_td_'+count).innerHTML;
+	
+	var do1="show_range_grade_text";
+	
+	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
+  		xhttp.onreadystatechange = function() {
+    		
+			if (this.readyState == 4 && this.status == 200) {
+							
+				document.getElementById('trU_'+count).innerHTML = this.responseText;//MSK-000137		
+				$('#edit_RG_'+count).hide();
+				$('#delete_RG_'+count).hide();
+				
+				$('#action_'+count).append('<a id="update_RG_'+count+'" onclick="updateRangeGrade(this)" data-id="'+id+','+count+'" class="glyphicon glyphicon-ok btn btn-success btn-xs" ></a>');			
+			}
+				
+		};	
+							
+    	xhttp.open("GET", "range_grade_text.php?id="+id + "&count="+count +"&range="+markRange +"&grade="+markGrade +"&do="+do1, true);												
+  		xhttp.send();//MSK-00135-Ajax End	
+	
+};
+
+function updateRangeGrade(updateRG){
+	
+var myArray1 = $(updateRG).data("id").split(',');
+	
+	var id = myArray1[0];
+	var count = myArray1[1];
+		
+	var range = $('#rangeText_'+count).val();
+	var grade = $('#gradeText_'+count).val();
+
+	var do1="update_emarks_range_grade";
+
+	var xhttp = new XMLHttpRequest();//MSK-00105-Ajax Start  
+  		xhttp.onreadystatechange = function() {
+    		
+			if (this.readyState == 4 && this.status == 200) {
+				
+				var myArray = eval(xhttp.responseText);
+				var msg=myArray[0];
+				
+				if(msg == 1){
+					$('#update_RG_'+count).remove();
+					
+					$('#rangeText_'+count).remove();
+					$('#gradeText_'+count).remove();
+					
+					$('#rangeU_td_'+count).html(range);
+					$('#gradeU_td_'+count).html(grade);
+					
+					$('#action_'+count).append('<a href="#" id="edit_RG_'+count+'" onclick="editRangeGrade(this)" data-id="'+id+','+count+'" class="label-warning "><span class="glyphicon glyphicon-edit "></span></a> <a href="#" id="delete_RG_'+count+'" data-id="'+id+'" class="confirm-delete-RG label-danger"><span class="glyphicon glyphicon-remove "></span></a>');
+					
+				}
+							
+			}
+				
+		};	
+							
+    	xhttp.open("GET", "../../model/update_emarks_range_grade.php?id="+id +"&range="+range +"&grade="+grade +"&do="+do1, true);												
+  		xhttp.send();//MSK-00135-Ajax End
+		
+};
+</script>
+	<!-- //MSK-000124 Modal-Delete Confirm Popup -->
+	<div class="modal msk-fade" id="deleteConfirmRG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+				<div class="modal-header bg-primary">
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<h4 class="modal-title" id="frm_title">Delete</h4>
+      			</div>
+				<div class="modal-body bgColorWhite">
+        			 Do you want to Delete this Record?
+        		</div>
+      			<div class="modal-footer">
+					<a href="#" style="margin-left:10px;" id="btnYesRG" class="deletebtn btn btn-danger col-sm-2 pull-right">Yes</a><!-- MSK-000125 -->
+        			<button type="button" class="btn btn-primary col-sm-2 pull-right" data-dismiss="modal" id="frm_cancel">No</button>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+    
+    <div id="divEMG2">
+    
+    </div>
 
 <script>
 $('body').on('click', '.confirm-delete-RG', function (e){

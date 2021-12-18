@@ -10,6 +10,85 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 <?php include_once('sidebar.php'); ?>
 <?php include_once('../alert.php'); ?>
 
+
+<?php
+try{
+	$message = isset($_GET['message']) ? $_GET['message'] : null;
+	$phoneNumber = isset($_GET['phone_number']) ? $_GET['phone_number'] : null;
+
+	if($message !=null && $phoneNumber !=null){
+		$url = "http://192.168.0.12:8090/SendSMS?username=sae&password=sae&phone=".$phoneNumber."&message=".urlencode($message);
+		$curl = curl_init($url);
+		curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+		$curl_response = curl_exec($curl);
+
+		if($curl_response === false){
+			$info = curl_getinfo($curl);
+			curl_close($curl);
+			die('Error occurred'.var_export($info));
+		}
+
+		curl_close($curl);
+
+		$response  = json_decode($curl_response);
+		if($response->status == 200){
+			echo 'Message has been sent';
+		}else{
+			'Technical Problem';
+		}
+
+	}
+}catch(Exception $ex){
+	echo "Exception: ".$ex;
+}
+    //   header('Location:mymodulemonitoring.php');	
+
+	$servername = 'localhost';
+	$username = 'root';
+	$password = '';
+	$dbname = 'std_db';
+
+	$message = isset($_GET['message']) ? $_GET['message'] : null;
+	$phoneNumber = isset($_GET['phone_number']) ? $_GET['phone_number'] : null ;
+	// $index_main=$_SESSION[""];
+	$index_numbers = isset($_GET['index_numbers']) ? $_GET['index_numbers'] : null ;
+	$module_file = isset($_GET['module_file']) ? $_GET['module_file'] : null ;
+
+		$conn = new mysqli($servername, $username, $password, $dbname);
+
+		if($conn->connect_error){
+			die('Connection failed'.$conn->connect_error);
+		}
+
+		if($message){
+			$sql = "INSERT INTO inbox (phone_number, message, index_number,module) 
+			Values ('".$phoneNumber."', '".$message."','".$index_numbers."','".$module_file."')";
+
+			if($conn->query($sql) === TRUE){
+				echo "New record created successfully";
+			}else{
+				echo "Error: ".$sql. "<br> ".$conn->error;
+			}
+		}else{
+			// $sql = "SELECT * FROM inbox";
+			// $result = $conn->query($sql);
+
+			// if($result){
+			// 	echo "<table border=1> <th>ID</th> <th>PHONE</th> <th>MESSAGE</th>";
+			// 	foreach($result as $row){
+			// 		echo "<tr><td>".$row['id']."</td><td>".$row['phone_number']."</td><td>".$row['message']."</td></tr>";
+			// 	}
+			// 	echo "</table>";
+			// }else{
+			// 	echo "Error: ".$sql. "<br>".$conn->error;
+			// }
+
+		}
+
+		$conn->close();
+?>
+
+
 <style>
 
 body { 
@@ -69,13 +148,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-      Request
+    Students
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Request</a></li>
+            <li><a href="#">Students</a></li>
     	</ol>
 	</section>
 
@@ -94,27 +173,26 @@ body {
  
 	<!-- Main content BUJE -->
 	<section class="content" > <!-- Start of table section -->
-	<form method="post" action="internal.php" >
+	<form method="GET" action="listofmoduleusers.php" >
 						  
 	<table id="example1" class="table  table-bordered table-striped">
 	<thead>
-                <tr>
-              <th style="width:1%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
-                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">First&nbsp;Name</th>
-				                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Middle&nbsp;Name</th>
-				<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Last&nbsp;Name</th>
-		<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">EmaiL</th>
-	
-			<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Contact&nbsp;Number</th>			
-						   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Date&nbsp;Apply</th>
-	   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Request&nbsp;Title</th>							
+<tr>
+<th style="width:1%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">ID</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Full&nbsp;Name</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Index ID</th>
 
-		   <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Releasing Day(s)</th>							
+				
 
-		            
-		            
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total SMS Received(s)</th>							
 
-	  <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total Download(s)</th>							
+
+
+
+
+<th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
 
             
                 </tr>
@@ -142,13 +220,15 @@ body {
 		  // $get_id=$_GET['id'];
 		   include('db.php');
 
-		 $get_id = isset($_GET['id']) ? $_GET['id'] : '';
-               $query = mysql_query("select * from postingsender where Jobtitle ='$get_id' ORDER by item_id DESC
+		 $get_id = isset($_GET['grade']) ? $_GET['grade'] : '';
+		 $file = isset($_GET['item_image']) ? $_GET['item_image'] : '';
+               $query = mysql_query("Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.section,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number WHERE sg.grade_id ='$get_id' 
 			   ") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
-                       $id=$row['item_id'];
-							$name=$row['item_image'];
-							$date=$row['item_date'];      
+                    	   $index_no=$row['index_number'];
+					   $id=$row['id'];
+					// 		$name=$row['item_image'];
+					// 		$grade_id=$row['grade'];      
             ?>
 			
 		
@@ -158,50 +238,76 @@ body {
 				 </td>
 	  
 	  
-           <!--td style="text-align:center;
-			  "><?php echo $row['item_id'];?></td-->
+        
        
               <td style="text-align:center;
-			  "><?php echo $row['fname'];?></td>
+			  "><?php echo $row['id'];?></td>
+
+
+
 			    <td style="text-align:center;
-			  "><?php echo $row['mname'];?></td>
+			  "><?php echo $row['full_name'];?></td>
 			  
 	
 			  
 			  	    <td style="text-align:center;
-			  "><?php echo $row['lname'];?></td>
+			  "><?php echo $row['index_number'];?></td>
 			  
 			  
 			  		  
-			  	    <td style="text-align:center;
-			  "><?php echo $row['Email'];?></td>
-			  
-			  
-			    	    <td style="text-align:center;
-			  "><?php echo $row['Contact'];?></td>
-			  
-				    	    <td style="text-align:center;
-			  "><?php echo $row['item_date'];?></td>
-			  
-			  	    	    <td style="text-align:center;
-			  "><?php echo $row['Jobtitle'];?></td>
-			  
-			  <td style="text-align:center;
-			  "><?php
-			 $date1 = new DateTime($row['claimed_date']);
-			 $date2 = new DateTime(date_create()->format('Y-m-d H:i:s'));
-			//  $now = date_create()->format('Y-m-d H:i:s');
-			 $interval = $date1->diff($date2);
 		
-			 // shows the total amount of days (not divided into years, months and days like above)
-echo "" . $interval->days . " days ";
-			 ?></td>
+			  
+			  
+
+			  <td style="text-align:center;
+			  ">
+			
+			<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+        
+       
+                    $count_query = mysqli_query($connection,"select * from std_db.inbox index_number where index_number='$index_no' and module='$file'") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?>
+
+
+
+			</td>
+
+			<td style="text-align:center;
+			  ">
+			
+			<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+        
+       
+                    $count_query = mysqli_query($connection,"select distinct grade_id,module_name,user_index_id from std_db.module_dl_logs where user_index_id='$index_no' and module_name='$file'") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?>
+
+
+
+			</td>
 			  
        
 					<td>					
 											   
-						<a href="#<?php echo $row ['item_id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to mark as a Reserved"></span>Reserved</a>
-						</td>			
+						<a href="#<?php echo $row ['id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to Notify via SMS"></span>Remarks</a>
+					
+						<!-- <a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="listofmodule.php?id=<?php echo $row['id'];?>" class="btn btn-primary button button4">View Users &nbsp;<i class="icon-list icon-large"></i></a> -->
+					</td>			
 						
 
 
@@ -212,17 +318,7 @@ echo "" . $interval->days . " days ";
 
 
 						
-										
-<!-- <td>					
-											   
-						<a href="#pas<?php echo $row ['item_id'];?>" class="btn btn-success" data-toggle="modal" title="Click to mark as a Passed"></span>Passed</a>
-				</td>		
-										
-<td>					
-											   
-						<a href="#nqsyae<?php echo $row ['item_id'];?>" class="btn btn-danger" data-toggle="modal" title="Click to mark as a Not Qualified"></span>Not Qualified</a>
-				</td>		 -->
- 
+
  
  
  
@@ -233,44 +329,44 @@ echo "" . $interval->days . " days ";
  
  
  	<!--Edit Item Modal -->
-                    <div id="<?php echo $row ['item_id'];?>" class="modal fade" role="dialog">
-                        <form action="internalsd.php" method="post"  class="form-horizontal" role="form">
+                    <div id="<?php echo $row ['id'];?>" class="modal fade" role="dialog">
+                        <form action="listofmoduleusers.php" method="GET"  class="form-horizontal" role="form">
                             <div class="modal-dialog modal-lg">
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                        <h4 class="modal-title">&nbsp;<?php echo $row ['full_name'];?></h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">
+                                        <input type="hidden" name="id" value="<?php echo $row ['id']; ?>">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="item_name">First Name:</label>
+                                            <label class="control-label col-sm-2" for="full_name">Full Name:</label>
 											
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="sended" name="sended" value="<?php echo $row ['fname'];?>" placeholder="Sended" readonly> </div>
+                                                <input type="text" class="form-control" id="sended" name="sended" value="<?php echo $row ['full_name'];?>" placeholder="Sended" readonly> </div>
                                           
 											
 											
-												<label class="control-label col-sm-2" for="item_code">Last Name:</label>
+												<label class="control-label col-sm-2" for="item_code">Index Number:</label>
                                             <div class="col-sm-4">
-                                                <input type="text" readonly class="form-control" id="item_code" name="mname" value="<?php echo $row ['mname']; ?>" placeholder="Middle Name" required> </div>
+                                                <input type="text" readonly class="form-control" id="item_code" name="index_numbers" value="<?php echo $row ['index_number']; ?>" placeholder="Middle Name" required> </div>
 												
 									
 										
 										
                                         <div class="form-group">
-                                            <label class="control-label col-sm-2" for="item_description">Description:</label>
+                                            <label class="control-label col-sm-2" for="item_description">Gender:</label>
                                             <div class="col-sm-4">
-                                               <input type="text" readonly class="form-control" id="lname" name="lname" value="<?php echo $row ['lname'];?>" placeholder="Last Name">
+                                               <input type="text" readonly class="form-control" id="lname" name="gender" value="<?php echo $row ['gender'];?>" placeholder="Last Name">
                                             </div>
-                                            <label class="control-label col-sm-2" for="item_category">Request Title:</label>
+                                            <label class="control-label col-sm-2" for="item_category">Section:</label>
                                             <div class="col-sm-4">
-                                                <input type="text" readonly class="form-control id="Jobtitle" name="Jobtitle" value="<?php echo $row ['Jobtitle'];?>" placeholder="Jobtitle">
+                                                <input type="text" readonly class="form-control id="Jobtitle" name="section" value="<?php echo $row ['section'];?>" placeholder="Jobtitle">
 												</div>
 									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
 									<div class="col-sm-4">
-									<input type="text" readonly class="form-control" id="ContactNumber" name="ContactNumber" value="<?php echo $row['Contact'];?>" placeholder="ContactNumber">
+									<input type="phone" class="form-control" id="ContactNumber" name="phone_number" value="<?php echo $row['phone'];?>" placeholder="Phone">
 									</div>
 									
 	
@@ -278,32 +374,21 @@ echo "" . $interval->days . " days ";
 									
 									<label class="control-label col-sm-2" for="Email">Valid Email</label>
 									<div class="col-sm-4">
-									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['Email'];?>" placeholder="Email">
+									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['email'];?>" placeholder="Email">
 									</div>
-									<label class="control-label col-sm-2" for="ContactNumber">Claimed To</label>
+									<label class="control-label col-sm-2" for="ContactNumber">Send By</label>
 
 <div class="col-sm-4">
-<select  class="form-control"  name="claimed_to" required>
-<?php
-include('connect.php');
-$cat_query = mysql_query("SELECT * FROM teacher");
-while($cat_row = mysql_fetch_array($cat_query)){
-?>
-<option value="<?php echo $cat_row['full_name']; ?>"><?php echo $cat_row['full_name']; ?></option>
-<?php  } ?>
+<input type="text"  class="form-control"  value="<?php echo $full_name;?>" readonly required>
 
 
-
-</select>		
-
-
-
+<input type="hidden"  class="form-control" name="module_file"  value="<?php echo $file;?>" readonly required>
 
 
 </div>
-<label class="control-label col-sm-2" for="ContactNumber">Claimed Date</label>
+<label class="control-label col-sm-2" for="ContactNumber">Message</label>
 <div class="col-sm-4">
-<input type="date"  class="form-control"  name="claimed_date" value="<?php echo $row['claimed_date']; ?>" required>
+<input type="message"  class="form-control"  name="message"  required>
 
 
 									
@@ -327,7 +412,8 @@ while($cat_row = mysql_fetch_array($cat_query)){
 									
 									
                                     <div class="modal-footer">
-                                        <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_itemz_reserved2"><span class="glyphicon glyphicon-edit"></span> Update Appointment Schedule</button>
+									<button type="submit" class="<?php echo $row['sended'];?> btn btn-primary"><span class="glyphicon glyphicon-edit"></span>Send</button>
+                                        <!-- <button type="submit" class="<?php echo $row['sended'];?> btn btn-primary" name="update_itemz_reserved2"><span class="glyphicon glyphicon-edit"></span> Update Appointment Schedule</button> -->
                                         <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
                                     </div>
                                 </div>

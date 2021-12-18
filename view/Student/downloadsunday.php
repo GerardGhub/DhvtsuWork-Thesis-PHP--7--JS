@@ -1,3 +1,26 @@
+<!-- <?php
+
+$con = mysql_connect("localhost","root","");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+	else
+	{
+	        //  header('Location:Groupmessenger2.php');	
+	}
+mysql_select_db("std_db", $con);
+		$message=$_POST['message'];
+		$sender=$_POST['sender'];
+		$image_user=$_POST['image_user'];
+		$department=$_POST['department'];
+		$grade_id=$_POST['grade_id'];
+		$section=$_POST['section'];
+        $name = rawurldecode($name);
+		mysql_query("INSERT INTO message(message, sender, image_user,department,grade_id,section)VALUES('$message', '$sender', '$image_user','$department','$grade_id','$section')");
+
+
+?> -->
 <?php
 function output_file($file, $name, $mime_type='')
 {
@@ -87,4 +110,28 @@ die();
 set_time_limit(0);
 $file_path='../item_images/'.$_REQUEST['filename'];
 output_file($file_path, ''.$_REQUEST['filename'].'', 'text/plain');
+
+
+// $con = mysql_connect("localhost","root","");
+// if (!$con)
+//   {
+//   die('Could not connect: ' . mysql_error());
+//   }
+// 	else
+// 	{
+// 	        //  header('Location:Groupmessenger2.php');	
+// 	}
+// mysql_select_db("std_db", $con);
+// 		$message= 'sdsdsds aaaaaa';
+// 		$sender=$_POST['sender'];
+// 		$image_user=$_POST['image_user'];
+// 		$department=$_POST['department'];
+// 		$grade_id=$_POST['grade_id'];
+// 		$section=$_POST['section'];
+//         $name = rawurldecode($name);
+// 		mysql_query("INSERT INTO message(message, sender, image_user,department,grade_id,section)VALUES('$message', '$sender', '$image_user','$department','$grade_id','$section')");
+
+
+
 ?>
+

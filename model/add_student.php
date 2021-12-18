@@ -19,6 +19,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 	$g_phone = $_POST["g_phone"];
 	$g_email = $_POST["g_email"];
 	$g_b_date = $_POST["g_b_date"];
+$section = $_POST["section"];
 	
 	$reg_year=date("Y");
 	$reg_month=date("F");
@@ -81,8 +82,8 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 			if(move_uploaded_file($tmpname, $image_path)){				
 				//MSK-000143-5	
 
-				$sql = "INSERT INTO student (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_year,reg_month,reg_date,b_date)
-			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path."','".$reg_year."','".$reg_month."','".$reg_date."','".$b_date."')";
+				$sql = "INSERT INTO student (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_year,reg_month,reg_date,b_date,section)
+			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path."','".$reg_year."','".$reg_month."','".$reg_date."','".$b_date."','".$section."')";
 
 				if(mysqli_query($conn,$sql)){
 					$msg+=2;  

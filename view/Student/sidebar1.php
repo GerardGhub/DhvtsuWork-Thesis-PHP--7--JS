@@ -9,12 +9,13 @@ include_once('../../controller/config.php');
 $index=$_SESSION["index_number"];
 
 // $sql="SELECT * FROM student WHERE index_number='$index'";
-$sql="Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number WHERE sa.index_number='$index'";
+$sql="Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.section,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number WHERE sa.index_number='$index'";
 $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
 $grade_id=$row['grade_id'];
+$section=$row['section'];
 ?>      
       
       <div class="user-panel">
@@ -136,7 +137,7 @@ $grade_id=$row['grade_id'];
         <li class="treeview">
           <a href="#">
             <i class="fa fa-facebook"></i>
-            <span>Friends</span>
+            <span>Communication Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -144,6 +145,8 @@ $grade_id=$row['grade_id'];
           <ul class="treeview-menu">
           	<li><a href="add_friends1.php"><i class="fa fa-circle-o"></i> Add Friends</a></li>
             <li><a href="my_friends1.php"><i class="fa fa-circle-o"></i> My Friends</a></li>
+            <li><a href="groupchat.php"><i class="fa fa-circle-o"></i> Group Chat</a>
+            <li><a href="groupchatsection.php"><i class="fa fa-circle-o"></i> Group Chat Section</a>
           </ul>
         </li>
       </ul>

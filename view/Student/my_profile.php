@@ -134,14 +134,14 @@ $password=$row1['password'];
                         					<td>Guardians Email</td>
                         					<td id="g_email"><?php echo $g_email; ?> </td>
                       					</tr>
-                                        <tr>
+                                        <!-- <tr>
                         					<td>User Name</td>
                         					<td id="user_name"><?php echo $user_name; ?> </td>
                       					</tr>
                      					<tr>
                         					<td>Password</td>
                         					<td id="password"><?php echo $password; ?> </td>
-                      					</tr>
+                      					</tr> -->
                     				</tbody>
                   				</table>
                   			</div>

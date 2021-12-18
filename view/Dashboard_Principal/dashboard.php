@@ -228,8 +228,8 @@ $total_count2=$row2['count(id)'];
 
             <div class="info-box-content">
               <span class="info-box-text">Total Modules</span>
-			  0
-<!-- <?php
+			  <!-- 0
+<?php
 include_once('../../controller/config.php');
 $current_year=date("Y");
 $current_month=date("F");
@@ -241,10 +241,18 @@ $result3=mysqli_query($conn,$sql3);
 $row3=mysqli_fetch_assoc($result3);
 $monthly_income=$row3['SUM(paid)'];
 
-?>             
+?>              -->
+			<?php
+			$connection=mysqli_connect('localhost','root','','std_db');
+			$count_query = mysqli_query($connection,"select * from std_db.filemgrfinance") or die(mysqli_error());        
+			$count = mysqli_num_rows($count_query);
+
+			?>
+
+
         
-              <span class="info-box-number"><small>$</small><?php echo $monthly_income; ?></span>
-           -->
+              <span class="info-box-number"><small></small><?php echo $count+1; ?></span>
+          
 			</div>
             <!-- /.info-box-content -->
           </div>

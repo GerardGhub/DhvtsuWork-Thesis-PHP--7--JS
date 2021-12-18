@@ -98,23 +98,23 @@ body {
 						  
 	<table id="example1" class="table  table-bordered table-striped">
 	<thead>
-                <tr>
-              <th style="width:1%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
-                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">First&nbsp;Name</th>
-				                <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Middle&nbsp;Name</th>
-				<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Last&nbsp;Name</th>
-		<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">EmaiL</th>
-	
-			<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Contact&nbsp;Number</th>			
-						   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Date&nbsp;Apply</th>
-	   	<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Request&nbsp;Title</th>							
+<tr>
+<th style="width:1%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">IMG</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">ID</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">File&nbsp;Name</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Uploaded&nbsp;Date</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Uploaded&nbsp;By</th>
 
-		   <th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Releasing Day(s)</th>							
+				
 
-		            
-		            
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total Student(s)</th>							
 
-	  <th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
+<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total Download(s)</th>							
+
+
+
+
+<th style="width:4%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Reserved</th>
 
             
                 </tr>
@@ -143,12 +143,13 @@ body {
 		   include('db.php');
 
 		 $get_id = isset($_GET['id']) ? $_GET['id'] : '';
-               $query = mysql_query("select * from postingsender where Jobtitle ='$get_id' ORDER by item_id DESC
+               $query = mysql_query("select * from filemgrfinance where grade ='$get_id' ORDER by item_id DESC
 			   ") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
-                       $id=$row['item_id'];
+                    //    $id=$row['item_id'];
+					   $id=$row['item_id'];
 							$name=$row['item_image'];
-							$date=$row['item_date'];      
+							$grade_id=$row['grade'];      
             ?>
 			
 		
@@ -158,50 +159,77 @@ body {
 				 </td>
 	  
 	  
-           <!--td style="text-align:center;
-			  "><?php echo $row['item_id'];?></td-->
+        
        
               <td style="text-align:center;
-			  "><?php echo $row['fname'];?></td>
+			  "><?php echo $row['item_id'];?></td>
+
+
+
 			    <td style="text-align:center;
-			  "><?php echo $row['mname'];?></td>
+			  "><?php echo $row['item_image'];?></td>
 			  
 	
 			  
 			  	    <td style="text-align:center;
-			  "><?php echo $row['lname'];?></td>
+			  "><?php echo $row['item_date'];?></td>
 			  
 			  
 			  		  
 			  	    <td style="text-align:center;
-			  "><?php echo $row['Email'];?></td>
+			  "><?php echo $row['upload_by'];?></td>
 			  
 			  
-			    	    <td style="text-align:center;
-			  "><?php echo $row['Contact'];?></td>
-			  
-				    	    <td style="text-align:center;
-			  "><?php echo $row['item_date'];?></td>
-			  
-			  	    	    <td style="text-align:center;
-			  "><?php echo $row['Jobtitle'];?></td>
-			  
+
 			  <td style="text-align:center;
-			  "><?php
-			 $date1 = new DateTime($row['claimed_date']);
-			 $date2 = new DateTime(date_create()->format('Y-m-d H:i:s'));
-			//  $now = date_create()->format('Y-m-d H:i:s');
-			 $interval = $date1->diff($date2);
-		
-			 // shows the total amount of days (not divided into years, months and days like above)
-echo "" . $interval->days . " days ";
-			 ?></td>
+			  ">
+			
+			<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+        
+       
+                    $count_query = mysqli_query($connection,"select * from std_db.student_grade where grade_id='$grade_id'") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?>
+
+
+
+			</td>
+
+			<td style="text-align:center;
+			  ">
+			
+			<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+        
+       
+                    $count_query = mysqli_query($connection,"select distinct grade_id,module_name,user_index_id from std_db.module_dl_logs where grade_id='$grade_id' and module_name='$name'") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                    <?php echo $count; ?>
+
+
+
+			</td>
 			  
        
 					<td>					
 											   
-						<a href="#<?php echo $row ['item_id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to mark as a Reserved"></span>Reserved</a>
-						</td>			
+						<!-- <a href="#<?php echo $row ['item_id'];?>" class="btn btn-primary" data-toggle="modal" title="Click to mark as a Reserved"></span>Reserved</a>
+					 -->
+						<a  rel="tooltip"  title="View" id="v<?php echo $id; ?>"  href="listofmoduleusers.php?grade=<?php echo $row['grade'];?>&item_image=<?php echo $row['item_image'];?>" class="btn btn-primary button button4">View Users &nbsp;<i class="icon-list icon-large"></i></a>
+					</td>			
 						
 
 
@@ -212,17 +240,7 @@ echo "" . $interval->days . " days ";
 
 
 						
-										
-<!-- <td>					
-											   
-						<a href="#pas<?php echo $row ['item_id'];?>" class="btn btn-success" data-toggle="modal" title="Click to mark as a Passed"></span>Passed</a>
-				</td>		
-										
-<td>					
-											   
-						<a href="#nqsyae<?php echo $row ['item_id'];?>" class="btn btn-danger" data-toggle="modal" title="Click to mark as a Not Qualified"></span>Not Qualified</a>
-				</td>		 -->
- 
+
  
  
  
@@ -240,7 +258,7 @@ echo "" . $interval->days . " days ";
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">&nbsp;<?php echo $row ['Jobtitle'];?></h4>
+                                        <h4 class="modal-title">&nbsp;<?php echo $row ['item_image'];?></h4>
                                     </div>
                                     <div class="modal-body">
                                         <input type="hidden" name="item_id" value="<?php echo $row ['item_id']; ?>">

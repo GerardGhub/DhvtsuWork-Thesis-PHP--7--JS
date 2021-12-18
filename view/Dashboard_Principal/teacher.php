@@ -104,7 +104,19 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                                     <label>Teacher No.</label>
                                 </div>
                                 <div class="col-xs-9">
-                                    <input type="text" class="form-control" placeholder="Teacher No." name="index_number" id="index_number" autocomplete="off" >  
+								<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+
+       
+                    $count_query = mysqli_query($connection,"select * from std_db.teacher") or die(mysqli_error());        
+          $count = mysqli_num_rows($count_query);
+          
+                    ?>
+					
+					
+					
+                
+                                    <input type="text" class="form-control" placeholder="Teacher No." name="index_number" id="index_number" value="<?php echo $count + 1; ?>" autocomplete="off" readonly >  
                                 </div>                    
                             </div>
                             <div class="form-group" id="divFullName">

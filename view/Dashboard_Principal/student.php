@@ -261,7 +261,13 @@ display:none;
                                             <label for="exampleInputEmail1">Student No.</label>
                                         </div>
                                         <div class="col-xs-9" id="divIndexNumber1">
-                                           <input type="text" class="form-control" placeholder="Student No." name="index_number" id="index_number" autocomplete="off">  
+<?php
+$connection=mysqli_connect('localhost','root','','std_db');
+$count_query = mysqli_query($connection,"select * from std_db.student") or die(mysqli_error());        
+$count = mysqli_num_rows($count_query);
+
+?>
+                                           <input type="text" class="form-control" placeholder="Student No." name="index_number" id="index_number" value="<?php echo $count+1; ?>" readonly autocomplete="off">  
                                         </div>                    
                                     </div>
                                      <div class="form-group" id="divFullName">
@@ -315,6 +321,8 @@ display:none;
                                                 	<input type="date" class="form-control" id="b_date" name="b_date" >
                                                 </div> 
                                         	</div>  
+
+											
                                             <div class="form-group" id="divGender" >
                                                 <div class="col-xs-5">
                                                     <label for="exampleInputEmail1">Gender</label>
@@ -327,8 +335,32 @@ display:none;
                                                     </select>                                          
                                                 </div> 
                                         	</div> 
+			
+											<div class="form-group" id="divSection" >
+<div class="col-xs-5">
+<label for="">Section</label>
+</div>
+<div class="col-xs-7" id="divSection1">
+<select class="form-control"  id="section" name="section">
+<option>Select Section</option>
+<?php
+include_once('../../controller/config.php');
+$sql="SELECT * FROM section";
+$result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result) > 0){
+while($row=mysqli_fetch_assoc($result)){
+?>                   				
+<option value="<?php echo $row["name"]; ?>" data-id=""><?php echo $row['name']; ?></option>
+<?php }} ?>                                    
+</select>
+</div>
+</div> 
+
                                                	                   
                                     	</div>
+
+
+										
                         			   	<div class="col-xs-5">
                                         	<div class="form-group" id="divPhoto">
                                                 <div class="col-xs-3">
@@ -349,7 +381,13 @@ display:none;
                                             <label for="exampleInputEmail1">Guardian No.</label>
                                         </div>
                                         <div class="col-xs-9" id="divGIndexNumber1">
-                                           <input type="text" class="form-control" placeholder="Auto Generate ID" name="g_index" id="g_index" autocomplete="off" readonly>  
+	<?php
+	$connection=mysqli_connect('localhost','root','','std_db');
+	$count_query = mysqli_query($connection,"select * from std_db.student") or die(mysqli_error());        
+	$count = mysqli_num_rows($count_query);
+
+	?>
+                                           <input type="text" class="form-control" placeholder="Auto Generate ID" name="g_index" id="g_index" value="G-<?php echo $count+1; ?>" autocomplete="off" readonly>  
                                         </div>                    
                                     </div>
                                      <div class="form-group" id="divGFullName">
@@ -566,6 +604,7 @@ $("form").submit(function (e){
 	var g_photo = $('#g_fileToUpload').val();
 	var phone = $('#phone').val();
 	var g_phone = $('#g_phone').val();
+	var section = $('#section').val();
 	
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
@@ -711,6 +750,24 @@ $("form").submit(function (e){
 			$('#divGender').removeClass('has-error');
 			$('#divGender1').removeClass('has-error has-feedback');
 			$('#spanGender').remove();
+			
+		});
+	
+	}
+		
+	if(section == 'Select Section'){
+		//MSK-00102-section
+		$("#btnSubmit").attr("disabled", true);
+		$('#divSection').addClass('has-error ');
+		$('#divSection1').addClass('has-error has-feedback');
+		$('#divSection1').append('<span id="spanSection" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The section is required" ></span>');	
+		
+		$("#section").change(function() {
+			//MSK-00103-section
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divSection').removeClass('has-error');
+			$('#divSection').removeClass('has-error has-feedback');
+			$('#spanSection').remove();
 			
 		});
 	
@@ -918,7 +975,7 @@ $("form").submit(function (e){
 		});
 		
 	}else{
-		if (telformat.test(phone) == false){ 
+		/* if (telformat.test(phone) == false){ 
 			//MSK-00104-phone
 			$('#divPhone').addClass('has-error');
 			$('#divPhone1').addClass('has-error has-feedback');
@@ -958,7 +1015,7 @@ $("form").submit(function (e){
 			
 		}else{
 			
-		}
+		} */
 		
 	}
 	
@@ -978,7 +1035,7 @@ $("form").submit(function (e){
 		});
 		
 	}else{
-		if (telformat.test(g_phone) == false){ 
+		/* if (telformat.test(g_phone) == false){ 
 			//MSK-00112-g_phone
 			$('#divGPhone').addClass('has-error');
 			$('#divGPhone1').addClass('has-error has-feedback');
@@ -1018,10 +1075,10 @@ $("form").submit(function (e){
 			
 		}else{
 			
-		}			
+		}			 */
 	}
 	
-	if(index_number == '' || g_index_number == '' || full_name == '' || g_full_name == '' || i_name == '' || g_i_name == '' || address == '' || g_address == '' || gender == 'Select Gender' || g_gender == 'Select Gender' || b_date == '' || g_b_date == '' || email == '' || mailformat.test(email) == false || g_email == '' || mailformat.test(g_email) == false || telformat.test(phone) == false || telformat.test(g_phone) == false || photo == '' || g_photo == '' || phone == ''  || g_phone == '' ) {
+	if(index_number == '' || g_index_number == '' || full_name == '' || g_full_name == '' || i_name == '' || g_i_name == '' || address == '' || g_address == '' || gender == 'Select Gender' || g_gender == 'Select Gender' ||  section == 'Select Section' || b_date == '' || g_b_date == '' || email == '' || mailformat.test(email) == false || g_email == '' || mailformat.test(g_email) == false || photo == '' || g_photo == '' || phone == ''  || g_phone == '' ) {
 		
 		//MSK-000098- form validation failed
 		$("#btnSubmit").attr("disabled", true);

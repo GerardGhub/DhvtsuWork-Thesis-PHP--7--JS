@@ -23,7 +23,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                                     <th></th>
                                     <th>Subject</th>
                                     <th>Teacher</th>
-                                    <th>Fee($)</th>
+                                    <th>Fee(₱)</th>
                                 </thead>
                         		<tbody>
 <?php 

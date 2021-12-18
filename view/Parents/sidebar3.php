@@ -13,8 +13,13 @@ $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
+$phone=$row['phone'];
+$email=$row['email'];
 
 ?>      
+<?php
+			   include('../Dashboard_Principal/connect.php');
+?>
       
       <div class="user-panel">
       	<div class="pull-left image">
@@ -100,11 +105,40 @@ $image=$row['image_name'];
             <li><a href="my_sons_attendance_history.php"><i class="fa fa-circle-o"></i> My Son's Attendance History</a></li>
           </ul>
         </li> -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+            <span style="color:white;">Announcement Post</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li><a href="requestinquiry.php"><i class="fa fa-circle-o"></i> Request InQuiry</a></li>
+          	<li><a href="myinbox.php"><i class="fa fa-circle-o"></i> Inbox</a></li>
+         
 
+           
+          </ul>
+        </li> 
          <li>
           <a href="my_sons_payments.php">
             <i class="fa fa-money"></i> <span>My Son's Payments</span>
           </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+            <span>Communication Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          	<li><a href="add_friends3.php"><i class="fa fa-circle-o"></i> Add Friends</a></li>
+            <li><a href="my_friends3.php"><i class="fa fa-circle-o"></i> My Friends</a></li>
+            <li><a href="groupchat.php"><i class="fa fa-circle-o"></i> Group Chat</a>
+          </ul>
         </li>
         <li class="treeview">
           <a href="#">
@@ -121,6 +155,9 @@ $image=$row['image_name'];
           </ul>
         </li>
       </ul>
+
+
+      
     </section>
     <!-- /.sidebar -->
   </aside>

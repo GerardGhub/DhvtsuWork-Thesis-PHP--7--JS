@@ -16,6 +16,7 @@ $image=$row['image_name'];
 $full_name=$row['full_name'];
 $phone_number=$row['phone'];
 $email=$row['email'];
+// $section=$row['section'];
 ?>      
       
       <div class="user-panel">
@@ -96,6 +97,11 @@ $email=$row['email'];
           </a>
       </li>
       <li>
+          <a href="section.php">
+            <i class="fa fa-list-ul"></i> <span style="color:white;">Section</span>
+          </a>
+      </li>
+      <li>
           <a href="grade.php">
             <i class="fa fa-database"></i> <span style="color:white;">Grade</span>
           </a>
@@ -170,7 +176,7 @@ $email=$row['email'];
             <li><a href="managedata.php"><i class="fa fa-circle-o"></i> Manage Modules</a>
             <li><a href="readmodule.php"><i class="fa fa-circle-o"></i>View All Modules</a>
             <li><a href="allmodules.php"><i class="fa fa-circle-o"></i>Download Modules</a>
-
+            <li><a href="mymodulemonitoring.php"><i class="fa fa-circle-o"></i>Module Monitoring</a>
            
            
           </ul>
@@ -194,7 +200,7 @@ $email=$row['email'];
           <ul class="treeview-menu">
           	<li><a href="add_friends.php"><i class="fa fa-circle-o"></i> Add Friends</a></li>
             <li><a href="my_friends.php"><i class="fa fa-circle-o"></i> My Friends</a>
-           
+            <li><a href="groupchat.php"><i class="fa fa-circle-o"></i> Group Chat</a>
           </ul>
         </li>
   

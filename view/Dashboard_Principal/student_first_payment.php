@@ -49,7 +49,7 @@ include_once("../../controller/config.php");
                         	<div class="row " id="msk12345">
                             	<div class="col-xs-2">
                                 	<div class="div-logo">
-                                    	<img class="logo" src="../../uploads/htmllogo.png">
+                                    	<img class="logo" src="../../uploads/logo3.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-5 class-name">

@@ -5,12 +5,12 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
-<?php include_once('head.php'); ?>
-<?php include_once('header_admin.php'); ?>
-<?php include_once('sidebar.php'); ?>
+<?php include_once('../Dashboard_Principal/head.php'); ?>
+<?php include_once('header_parents.php'); ?>
+<?php include_once('sidebar3.php'); ?>
 <?php include_once('../alert.php'); ?>
 
-=
+
 
 <!-- tib ton -->
 		  <script src="jsmodule/jsonepiece/bootstrap.min.js"></script>
@@ -249,7 +249,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 		
 		
 		<?php
-include('connect.php');
+include('../Dashboard_Principal/connect.php');
  
 
 
@@ -767,20 +767,20 @@ die(mysql_error());
 				</tr>
 				<tr>
 					<td>
-					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Middle Name</label>
-					<input type="text" name="mname" value="<?php echo $full_name; ?>" placeholder="Middle Name" class="form-control"  required>
+					<label style="display:none" for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Middle Name</label>
+					<input type="hidden" name="mname" value="<?php echo $name; ?>" placeholder="Middle Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
-					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Last Name</label>
-					<input type="text" name="lname" value="<?php echo $full_name; ?>" placeholder="Last Name" class="form-control"  required>
+					<label style="display:none" for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Last Name</label>
+					<input type="hidden" name="lname" value="<?php echo $name; ?>" placeholder="Last Name" class="form-control"  required>
 					</td>
 				</tr>
 				<tr>
 					<td>
 					<label for="inputEmail3" class="col-md-6 col-sm-12 form-control-label text-left">Phone Number</label>
-					<input type="text" name="Contact" value="<?php echo $phone_number; ?>" placeholder="Contact Number - ex 639104763819" class="form-control" required>
+					<input type="text" name="Contact" value="<?php echo $phone; ?>" placeholder="Contact Number - ex 639104763819" class="form-control" required>
 					</td>
 				</tr>
 				
