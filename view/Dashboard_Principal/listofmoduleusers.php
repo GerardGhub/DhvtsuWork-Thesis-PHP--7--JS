@@ -17,7 +17,7 @@ try{
 	$phoneNumber = isset($_GET['phone_number']) ? $_GET['phone_number'] : null;
 
 	if($message !=null && $phoneNumber !=null){
-		$url = "http://192.168.0.12:8090/SendSMS?username=sae&password=sae&phone=".$phoneNumber."&message=".urlencode($message);
+		$url = "http://192.168.0.15:8090/SendSMS?username=sae&password=sae&phone=".$phoneNumber."&message=".urlencode($message);
 		$curl = curl_init($url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
 		$curl_response = curl_exec($curl);

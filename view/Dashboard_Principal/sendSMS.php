@@ -12,14 +12,14 @@
 			 </form>
 	</body>
 </html>
-
+<!-- //12 -->
 <?php
 try{
 	$message = isset($_GET['message']) ? $_GET['message'] : null;
 	$phoneNumber = isset($_GET['phone']) ? $_GET['phone'] : null;
 
 	if($message !=null && $phoneNumber !=null){
-		$url = "http://192.168.0.12:8090/SendSMS?username=sae&password=sae&phone=".$phoneNumber."&message=".urlencode($message);
+		$url = "http://192.168.0.15:8090/SendSMS?username=sae&password=sae&phone=".$phoneNumber."&message=".urlencode($message);
 		$curl = curl_init($url);
 		curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
 		$curl_response = curl_exec($curl);
