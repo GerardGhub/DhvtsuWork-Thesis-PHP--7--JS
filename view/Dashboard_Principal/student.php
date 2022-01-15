@@ -294,6 +294,8 @@ $count = mysqli_num_rows($count_query);
                                            <input type="text" class="form-control" placeholder="Address" name="address" id="address" autocomplete="off"> 
                                         </div>                    
                                     </div>
+
+									
                                     <div class="form-group" id="divEmail">
                                         <div class="col-xs-3">
                                            <label for="exampleInputEmail1">Email</label>
@@ -302,6 +304,28 @@ $count = mysqli_num_rows($count_query);
                                            <input type="email" class="form-control" placeholder="Email Address" name="email" id="email" autocomplete="off"> 
                                         </div>                    
                                     </div>
+									<div class="form-group" id="divpassword">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divpassword1">
+                                           <input type="password" class="form-control" placeholder="Password" name="password" minlength="8" id="password" autocomplete="off"> 
+										   <span id='message'></span>
+                                        </div>                    
+                                    </div>
+
+
+									<div class="form-group" id="divconfirm_password">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Confirm Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divconfirm_password1">
+                                           <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" id="confirm_password" autocomplete="off"> 
+                                        </div>                    
+                                    </div>
+
+
+
                                     <div class="row" >
                         				<div class="col-xs-7">
                                             
@@ -605,7 +629,11 @@ $("form").submit(function (e){
 	var phone = $('#phone').val();
 	var g_phone = $('#g_phone').val();
 	var section = $('#section').val();
-	
+
+	var password = $('#password').val();
+	var confirm_password = $('#confirm_password').val();
+
+
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
 	
@@ -720,6 +748,39 @@ $("form").submit(function (e){
 		});
 	
 	}
+
+	if(password == ''){
+		//MSK-00102-password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divpassword').addClass('has-error has-feedback');
+		$('#divpassword').append('<span id="spanpassword" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The passsword is required" ></span>');	
+		
+		$("#password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divpassword').removeClass('has-error has-feedback');
+			$('#spanpassword').remove();
+			
+		});
+	
+	}
+
+	if(confirm_password == ''){
+		//MSK-00102- confirm password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divconfirm_password').addClass('has-error has-feedback');
+		$('#divconfirm_password').append('<span id="spanconfirm_password" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The confirm passsword is required" ></span>');	
+		
+		$("#confirm_password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divconfirm_password').removeClass('has-error has-feedback');
+			$('#spanconfirm_password').remove();
+			
+		});
+	
+	}
+	
 	
 	if(g_address == ''){
 		//MSK-00102-address
@@ -1377,6 +1438,16 @@ window.addEventListener("popstate", function() {
   }
 }, false);
 }(window, location));
+
+
+
+
+$('#password, #confirm_password').on('keyup', function () {
+    if ($('#password').val() == $('#confirm_password').val()) {
+        $('#message').html('Matching').css('color', 'green');
+    } else 
+        $('#message').html('Not Matching').css('color', 'red');
+});
 </script>
 
 
