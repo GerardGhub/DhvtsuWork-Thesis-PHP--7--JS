@@ -295,14 +295,14 @@ background-color:whitesmoke;
 body{
 	background-color:white;
 }
-.cd-top--is-visible { // back-to-top button visible
+/* .cd-top--is-visible { // back-to-top button visible
   visibility: visible;
   opacity: 1;
 }
 
 .cd-top--fade-out { // reduce button opacity if user keeps scrolling
   opacity: .5;
-}
+} */
 </style>
 <!-- <body onLoad="login()"> -->
 <body>
@@ -339,7 +339,7 @@ body{
     
 		<div class="modal-content ">
         		<div class="modal-header bg-primary">
-          			<h4>Login</h4>
+          			<h4>Login </h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<form role="form" action="../index.php" method="post">                    
@@ -357,8 +357,14 @@ body{
                   			<input type="hidden" name="do" value="user_login" />
                     		<button type="submit" class="btn btn-info" id="btnSubmit">Submit</button>
 							<button type="button" class="btn btn-warning float-right" data-dismiss="modal">Close</button>
+	
+						
 						</div>
                 	</form>
+					<div class="text-right">
+							  <!-- Forgot Password -->
+							  <a  rel="tooltip"  title="View"   onclick="location.href='Dashboard_Principal/listofuseraccountrecovery.php?email='+ document.getElementById('email').value;"><u>Forgot Password</u> </a>
+						  </div>
         		</div>
       	   
     
@@ -1413,7 +1419,7 @@ include('connect.php');
     	<div class="modal-dialog">    
         	<div class="modal-content ">
         		<div class="modal-header bg-aqua-gradient">
-          			<h4>Login</h4>
+          			<h4>Logins</h4>
         		</div>
         		<div class="modal-body bgColorWhite">
         			<form role="form" action="../index.php" method="post">                    
@@ -1430,7 +1436,8 @@ include('connect.php');
                   		<div class="box-footer">
                   			<input type="hidden" name="do" value="user_login" />
                     		<button type="submit" class="btn btn-info" id="btnSubmit">Submit</button>
-                  		</div>
+                  	
+						</div>
                 	</form>
         		</div>
       		</div>      
