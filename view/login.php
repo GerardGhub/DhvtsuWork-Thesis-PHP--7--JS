@@ -1315,28 +1315,19 @@ include('connect.php');
  
 
 
-
-	
-
-		
-							
+// $ip=1;
 
 
 
+// $query1=mysql_connect("localhost","root","");
+// mysql_select_db("srms",$query1);
 
-$ip=1;
-
-
-
-$query1=mysql_connect("localhost","root","");
-mysql_select_db("srms",$query1);
-
-$start=0;
-$limit=12;
+// $start=0;
+// $limit=12;
 
 
 
-$query=mysql_query("SELECT * from officepresident") or die (mysql_error());
+// $query=mysql_query("SELECT * from officepresident") or die (mysql_error());
 
 
      
@@ -1348,13 +1339,13 @@ $query=mysql_query("SELECT * from officepresident") or die (mysql_error());
 
 
 
-while($query2=mysql_fetch_array($query))
+// while($query2=mysql_fetch_array($query))
  
-{
+// {
 
-echo "";
+// echo "";
 		
-}
+// }
 
 ?>
 		
