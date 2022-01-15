@@ -299,7 +299,7 @@ $count = mysqli_num_rows($count_query);
                                            <label for="exampleInputEmail1">Email</label>
                                         </div>
                                         <div class="col-xs-9" id="divEmail1">
-                                           <input type="text" class="form-control" placeholder="Email Address" name="email" id="email" autocomplete="off"> 
+                                           <input type="email" class="form-control" placeholder="Email Address" name="email" id="email" autocomplete="off"> 
                                         </div>                    
                                     </div>
                                     <div class="row" >
@@ -310,7 +310,7 @@ $count = mysqli_num_rows($count_query);
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divPhone12">
-                                                	<input type="text" class="form-control" id="phone" name="phone" placeholder="965-069-5252">
+                                                	<input type="text" class="form-control" id="phone" name="phone" minlength="11"  maxlength="11" placeholder="09650695252">
                                                 </div> 
                                         	</div>  
                                             <div class="form-group" id="divDOB">
@@ -419,7 +419,7 @@ while($row=mysqli_fetch_assoc($result)){
                                            <label for="exampleInputEmail1">Email</label>
                                         </div>
                                         <div class="col-xs-9" id="divGEmail1">
-                                           <input type="text" class="form-control" placeholder="Email Address" name="g_email" id="g_email" autocomplete="off"> 
+                                           <input type="email" class="form-control" placeholder="Email Address" name="g_email" id="g_email" autocomplete="off"> 
                                         </div>                    
                                     </div>
                                     <div class="row" >
@@ -429,7 +429,7 @@ while($row=mysqli_fetch_assoc($result)){
                                                     <label for="exampleInputEmail1">Phone</label>
                                                 </div>
                                                 <div class="col-xs-7" id="divGPhone12">
-                                                	<input type="text" class="form-control" id="g_phone" name="g_phone" placeholder="965-069-5252" >
+                                                	<input type="text" class="form-control" id="g_phone" minlength="11"  maxlength="11"  name="g_phone" placeholder="09650695254" >
                                                 </div> 
                                         	</div>
                                             <div class="form-group" id="divGDOB">
