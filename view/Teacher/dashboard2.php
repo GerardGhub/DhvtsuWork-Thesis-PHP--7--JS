@@ -242,7 +242,7 @@ $all_student=$row1['count(id)'];
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Monthly Salary</span>
+              <span class="info-box-text">TOTAL MODULES</span>
 <?php
 include_once('../../controller/config.php');
     
@@ -323,7 +323,7 @@ if(mysqli_num_rows($result1) > 0){
 	$current_total_salary = number_format($current_total_salary, 2, '.', '');
 
 ?>   
-              <span class="info-box-number"><small>$</small><?php echo $current_total_salary;?></span>
+              <span class="info-box-number"><small></small><?php echo $current_total_salary;?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -335,7 +335,7 @@ if(mysqli_num_rows($result1) > 0){
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Total Earning</span>
+              <span class="info-box-text">Total Announcement</span>
 <?php
 include_once('../../controller/config.php');
 
@@ -348,7 +348,7 @@ $total_earn=$row3['SUM(paid)'];
 
 ?>             
                 
-              <span class="info-box-number"><small>$</small><?php echo $total_earn;?></span>
+              <span class="info-box-number"><small>0</small><?php echo $total_earn;?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
