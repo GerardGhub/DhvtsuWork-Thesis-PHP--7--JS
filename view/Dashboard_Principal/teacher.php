@@ -165,28 +165,28 @@ $connection=mysqli_connect('localhost','root','','std_db');
 
 
 
-									<div class="form-group" id="divgrade">
-                                        <div class="col-xs-3">
-                                           <label for="exampleInputEmail1">Select Grade</label>
-                                        </div>
-										<div class="col-xs-9" id="divgrade1">
+								<div class="form-group" id="divgrade">
+								<div class="col-xs-3">
+								<label for="exampleInputEmail1">Select Grade</label>
+								</div>
+								<div class="col-xs-9" id="divgrade1">
 
-                           <select  class="form-control"  name="grade" required id="grade">
-						   <?php
-						   include('connect.php');
-			$cat_query = mysql_query("SELECT * FROM grade");
-			while($cat_row = mysql_fetch_array($cat_query)){
-			?>
-	<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
-	<!-- <option value="<?php echo $cat_row['id']; ?>"><?php echo $cat_row['name']; ?></option> -->
-			<?php  } ?>
- 
+								<select  class="form-control"  name="grade" required id="grade">
+								<?php
+								include('connect.php');
+								$cat_query = mysql_query("SELECT * FROM grade");
+								while($cat_row = mysql_fetch_array($cat_query)){
+								?>
+								<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
+								<!-- <option value="<?php echo $cat_row['id']; ?>"><?php echo $cat_row['name']; ?></option> -->
+								<?php  } ?>
 
- 
-</select>
-</div>                    
-</div>                              					 
-						
+
+
+								</select>
+								</div>                    
+								</div>                              					 
+
 							
 
 
