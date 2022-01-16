@@ -9,6 +9,9 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_teacher")){
 	$address = $_POST["address"];
 	$phone = $_POST["phone"];
 	$email = $_POST["email"];
+	$password = $_POST["password"];
+	$grade = $_POST["grade"];
+	$birth_date = $_POST["birth_date"];
 	
 	$current_date=date("Y-m-d");
 	
@@ -55,13 +58,13 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_teacher")){
 		 	if(move_uploaded_file($tmpname, $image_path)){
 				//MSK-000143-5	
 				
-				$sql = "INSERT INTO teacher (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_date)
-			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path.                        "','".$current_date."')";
+				$sql = "INSERT INTO teacher (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_date, grade, birth_date)
+			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path.                        "','".$current_date."' ,'".$grade."','".$birth_date."')";
 				if(mysqli_query($conn,$sql)){
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$email."','$index_number','Teacher')";
+			                VALUES ('".$email."','$password','Teacher')";
 					
 					mysqli_query($conn,$sql3);
 				}else{

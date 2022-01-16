@@ -143,6 +143,53 @@ $connection=mysqli_connect('localhost','root','','std_db');
                                     <input type="text" class="form-control" placeholder="Address" name="address" id="address" autocomplete="off"> 
                                 </div>                     
                             </div>
+							<div class="form-group" id="divt_password">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divt_password1">
+                                           <input type="password" class="form-control" placeholder="Password" name="password" minlength="8" id="t_password" autocomplete="off"> 
+										   <span id='t_message'></span>
+                                        </div>                    
+                                    </div>
+
+
+									<div class="form-group" id="divt_confirm_password">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Confirm Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divt_confirm_password1">
+                                           <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" id="t_confirm_password" autocomplete="off"> 
+                                        </div>                    
+                                    </div>
+
+
+
+									<div class="form-group" id="divgrade">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Select Grade</label>
+                                        </div>
+										<div class="col-xs-9" id="divgrade1">
+
+                           <select  class="form-control"  name="grade" required id="grade">
+						   <?php
+						   include('connect.php');
+			$cat_query = mysql_query("SELECT * FROM grade");
+			while($cat_row = mysql_fetch_array($cat_query)){
+			?>
+	<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
+	<!-- <option value="<?php echo $cat_row['id']; ?>"><?php echo $cat_row['name']; ?></option> -->
+			<?php  } ?>
+ 
+
+ 
+</select>
+</div>                    
+</div>                              					 
+						
+							
+
+
                             <div class="form-group" id="divGender">
                                 <div class="col-xs-3">
                                     <label>Gender</label>
@@ -155,12 +202,23 @@ $connection=mysqli_connect('localhost','root','','std_db');
                                     </select>
                                 </div>
                             </div>
+
+							<div class="form-group" id="divbirth_date1">
+                                <div class="col-xs-3">
+                                    <label>Birth Date </label>
+                                </div>
+                                <div class="col-xs-4" id="divbirth_date1">
+                                    <input type="date" class="form-control" placeholder="Birth Date" name="birth_date" id="birth_date" autocomplete="off">
+                                </div>
+                            </div>
+
+
                             <div class="form-group" id="divPhone">
                                 <div class="col-xs-3">
                                     <label>Phone Number </label>
                                 </div>
                                 <div class="col-xs-4" id="divPhone1">
-                                    <input type="tel" class="form-control" placeholder="123-456-7890" name="phone" id="phone" autocomplete="off">
+                                    <input type="tel" class="form-control" minlength="11"  maxlength="11"  placeholder="09650695252" name="phone" id="phone" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group tt2 " id="divEmail">
@@ -168,7 +226,7 @@ $connection=mysqli_connect('localhost','root','','std_db');
                                     <label>Email</label>
                                 </div>
                                 <div class="col-xs-6" id="divEmail1">
-                                    <input type="text" class="form-control"  placeholder="Email Address" name="email" id="email" autocomplete="off">
+                                    <input type="email" class="form-control"  placeholder="Email Address" name="email" id="email" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-group" id="divPhoto">
@@ -243,6 +301,11 @@ $("#form1").submit(function (e) {
 	var email = $('#email').val();	
 	var photo = $('#fileToUpload').val();
 	var address = $('#address').val();
+	
+	var password = $('#t_password').val();
+	var confirm_password = $('#t_confirm_password').val();
+	var grade = $('#grade').val();
+	var birth_date = $('#birth_date').val();
 
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;	
 	var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
@@ -319,6 +382,74 @@ $("#form1").submit(function (e) {
 	}else{
 		
 	}
+
+
+
+	if(grade == ''){
+		//MSK-00102-password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divgrade').addClass('has-error has-feedback');
+		$('#divgrade').append('<span id="spangrade" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The grade is required" ></span>');	
+		
+		$("#grade").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divgrade').removeClass('has-error has-feedback');
+			$('#spangrade').remove();
+			
+		});
+	
+	}
+
+	
+	if(birth_date == ''){
+		//MSK-00102-password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divbirth_date').addClass('has-error has-feedback');
+		$('#divbirth_date').append('<span id="spanbirth_date" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The birth date is required" ></span>');	
+		
+		$("#birth_date").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divbirth_date').removeClass('has-error has-feedback');
+			$('#spanbirth_date').remove();
+			
+		});
+	
+	}
+
+	if(password == ''){
+		//MSK-00102-password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divt_password').addClass('has-error has-feedback');
+		$('#divt_password').append('<span id="spant_password" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The passsword is required" ></span>');	
+		
+		$("#t_password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divt_password').removeClass('has-error has-feedback');
+			$('#spant_password').remove();
+			
+		});
+	
+	}
+
+	if(confirm_password == ''){
+		//MSK-00102- confirm password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divt_confirm_password').addClass('has-error has-feedback');
+		$('#divt_confirm_password').append('<span id="spant_confirm_password" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The confirm passsword is required" ></span>');	
+		
+		$("#t_confirm_password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divt_confirm_password').removeClass('has-error has-feedback');
+			$('#spant_confirm_password').remove();
+			
+		});
+	
+	}
+
 	
 	if(gender == 'Select Gender'){
 		//MSK-00102-gender
@@ -351,47 +482,49 @@ $("#form1").submit(function (e) {
 			
 		});
 	
-	}else{
-		if (telformat.test(phone) == false){ 
-			//MSK-00104-phone
-			$('#divPhone').addClass('has-error has-feedback');
-			$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-remove form-control-feedback msk-set-color-tooltip" data-toggle="tooltip"    title="Enter valid phone number" ></span>');
-		
-			$("#phone" ).keydown(function(){//MSK-00105-phone
-				
-				var $field = $(this);
-    			var beforeVal = $field.val();// this is the value before the keypress
-
-    			setTimeout(function() {
-
-        			var afterVal = $field.val();// this is the value after the keypress
-				
-					if (telformat.test(afterVal) == true){
-						//MSK-00106-phone
-						$("#btnSubmit").attr("disabled", false);
-						$('#divPhone').removeClass('has-error has-feedback');
-						$('#spanPhone').remove();
-						$('#divPhone').addClass('has-success has-feedback');
-						$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-ok form-control-feedback"></span>');
-						
-					}else{
-						//MSK-00107-phone
-						$("#btnSubmit").attr("disabled", true);
-						$('#spanPhone').remove();
-						$('#divPhone').addClass('has-error has-feedback');
-						$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-remove form-control-feedback msk-set-color-tooltip" data-toggle="tooltip"    title="Enter valid email address" ></span>');
-							
-					}
-				
-    			}, 0);
-				 	
-			});
-		
-    	}else{
-		
-		}
-		  
 	}
+	
+	// else{
+		// if (telformat.test(phone) == false){ 
+		// 	//MSK-00104-phone
+		// 	$('#divPhone').addClass('has-error has-feedback');
+		// 	$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-remove form-control-feedback msk-set-color-tooltip" data-toggle="tooltip"    title="Enter valid phone number" ></span>');
+		
+		// 	$("#phone" ).keydown(function(){//MSK-00105-phone
+				
+		// 		var $field = $(this);
+    	// 		var beforeVal = $field.val();// this is the value before the keypress
+
+    	// 		setTimeout(function() {
+
+        // 			var afterVal = $field.val();// this is the value after the keypress
+				
+		// 			if (telformat.test(afterVal) == true){
+		// 				//MSK-00106-phone
+		// 				$("#btnSubmit").attr("disabled", false);
+		// 				$('#divPhone').removeClass('has-error has-feedback');
+		// 				$('#spanPhone').remove();
+		// 				$('#divPhone').addClass('has-success has-feedback');
+		// 				$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-ok form-control-feedback"></span>');
+						
+		// 			}else{
+		// 				//MSK-00107-phone
+		// 				$("#btnSubmit").attr("disabled", true);
+		// 				$('#spanPhone').remove();
+		// 				$('#divPhone').addClass('has-error has-feedback');
+		// 				$('#divPhone1').append('<span id="spanPhone" class="glyphicon glyphicon-remove form-control-feedback msk-set-color-tooltip" data-toggle="tooltip"    title="Enter valid email address" ></span>');
+							
+		// 			}
+				
+    	// 		}, 0);
+				 	
+		// 	});
+		
+    	// }else{
+		
+		// }
+		  
+	// }
 	
 	if(email == ''){
    		//MSK-00102-email
@@ -461,7 +594,7 @@ $("#form1").submit(function (e) {
 		
 	}
 	
-	if(full_name == '' || i_name == '' || address == '' || gender == '' || phone == '' || email == '' || mailformat.test(email) == false || telformat.test(phone) == false || photo == '' ){
+	if(full_name == '' || i_name == '' || address == '' || gender == '' || phone == '' || email == '' || mailformat.test(email) == false  || photo == '' ){
 		//MSK-000098- form1 validation failed
 		$("#btnSubmit").attr("disabled", true);
 		e.preventDefault();
@@ -600,6 +733,17 @@ window.addEventListener("popstate", function() {
   }
 }, false);
 }(window, location));
+
+
+$('#t_password, #t_confirm_password').on('keyup', function () {
+    if ($('#t_password').val() == $('#t_confirm_password').val()) {
+        $('#t_message').html('Matching').css('color', 'green');
+    } else 
+        $('#t_message').html('Not Matching').css('color', 'red');
+});
+
+
+
 </script>
   	 	
 </div><!-- /.content-wrapper -->  
