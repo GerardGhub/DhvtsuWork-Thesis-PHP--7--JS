@@ -10,6 +10,8 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 	$phone = $_POST["phone"];
 	$email = $_POST["email"];
 	$b_date = $_POST["b_date"];
+	$password = $_POST["password"];
+	$g_password = $_POST["password"];
 	
 	$g_index_number = $_POST["g_index"];	
 	$g_full_name = $_POST["g_full_name"];
@@ -19,7 +21,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_student")){
 	$g_phone = $_POST["g_phone"];
 	$g_email = $_POST["g_email"];
 	$g_b_date = $_POST["g_b_date"];
-$section = $_POST["section"];
+	$section = $_POST["section"];
 	
 	$reg_year=date("Y");
 	$reg_month=date("F");
@@ -89,7 +91,7 @@ $section = $_POST["section"];
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql3= "INSERT INTO user (email,password,type)
-			                VALUES ('".$index_number."','sae@$index_number','Student')";
+			                VALUES ('".$email."','$password','Student')";
 					
 					mysqli_query($conn,$sql3);
 				}else{
@@ -148,7 +150,7 @@ $section = $_POST["section"];
 					$g_msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
 					$sql7= "INSERT INTO user (email,password,type)
-			                VALUES ('".$g_index_number."','sae@$g_index_number','Parents')";
+			                VALUES ('".$g_email."','$g_password','Parents')";
 					
 					mysqli_query($conn,$sql7); 
 				}else{

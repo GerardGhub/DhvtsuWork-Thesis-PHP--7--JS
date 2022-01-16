@@ -213,7 +213,7 @@ body {
 		 $get_id = isset($_GET['email']) ? $_GET['email'] : '';
 		 $file = isset($_GET['item_image']) ? $_GET['item_image'] : '';
                $query = mysql_query("Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.section,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id, ur.password FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number 
-			   LEFT JOIN user ur ON sa.index_number = ur.email WHERE sa.email ='$get_id' 
+			   LEFT JOIN user ur ON sa.email = ur.email WHERE sa.email ='$get_id' 
 			   ") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
                     	   $index_no=$row['index_number'];
@@ -358,7 +358,7 @@ $connection=mysqli_connect('localhost','root','','std_db');
 												</div>
 									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
 									<div class="col-sm-4">
-									<input type="phone" class="form-control" id="ContactNumber" name="phone_number" value="<?php echo $row['phone'];?>" placeholder="Phone">
+									<input type="phone" readonly class="form-control" id="ContactNumber" name="phone_number" value="<?php echo $row['phone'];?>" placeholder="Phone">
 									</div>
 									
 	
@@ -380,7 +380,7 @@ $connection=mysqli_connect('localhost','root','','std_db');
 </div>
 <label class="control-label col-sm-2" for="ContactNumber">Message</label>
 <div class="col-sm-4">
-<input type="message"  class="form-control"  name="message" value="<?php echo $row['password'];?>"  required>
+<input type="password" readonly  class="form-control"  name="message" value="<?php echo $row['password'];?>"  required>
 
 
 									

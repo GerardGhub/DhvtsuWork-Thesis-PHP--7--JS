@@ -446,6 +446,29 @@ while($row=mysqli_fetch_assoc($result)){
                                            <input type="email" class="form-control" placeholder="Email Address" name="g_email" id="g_email" autocomplete="off"> 
                                         </div>                    
                                     </div>
+
+
+									<div class="form-group" id="divg_password">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divg_password1">
+                                           <input type="password" class="form-control" placeholder="Password" name="g_password" minlength="8" id="g_password" autocomplete="off"> 
+										   <span id='g_message'></span>
+                                        </div>                    
+                                    </div>
+
+
+									<div class="form-group" id="divg_confirm_password">
+                                        <div class="col-xs-3">
+                                           <label for="exampleInputEmail1">Confirm Password</label>
+                                        </div>
+                                        <div class="col-xs-9" id="divg_confirm_password1">
+                                           <input type="password" class="form-control" placeholder="Confirm Password" name="g_confirm_password" minlength="8" id="g_confirm_password" autocomplete="off"> 
+                                        </div>                    
+                                    </div>
+
+
                                     <div class="row" >
                         				<div class="col-xs-7">
                                             <div class="form-group" id="divGPhone">
@@ -633,6 +656,9 @@ $("form").submit(function (e){
 	var password = $('#password').val();
 	var confirm_password = $('#confirm_password').val();
 
+	var g_password = $('#g_password').val();
+	var g_confirm_password = $('#g_confirm_password').val();
+
 
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
@@ -781,6 +807,38 @@ $("form").submit(function (e){
 	
 	}
 	
+
+	if(g_password == ''){
+		//MSK-00102- g_password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divg_password').addClass('has-error has-feedback');
+		$('#divg_password').append('<span id="spang_password" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The passsword is required" ></span>');	
+		
+		$("#password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divg_password').removeClass('has-error has-feedback');
+			$('#spang_password').remove();
+			
+		});
+	
+	}
+
+	if(g_confirm_password == ''){
+		//MSK-00102- g_confirm password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divg_confirm_password').addClass('has-error has-feedback');
+		$('#divg_confirm_password').append('<span id="spang_confirm_password" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The confirm passsword is required" ></span>');	
+		
+		$("#g_confirm_password").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divg_confirm_password').removeClass('has-error has-feedback');
+			$('#spang_confirm_password').remove();
+			
+		});
+	
+	}
 	
 	if(g_address == ''){
 		//MSK-00102-address
@@ -1448,6 +1506,15 @@ $('#password, #confirm_password').on('keyup', function () {
     } else 
         $('#message').html('Not Matching').css('color', 'red');
 });
+
+
+$('#g_password, #g_confirm_password').on('keyup', function () {
+    if ($('#g_password').val() == $('#g_confirm_password').val()) {
+        $('#g_message').html('Matching').css('color', 'green');
+    } else 
+        $('#g_message').html('Not Matching').css('color', 'red');
+});
+
 </script>
 
 
