@@ -6,7 +6,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
 }
 ?>
 <?php include_once('head.php'); ?>
-<?php include_once('header_admin.php'); ?>
+<?php include_once('header_admin_sms_password.php'); ?>
 
 <?php include_once('../alert.php'); ?>
 
@@ -29,7 +29,7 @@ try{
 		}
 
 		curl_close($curl);
-		header('Location:../login.php');	
+		// header('Location:../login.php');	
 		$response  = json_decode($curl_response);
 		if($response->status == 200){
 			echo 'Message has been sent';
@@ -138,13 +138,13 @@ body {
 	<!-- Content Header (Page header) -->
     <section class="content-header">
     	<h1>
-    Students
+  Users
 
         </h1>
 		
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Students</a></li>
+            <li><a href="#">Users</a></li>
     	</ol>
 	</section>
 
@@ -214,9 +214,11 @@ body {
 
 		 $get_id = isset($_GET['email']) ? $_GET['email'] : '';
 		 $file = isset($_GET['item_image']) ? $_GET['item_image'] : '';
-               $query = mysql_query("Select ur.id, ur.email, ur.password, IFNULL(ad.full_name, sa.full_name) as full_name, IFNULL(ad.index_number, sa.index_number) as index_number, IFNULL(ad.gender , sa.gender) as gender, IFNULL(ad.phone, sa.phone) as phone, sa.section FROM user ur
+               $query = mysql_query("Select ur.id, ur.email, ur.password, IFNULL(ad.full_name, IFNULL(sa.full_name, IFNULL(tr.full_name, ps.full_name))) as full_name, IFNULL(ad.index_number, IFNULL(sa.index_number, IFNULL(tr.index_number, ps.index_number))) as index_number, IFNULL(ad.gender , IFNULL(sa.gender, IFNULL(tr.gender, ps.gender))) as gender, IFNULL(ad.phone, IFNULL(sa.phone, IFNULL(tr.phone, ps.phone))) as phone, sa.section FROM user ur
 LEFT JOIN admin ad ON ur.email = ad.email
-LEFT JOIN student sa ON ur.email = sa.email 
+LEFT JOIN student sa ON ur.email = sa.email
+LEFT JOIN teacher tr ON ur.email = tr.email
+LEFT JOIN parents ps ON ur.email = ps.email   
 
 			   WHERE ur.email ='$get_id'
 			   ") or die(mysql_error());
@@ -320,7 +322,7 @@ LEFT JOIN student sa ON ur.email = sa.email
                                             </div>
                                             <label class="control-label col-sm-2" for="item_category">Section:</label>
                                             <div class="col-sm-4">
-                                                <input type="text" readonly class="form-control id="Jobtitle" name="section" value="<?php echo $row ['section'];?>" placeholder="Jobtitle">
+                                                <input type="text" readonly class="form-control id="Jobtitle" name="section" value="<?php echo $row ['section'];?>" placeholder="Section">
 												</div>
 									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
 									<div class="col-sm-4">
