@@ -175,9 +175,7 @@ body {
 
 				
 
-<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total SMS Received(s)</th>							
-
-<th style="width:5%;background-color:#454545; color:white; text-align:center; font-size:15px; color:white;">Total Download(s)</th>							
+					
 
 
 
@@ -210,14 +208,21 @@ body {
 		  // $get_id=$_GET['id'];
 		   include('db.php');
 
+		//    $query = mysql_query("Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.section,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date, ur.password FROM student sa  
+		//    LEFT JOIN user ur ON sa.email = ur.email LEFT JOIN admin ad ON ad.email = ur.email WHERE sa.email ='$get_id'  or ad.email='$get_id'
+		//    ") or die(mysql_error());
+
 		 $get_id = isset($_GET['email']) ? $_GET['email'] : '';
 		 $file = isset($_GET['item_image']) ? $_GET['item_image'] : '';
-               $query = mysql_query("Select sa.id,sa.index_number,sa.full_name,sa.i_name,sa.gender,sa.section,sa.address,sa.phone,sa.email,sa.image_name,sa.b_date,sa._status,sa.reg_year,sa.reg_month,sa.reg_date,sg.grade_id, ur.password FROM student sa LEFT JOIN student_grade sg ON sa.index_number=sg.index_number 
-			   LEFT JOIN user ur ON sa.email = ur.email WHERE sa.email ='$get_id' 
+               $query = mysql_query("Select ur.id, ur.email, ur.password, IFNULL(ad.full_name, sa.full_name) as full_name, IFNULL(ad.index_number, sa.index_number) as index_number, IFNULL(ad.gender , sa.gender) as gender, IFNULL(ad.phone, sa.phone) as phone, sa.section FROM user ur
+LEFT JOIN admin ad ON ur.email = ad.email
+LEFT JOIN student sa ON ur.email = sa.email 
+
+			   WHERE ur.email ='$get_id'
 			   ") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
-                    	   $index_no=$row['index_number'];
-					   $id=$row['id'];
+                    	   $email=$row['email'];
+					//    $id=$row['id'];
 					   $password=$row['password'];
 					// 		$name=$row['item_image'];
 					// 		$grade_id=$row['grade'];      
@@ -251,47 +256,8 @@ body {
 			  
 			  
 
-			  <td style="text-align:center;
-			  ">
-			
-			<?php
-$connection=mysqli_connect('localhost','root','','std_db');
-
-        
-       
-                    $count_query = mysqli_query($connection,"select * from std_db.inbox index_number where index_number='$index_no' and module='$file'") or die(mysqli_error());        
-          $count = mysqli_num_rows($count_query);
-          
-                    ?>
-					
-					
-					
-                    <?php echo $count; ?>
 
 
-
-			</td>
-
-			<td style="text-align:center;
-			  ">
-			
-			<?php
-$connection=mysqli_connect('localhost','root','','std_db');
-
-        
-       
-                    $count_query = mysqli_query($connection,"select distinct grade_id,module_name,user_index_id from std_db.module_dl_logs where user_index_id='$index_no' and module_name='$file'") or die(mysqli_error());        
-          $count = mysqli_num_rows($count_query);
-          
-                    ?>
-					
-					
-					
-                    <?php echo $count; ?>
-
-
-
-			</td>
 			  
        
 					<td>					
@@ -840,10 +806,7 @@ echo "Error updating record: " . $conn->error;
 								   
 								
 
-//$sql = "INSERT INTO postingsenderreserved    (item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,Salary,skills,fname,mname,lname,Contact,Email,upload_by,department)
-//SELECT //item_id,Jobtitle,Type,Jobdescription,item_image,item_date,Education,dh,category_id,Vacancy,status,img_name,img_path,img_type,WorkXP,Gender,S//alary,skills,fname,mname,lname,Contact,Email,upload_by,department FROM postingsender WHERE Jobtitle='$get_id'";
-							//	 $sql=" DELETE FROM postingsender
-								// WHERE item_id='$item_id'";
+
 								   
 								  echo '<script>window.location.href="myinbox.php"</script>';
 									  
