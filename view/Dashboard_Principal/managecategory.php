@@ -769,7 +769,7 @@ die(mysql_error());
 
 
 
-<!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen"-->
+
 
 
 
@@ -779,7 +779,7 @@ die(mysql_error());
 
 	
 
-							<table cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
+							<table cellpadding="0" cellspacing="0"  class="table table-bordered">
 		
 			<tr>
 			<td><form enctype="multipart/form-data" action="" id="wb_Form1" name="form" method="post">

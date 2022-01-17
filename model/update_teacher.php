@@ -9,6 +9,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_teacher")){
 	$gender=$_POST['gender']; 
 	$phone=$_POST['phone']; 
 	$email=$_POST['email'];
+	$birth_date=$_POST['birth_date'];
 	
 	$c_page=$_POST['c_page'];//current table page
 	
@@ -55,7 +56,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_teacher")){
 	
 			}else{ //MSK-000143-U-6
 				if(move_uploaded_file($tmpname, $image_path)){ //MSK-000143-U-7
-					$sql = "update teacher set full_name='".$full_name."',i_name='".$i_name."',address='".$address."',gender='".$gender."',phone='".$phone."' ,email='".$email."',image_name='".$image_path."' where id='$id'";
+					$sql = "update teacher set full_name='".$full_name."',i_name='".$i_name."',address='".$address."',gender='".$gender."',phone='".$phone."' ,email='".$email."',image_name='".$image_path."' ,birth_date='".$birth_date."' where id='$id'";
 	
 					if(mysqli_query($conn,$sql)){
 									

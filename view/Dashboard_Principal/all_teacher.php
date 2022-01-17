@@ -507,6 +507,7 @@ display:none;
                             <thead>
                                 <th class="col-md-1">ID</th>
                                 <th class="col-md-3">Name</th>
+								<th class="col-md-3">Grade Handeld</th>
                                 <th class="col-md-4">Action</th>
                             </thead>
                             <tbody>
@@ -539,6 +540,9 @@ if(mysqli_num_rows($result) > 0){
 											<?php echo $row['i_name']; ?>
                                         </a>
                                     </td>
+									<td>
+									<?php echo $row['grade']; ?>
+	</td>
                                     <td>
 
 <?php
@@ -710,11 +714,15 @@ if($cant_remove1 > 0 || $cant_remove2 > 0 || $cant_remove3 > 0 || $cant_remove4 
                                     </div>
                                     <div class="form-group" id="divPhoneUpdate">
                                         <label for="">Phone Number</label>
-                                        <input class="form-control" type="text" id="phone1" name="phone" autocomplete="off">
+                                        <input class="form-control" type="text" id="phone1" minlength="8" maxlength="8" name="phone" autocomplete="off">
                                     </div>
                                     <div class="form-group" id="divEmailUpdate">
                                         <label for="">Email</label>
                                         <input class="form-control " type="text" id="email1" name="email" autocomplete="off">
+                                    </div>
+									<div class="form-group" id="divbirth_dateUpdate">
+                                        <label for="">Birth Date</label>
+                                        <input class="form-control " type="date" id="birth_date1" name="birth_date" autocomplete="off">
                                     </div>
                                     <div class="form-group" id="divPhotoUpdate">
                                         <label for="">Photo</label>
@@ -764,6 +772,7 @@ function showModal(Updateform){
 				document.getElementById("gender1").value =myArray1[4];
 				document.getElementById("phone1").value =myArray1[5];
 				document.getElementById("email1").value =myArray1[6];
+				document.getElementById("birth_date1").value =myArray1[9];
 				document.getElementById("output1").src ='../../'+myArray1[7];
 				document.getElementById("c_page").value =currentPage;
 				
@@ -835,6 +844,39 @@ function showModal(Updateform){
 
 				
 				});	
+
+				$("#birth_date1" ).keydown(function(){//MSK-00119-email
+					
+					var beforeValue = $(this);// this is the value before the keypress
+					
+    				setTimeout(function() {
+        				
+        				var afterValue = beforeValue.val();// this is the value after the keypress
+						var mom = $('#divbirth_dateUpdate');
+						
+						if (mailformat.test(afterValue) == false){
+							//MSK-00120-email
+							$("#btnSubmit1").attr("disabled", true);
+							mom.removeClass('has-success has-feedback');
+							mom.children("span").remove();
+							
+							mom.addClass('has-error has-feedback');
+							mom.append('<span id="spanbirth_dateUpdate" class="glyphicon glyphicon-remove form-control-feedback msk-set-color-tooltip" data-toggle="tooltip" title="Enter valid birth date" ></span>');	
+							
+						}else{
+							//MSK-00121-email
+							$("#btnSubmit1").attr("disabled", false);
+							mom.removeClass('has-error has-feedback');
+							mom.children("span").remove();
+							
+							mom.addClass('has-success has-feedback');
+							mom.append('<span id="spanEmailUpdate" class="glyphicon glyphicon-ok form-control-feedback" ></span>');	
+						}
+				
+    				}, 0);
+
+				
+				});	
 				
 				$('[type="file"]').change(function () {
 					//MSK-00119-photo
@@ -891,6 +933,7 @@ $("#form2").submit(function(e){
 	var gender = document.getElementById("gender1").value;
 	var phone = document.getElementById("phone1").value;
 	var email = document.getElementById("email1").value;
+	var birth_date = document.getElementById("birth_date1").value;
 	var photo = document.getElementById("output1").src;
 
 	if(full_name == ''){
@@ -947,7 +990,7 @@ $("#form2").submit(function(e){
 	var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-	if(full_name == '' || i_name == '' || address == '' || phone == '' || email == '' || gname == '' || gaddress == '' || gphone == '' || gemail == '' ||telformat.test(phone) == false || mailformat.test(email) == false ){
+	if(full_name == '' || i_name == '' || address == '' || phone == '' || email == '' || birth_date == '' || gname == '' || gaddress == '' || gphone == '' || gemail == '' ||telformat.test(phone) == false || mailformat.test(email) == false ){
 		//MSK-000098- form2 validation failed
 		$("#btnSubmit1").attr("disabled", true);
 		e.preventDefault();
