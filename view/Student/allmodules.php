@@ -564,7 +564,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 						// $query = mysql_query("select * from filemgrfinance where department='$department' ORDER by item_id DESC
 							
 						// ")
-						$query = mysql_query("select f.item_id , f.item_image, f.item_date, f.upload_by, f.department,g.name as grade from filemgrfinance f LEFT JOIN grade g ON f.grade = g.id where g.id='$grade_id'  ORDER by item_id DESC
+						$query = mysql_query("select f.item_id , f.item_image, f.item_date, f.upload_by, f.department,g.name as grade, g.id as grade_identity from filemgrfinance f LEFT JOIN grade g ON f.grade = g.id where g.id='$grade_id'  ORDER by item_id DESC
 							
 							 ")
 							 
@@ -621,7 +621,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 			  
 											  
 
-<a onclick="myFunction()" href="downloadsunday.php?filename=<?php echo $names;?>" type="submit" name="submitlogs"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
+<a href="downloadsunday.php?filename=<?php echo $names;?>&indexid=<?php echo $index;?>&gradeid=<?php echo $row['grade_identity'];?>&section=<?php echo $section; ?>" type="submit" name="submitlogs"  class="btn btn-primary" title="click to download"  onclick="return confirm('Are you sure to Download this Selected File?')"><span class="glyphicon glyphicon-download" style=" color:white"></span>&nbsp;Download</a>
 							  
 													  
 															 
@@ -674,26 +674,8 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
 
 		
 		
-	</section> <!-- End of table section --> 
-	 <?php 
-$con = mysql_connect("localhost","root","");
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-	else
-	{
-	        //  header('Location:Groupmessenger2.php');	
-	}
-mysql_select_db("std_db", $con);
-	
-$index=$_SESSION["index_number"];
-   
-		mysql_query("INSERT INTO module_dl_logs(user_index_id, module_name,grade_id,section)VALUES('$index', '$names','$grade_id','$section')");
+	</section> <!-- End of table section MIND BLOWING --> 
 
-
-
-?>
 
 
 
@@ -891,12 +873,12 @@ $totalsubjects=$query->rowCount();
         </div>
 		
 
-		<script>
+		<!-- <script>
 function myFunction() {
   
 	alert("sdsd");
 }
-</script>
+</script> -->
 
 
 

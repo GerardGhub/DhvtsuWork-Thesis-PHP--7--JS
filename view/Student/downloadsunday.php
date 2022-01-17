@@ -1,5 +1,10 @@
-<!-- <?php
 
+
+
+
+
+
+<?php 
 $con = mysql_connect("localhost","root","");
 if (!$con)
   {
@@ -10,17 +15,23 @@ if (!$con)
 	        //  header('Location:Groupmessenger2.php');	
 	}
 mysql_select_db("std_db", $con);
-		$message=$_POST['message'];
-		$sender=$_POST['sender'];
-		$image_user=$_POST['image_user'];
-		$department=$_POST['department'];
-		$grade_id=$_POST['grade_id'];
-		$section=$_POST['section'];
-        $name = rawurldecode($name);
-		mysql_query("INSERT INTO message(message, sender, image_user,department,grade_id,section)VALUES('$message', '$sender', '$image_user','$department','$grade_id','$section')");
+	
+
+$file =  $_REQUEST['filename'];
+$userid =  $_REQUEST['indexid'];
+$gradeid =  $_REQUEST['gradeid'];
+$section =  $_REQUEST['section'];
+
+   
+		mysql_query("INSERT INTO module_dl_logs(user_index_id, module_name,grade_id,section)VALUES('$userid', '$file','$gradeid','$section')");
 
 
-?> -->
+
+?>
+
+
+
+
 <?php
 function output_file($file, $name, $mime_type='')
 {
