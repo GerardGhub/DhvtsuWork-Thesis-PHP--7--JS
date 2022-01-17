@@ -676,7 +676,7 @@ if(isset($_POST['btn_save_updates']))
         <span class="glyphicon glyphicon-save"></span> Update
         </button>
         
-        <a class="btn btn-danger" href="managecatmis.php"> <span class="glyphicon glyphicon-backward"></span> Cancel </a>
+        <a class="btn btn-danger" href="managecategory.php"> <span class="glyphicon glyphicon-backward"></span> Cancel </a>
         
         </td>
     </tr>
