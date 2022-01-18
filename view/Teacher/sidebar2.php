@@ -13,6 +13,7 @@ $result=mysqli_query($conn,$sql);
 $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
+$full_name=$row['full_name'];
 
 ?>      
       
@@ -161,6 +162,26 @@ $image=$row['image_name'];
            
           </ul>
         </li>
+
+
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+            <span style="color:white;">Announcement Post</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li><a href="requestinquiry.php"><i class="fa fa-circle-o"></i> Request InQuiry</a></li>
+          	<li><a href="myinbox.php"><i class="fa fa-circle-o"></i> Inbox</a></li>
+            <li><a href="datalist.php"><i class="fa fa-circle-o"></i> Data List</a>
+            <li><a href="postedlist.php"><i class="fa fa-circle-o"></i> Posts List</a>
+
+           
+          </ul>
+        </li> 
 
 
       </ul>

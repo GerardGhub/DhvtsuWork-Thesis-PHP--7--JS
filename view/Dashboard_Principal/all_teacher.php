@@ -507,7 +507,9 @@ display:none;
                             <thead>
                                 <th class="col-md-1">ID</th>
                                 <th class="col-md-3">Name</th>
-								<th class="col-md-3">Grade Handeld</th>
+								<th class="col-md-3">Birth Date</th>
+								<th class="col-md-3">Grade Handel</th>
+								<th class="col-md-3">Section Handel</th>
                                 <th class="col-md-4">Action</th>
                             </thead>
                             <tbody>
@@ -533,17 +535,24 @@ if(mysqli_num_rows($result) > 0){
 		$id=$row['id'];
 		$index=$row['index_number'];
 ?>   
-                                <tr>
-                                    <td><?php echo $count; ?></td>
-                                    <td id="td1_<?php echo $row['id']; ?>">
-                                    	<a href="#modalViewform" onClick="showModal1(this)" class=""  data-id="<?php echo $row["id"]; ?>" data-toggle="modal">
-											<?php echo $row['i_name']; ?>
-                                        </a>
-                                    </td>
-									<td>
-									<?php echo $row['grade']; ?>
-	</td>
-                                    <td>
+<tr>
+<td><?php echo $count; ?></td>
+<td id="td1_<?php echo $row['id']; ?>">
+<a href="#modalViewform" onClick="showModal1(this)" class=""  data-id="<?php echo $row["id"]; ?>" data-toggle="modal">
+<?php echo $row['i_name']; ?>
+</a>
+</td>
+<td>
+<?php echo $row['birth_date']; ?>
+</td>
+<td>
+<?php echo $row['grade']; ?>
+</td>
+
+<td>
+<?php echo $row['section_handle']; ?>
+</td>
+<td>
 
 <?php
 

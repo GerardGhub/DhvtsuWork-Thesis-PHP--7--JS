@@ -187,6 +187,28 @@ $connection=mysqli_connect('localhost','root','','std_db');
 								</div>                    
 								</div>                              					 
 
+
+								<div class="form-group" id="divsection_handle">
+								<div class="col-xs-3">
+								<label for="exampleInputEmail1">Select Section</label>
+								</div>
+								<div class="col-xs-9" id="divsection_handle1">
+
+								<select  class="form-control"  name="section_handle" required id="section_handle">
+								<?php
+								include('connect.php');
+								$cat_query = mysql_query("SELECT * FROM section");
+								while($cat_row = mysql_fetch_array($cat_query)){
+								?>
+								<option value="<?php echo $cat_row['name']; ?>"><?php echo $cat_row['name']; ?></option>
+
+								<?php  } ?>
+
+
+
+								</select>
+								</div>                    
+								</div>     
 							
 
 
@@ -305,6 +327,7 @@ $("#form1").submit(function (e) {
 	var password = $('#t_password').val();
 	var confirm_password = $('#t_confirm_password').val();
 	var grade = $('#grade').val();
+	var section_handle = $('#section_handle').val();
 	var birth_date = $('#birth_date').val();
 
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;	
@@ -383,6 +406,24 @@ $("#form1").submit(function (e) {
 		
 	}
 
+
+	
+
+	if(section_handle == ''){
+		//MSK-00102-password
+		$("#btnSubmit").attr("disabled", true);
+		$('#divsection_handle').addClass('has-error has-feedback');
+		$('#divsection_handle').append('<span id="spansection_handle" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"    title="The section_handle is required" ></span>');	
+		
+		$("#section_handle").keydown(function() {
+			//MSK-00103-password
+			$("#btnSubmit").attr("disabled", false);	
+			$('#divsection_handle').removeClass('has-error has-feedback');
+			$('#spansection_handle').remove();
+			
+		});
+	
+	}
 
 
 	if(grade == ''){

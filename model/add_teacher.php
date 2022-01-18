@@ -12,7 +12,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_teacher")){
 	$password = $_POST["password"];
 	$grade = $_POST["grade"];
 	$birth_date = $_POST["birth_date"];
-	
+	$section_handle = $_POST["section_handle"];
 	$current_date=date("Y-m-d");
 	
 	$target_dir = "uploads/";
@@ -58,8 +58,8 @@ if(isset($_POST["do"])&&($_POST["do"]=="add_teacher")){
 		 	if(move_uploaded_file($tmpname, $image_path)){
 				//MSK-000143-5	
 				
-				$sql = "INSERT INTO teacher (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_date, grade, birth_date)
-			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path.                        "','".$current_date."' ,'".$grade."','".$birth_date."')";
+				$sql = "INSERT INTO teacher (index_number,full_name,i_name,gender,address,phone,email,image_name,reg_date, grade, birth_date, section_handle)
+			            VALUES ('".$index_number."','".$full_name."','".$i_name."','".$gender."','".$address."','".$phone."','".$email."','".$image_path.                        "','".$current_date."' ,'".$grade."','".$birth_date."','".$section_handle."')";
 				if(mysqli_query($conn,$sql)){
 					$msg+=2;  
 					//MSK-000143-6 The record has been successfully inserted into the database.
