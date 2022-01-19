@@ -32,6 +32,8 @@ if(isset($_arguments["do"])&& ($_arguments["do"] != "")){
 		$page = "model/update_timetable.php";
 	}else if(($_arguments["do"] == "add_student")){//MSK-000143-add_student
 		$page = "model/add_student.php";
+	}else if(($_arguments["do"] == "add_studentregistration")){//MSK-000143-add_student
+		$page = "model/add_studentregistration.php";
 	}else if(($_arguments["do"] == "update_student")){//MSK-000143-update_student
 		$page = "model/update_student.php";
 	}else if(($_arguments["do"] == "add_student_payment")){//MSK-000143-add_student_payment
