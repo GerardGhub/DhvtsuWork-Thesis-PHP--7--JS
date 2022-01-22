@@ -324,7 +324,7 @@ LEFT JOIN parents ps ON ur.email = ps.email
                                             <div class="col-sm-4">
                                                 <input type="text" readonly class="form-control id="Jobtitle" name="section" value="<?php echo $row ['section'];?>" placeholder="Section">
 												</div>
-									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number</label>
+									<label class="control-label col-sm-2" for="ContactNumber">Contact&nbsp;Number:</label>
 									<div class="col-sm-4">
 									<input type="phone" readonly class="form-control" id="ContactNumber" name="phone_number" value="<?php echo $row['phone'];?>" placeholder="Phone">
 									</div>
@@ -332,11 +332,11 @@ LEFT JOIN parents ps ON ur.email = ps.email
 	
 
 									
-									<label class="control-label col-sm-2" for="Email">Valid Email</label>
+									<label class="control-label col-sm-2" for="Email">Valid Email:</label>
 									<div class="col-sm-4">
 									<input type="text" readonly class="form-control" id="Email" name="Email" value="<?php echo $row['email'];?>" placeholder="Email">
 									</div>
-									<label class="control-label col-sm-2" for="ContactNumber">Send By</label>
+									<label class="control-label col-sm-2" for="ContactNumber">Send By:</label>
 
 <div class="col-sm-4">
 <input type="text"  class="form-control"  value="SAE Admin" readonly required>
@@ -346,7 +346,7 @@ LEFT JOIN parents ps ON ur.email = ps.email
 
 
 </div>
-<label class="control-label col-sm-2" for="ContactNumber">Message</label>
+<label class="control-label col-sm-2" for="ContactNumber">Password:</label>
 <div class="col-sm-4">
 <input type="password" readonly  class="form-control"  name="message" value="<?php echo $row['password'];?>"  required>
 
