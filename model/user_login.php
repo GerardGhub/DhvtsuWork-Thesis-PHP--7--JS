@@ -57,7 +57,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="user_login")){
 		
 		if($type == "Parents"){
 			
-			$sql1="SELECT * FROM parents WHERE index_number='$email'";	
+			$sql1="SELECT * FROM parents WHERE email='$email'";	
 			$result1=mysqli_query($conn,$sql1);
 			$row1=mysqli_fetch_assoc($result1);
 	
