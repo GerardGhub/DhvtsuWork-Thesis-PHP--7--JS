@@ -95,43 +95,43 @@ $password=$row1['password'];
                   				<table class="table table-bordered table-striped">
                     				<tbody>
                       					<tr>
-                        					<td class="col-md-4">Full Name</td>
+                        					<td class="col-md-4">Full Name:</td>
                         					<td id="full_name"><?php echo $full_name; ?></td>
                       					</tr>
                       					<tr>
-                        					<td>Name With Initials</td>
+                        					<td>Name With Initials:</td>
                         					<td id="i_name"><?php echo $i_name; ?> </td>
                       					</tr>
                              			<tr>
-                        					<td>Address</td>
+                        					<td>Address:</td>
                         					<td id="address"><?php echo $address; ?> </td>
                       					</tr>
                         				<tr>
-                        					<td>Gender</td>
+                        					<td>Gender:</td>
                         					<td id="gender"><?php echo $gender; ?> </td>
                       					</tr>
                       					<tr>
-                        					<td>Email</td>
+                        					<td>Email:</td>
                         					<td id="email"><?php echo $email; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Phone Number</td>
+                        					<td>Phone Number:</td>
                         					<td id="phone"><?php echo $phone; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Guardians Name</td>
+                        					<td>Guardians Name:</td>
                         					<td id="g_name"><?php echo $g_name; ?> </td>
                       					</tr>
                         				<tr>
-                        					<td>Guardians Address</td>
+                        					<td>Guardians Address:</td>
                         					<td id="g_address"><?php echo $g_address; ?> </td>
                       					</tr>
                       					<tr>
-                        					<td>Guardians Phone</td>
+                        					<td>Guardians Phone:</td>
                         					<td id="g_phone"><?php echo $g_phone; ?> </td>
                       					</tr>
                      					<tr>
-                        					<td>Guardians Email</td>
+                        					<td>Guardians Email:</td>
                         					<td id="g_email"><?php echo $g_email; ?> </td>
                       					</tr>
                                         <!-- <tr>
@@ -148,8 +148,8 @@ $password=$row1['password'];
                    		</div>
                      </div>
                     <div class="panel-footer text-right" id="panel_footer">
-                    	<!-- <a href="#" onClick="editMyProfile('<?php echo $index; ?>')" type="button" class="btn btn-sm btn-warning" id="btnEdit"><i class="glyphicon glyphicon-edit"></i></a>
-                       -->
+                    	<a href="#" onClick="editMyProfile('<?php echo $index; ?>')" type="button" class="btn btn-sm btn-primary" id="btnEdit"><i class="glyphicon glyphicon-edit"> Edit</i></a>
+                      
 						<span class="pull-right" id="spanEdit"></span>
                     </div>
             	</div><!--/. panel--> 
@@ -284,6 +284,22 @@ function editMyProfile(my_index){
 								}else{
 									
 								}
+
+								if ($('#password1').val() == $('#confirm_password_loop').val())
+							 {
+								// alert("Psdsd!");
+							$('#t_message').html('Matching').css('color', 'green');
+							 
+							}
+							 else 
+							 {
+								 alert("Password is not Match!");
+							
+									
+									e.preventDefault();
+									return false;
+							$('#t_message').html('Not Matching').css('color', 'red');
+							 }
 	
 								if(address == ''){
 									//MSK-00102-full_name 

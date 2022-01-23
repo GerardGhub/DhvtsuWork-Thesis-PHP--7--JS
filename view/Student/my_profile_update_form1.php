@@ -58,7 +58,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                          <tr>
                             <td id="tdGEmail1">Guardians Email</td>
-                            <td id="tdGEmail2"><input type="text" class="form-control" value="" name="g_email" id="g_email1" autocomplete="off"></td>
+                            <td id="tdGEmail2"><input type="email" class="form-control" value="" name="g_email" id="g_email1" autocomplete="off"></td>
                         </tr>
                         <tr>
                             <td>User Name</td>
@@ -66,13 +66,17 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdPassword1">Password</td>
-                            <td id="tdPassword2"><input type="password" class="form-control" value="" name="password" id="password1" autocomplete="off"></td>
+                            <td id="tdPassword2"><input type="password" class="form-control" minlength="8" value="" name="password" id="password1" autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td id="tdConfirmPassword1">Confirm Password</td>
+                            <td id="tdConfirmPassword2"><input type="password" minlength="8" class="form-control" value="" name="confirm_password_loop" id="confirm_password_loop" autocomplete="off"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>  
 		</div>
-         <p class="alert-info"><strong>Note: We get the email address for the user name.</strong></p>
+         <!-- <p class="alert-info"><strong>Note: We get the email address for the user name.</strong></p> -->
 	</div><!--panel-body -->  
     <div class="panel-footer text-right">
     	<input type="hidden" id="id1" name="id" value="">
