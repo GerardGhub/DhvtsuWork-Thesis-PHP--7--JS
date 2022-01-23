@@ -86,35 +86,35 @@ $password=$row1['password'];
                   				<table class="table table-bordered table-striped">
                     				<tbody>
                       					<tr>
-                        					<td class="col-md-4">Full Name</td>
+                        					<td class="col-md-4">Full Name:</td>
                         					<td id="full_name"><?php echo $full_name; ?></td>
                       					</tr>
                       					<tr>
-                        					<td>NickName</td>
+                        					<td>NickName:</td>
                         					<td id="i_name"><?php echo $i_name; ?> </td>
                       					</tr>
                              			<tr>
-                        					<td>Address</td>
+                        					<td>Address:</td>
                         					<td id="address"><?php echo $address; ?> </td>
                       					</tr>
                         				<tr>
-                        					<td>Gender</td>
+                        					<td>Gender:</td>
                         					<td id="gender"><?php echo $gender; ?> </td>
                       					</tr>
                       					<tr>
-                        					<td>Email</td>
+                        					<td>Email:</td>
                         					<td id="email"><?php echo $email; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Phone Number</td>
+                        					<td>Phone Number:</td>
                         					<td id="phone"><?php echo $phone; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>User Name</td>
+                        					<td>User Name:</td>
                         					<td id="email"><?php echo $user_name; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Password</td>
+                        					<td>Password:</td>
                         					<td id="phone"><?php echo $password; ?> </td>
                       					</tr>
                     				</tbody>
@@ -290,6 +290,22 @@ function editMyProfile(my_index){
 									});
 							
 								}
+
+								if ($('#password1').val() == $('#confirm_password_loop').val())
+							 {
+								// alert("Psdsd!");
+							$('#t_message').html('Matching').css('color', 'green');
+							 
+							}
+							 else 
+							 {
+								 alert("Password is not Match!");
+							
+									
+									e.preventDefault();
+									return false;
+							$('#t_message').html('Not Matching').css('color', 'red');
+							 }
 								
 								if(email == ''){
 									//MSK-00102-full_name 

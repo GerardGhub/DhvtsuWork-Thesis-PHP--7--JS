@@ -38,11 +38,11 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdEmail1">Email</td>
-                            <td id="tdEmail2"><input type="text" class="form-control" value="" name="email" id="email1" autocomplete="off"></td>
+                            <td id="tdEmail2"><input type="email" class="form-control" value="" name="email" id="email1" autocomplete="off"></td>
                         </tr>
                         <tr>
                             <td id="tdPhone1">Phone Number</td>
-                            <td id="tdPhone2"><input type="text" class="form-control" value="" name="phone" id="phone1" autocomplete="off"data-inputmask='"mask": "(999) 999-9999"' data-mask></td>
+                            <td id="tdPhone2"><input type="number" class="form-control" maxlength="11" value="" name="phone" id="phone1" autocomplete="off"data-inputmask='"mask": "(999) 999-9999"' data-mask></td>
                         </tr>
                         <tr>
                             <td>User Name</td>
@@ -50,7 +50,11 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdPassword1">Password</td>
-                            <td id="tdPassword2"><input type="password" class="form-control" value="" name="password" id="password1" autocomplete="off"></td>
+                            <td id="tdPassword2"><input type="password"  minlength="8" class="form-control" value="" name="password" id="password1" autocomplete="off"></td>
+                        </tr>
+                        <tr>
+                            <td id="tdConfirmPassword1">Confirm Password</td>
+                            <td id="tdConfirmPassword2"><input type="password" minlength="8" class="form-control" value="" name="confirm_password_loop" id="confirm_password_loop" autocomplete="off"></td>
                         </tr>
                     </tbody>
                 </table>
