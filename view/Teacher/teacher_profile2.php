@@ -190,7 +190,7 @@ function editMyProfile(my_index){
 								var email = document.getElementById("email1").value;
 								
 								var password = document.getElementById("password1").value;
-								var confirm_password = document.getElementId("confirm_password_loop").value;
+								// var confirm_password = document.getElementId("confirm_password_loop").value;
 
 
 								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;	
@@ -237,12 +237,17 @@ function editMyProfile(my_index){
 			
 							if ($('#password1').val() == $('#confirm_password_loop').val())
 							 {
+								// alert("Psdsd!");
 							$('#t_message').html('Matching').css('color', 'green');
 							 
 							}
 							 else 
 							 {
 								 alert("Password is not Match!");
+							
+									
+									e.preventDefault();
+									return false;
 							$('#t_message').html('Not Matching').css('color', 'red');
 							 }
 	
@@ -401,24 +406,24 @@ function editMyProfile(my_index){
 									
 								}
 
-								if(confirm_password == ''){
-									//MSK-00102-full_name 
-									$("#btnUpdate").attr("disabled", true);
-									//$('tdPassword1').addClass('has-error has-feedback');
-									$('#tdConfirmPassword2').addClass('has-error has-feedback');
-									$('#tdConfirmPassword2').append('<span id="spanConfirmPassword" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"   title="The Confirm password is required" ></span>');	
+								// if(confirm_password == ''){
+								// 	//MSK-00102-full_name 
+								// 	$("#btnUpdate").attr("disabled", true);
+								// 	//$('tdPassword1').addClass('has-error has-feedback');
+								// 	$('#tdConfirmPassword2').addClass('has-error has-feedback');
+								// 	$('#tdConfirmPassword2').append('<span id="spanConfirmPassword" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"   title="The Confirm password is required" ></span>');	
 										
-									$("#confirm_password").keydown(function(){
-										//MSK-00103-full_name 
-										$("#btnUpdate").attr("disabled",false);	
-										$('#tdConfirmPassword2').removeClass('has-error has-feedback');
-										$('#spanConfirmPassword').remove();
+								// 	$("#confirm_password_loop").keydown(function(){
+								// 		//MSK-00103-full_name 
+								// 		$("#btnUpdate").attr("disabled",false);	
+								// 		$('#tdConfirmPassword2').removeClass('has-error has-feedback');
+								// 		$('#spanConfirmPassword').remove();
 										
-									});
+								// 	});
 							
-								}else{
+								// }else{
 									
-								}
+								// }
 							
 								if(full_name == '' || i_name == '' || address == '' || phone == '' || email == '' || mailformat.test(email) == false || password == ''){
 								

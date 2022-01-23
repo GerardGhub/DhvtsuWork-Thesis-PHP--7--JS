@@ -42,7 +42,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdPhone1">Phone Number</td>
-                            <td id="tdPhone2"><input type="text" class="form-control" value="" name="phone" id="phone1" autocomplete="off"></td>
+                            <td id="tdPhone2"><input type="text" class="form-control" value="" name="phone" maxlength="11" id="phone1" autocomplete="off"></td>
                         </tr>
                         <tr>
                             <td>User Name</td>
