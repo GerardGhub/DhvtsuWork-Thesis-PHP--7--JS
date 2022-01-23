@@ -38,7 +38,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdEmail1">Email</td>
-                            <td id="tdEmail2"><input type="text" class="form-control" value="" name="email" id="email1" autocomplete="off"></td>
+                            <td id="tdEmail2"><input type="email" class="form-control" value="" name="email" id="email1" autocomplete="off"></td>
                         </tr>
                         <tr>
                             <td id="tdPhone1">Phone Number</td>
@@ -50,7 +50,12 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                         </tr>
                         <tr>
                             <td id="tdPassword1">Password</td>
-                            <td id="tdPassword2"><input type="password" class="form-control" value="" name="password" id="password1" autocomplete="off"></td>
+                            <td id="tdPassword2"><input type="password" minlength="8" class="form-control" value="" name="password" id="password1" autocomplete="off"></td>
+                     	   <span id='t_message'></span>
+                        </tr>
+                        <tr>
+                            <td id="tdConfirmPassword1">Confirm Password</td>
+                            <td id="tdConfirmPassword2"><input type="password" minlength="8" class="form-control" value="" name="confirm_password_loop" id="confirm_password_loop" autocomplete="off"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,7 +66,22 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     <div class="panel-footer text-right">
         <input type="hidden" id="id1" name="id" value="">
         <input type="hidden" name="do" value="update_teacher_profile">
-        <button type="submit" class="btn btn-warning " id="btnUpdate">Update</button>
+        <button type="submit" class="btn btn-primary" id="btnUpdate">Update</button>
         <span class="pull-right"></span>
     </div>   
 </form>                                      
+
+<!-- <script>
+function myFunction() {
+  alert("sadsdsds");
+}
+
+
+$('#password1, #confirm_password_loop').on('keyup', function () {
+    if ($('#password1').val() == $('#confirm_password_loop').val()) {
+        $('#t_message').html('Matching').css('color', 'green');
+    } else 
+        $('#t_message').html('Not Matching').css('color', 'red');
+});
+
+    </script> -->

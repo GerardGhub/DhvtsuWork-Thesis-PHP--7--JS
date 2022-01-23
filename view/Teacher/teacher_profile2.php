@@ -5,6 +5,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     exit;
 }
 ?>
+
 <?php include_once('../Dashboard_Principal/head.php'); ?>
 <?php include_once('header_teacher.php'); ?>
 <?php include_once('sidebar2.php'); ?>
@@ -30,7 +31,7 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     <section class="content-header">
     	<h1>
         	My Profile
-        
+
         </h1>
         <ol class="breadcrumb">
         	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -73,27 +74,27 @@ $image=$row['image_name'];
                   				<table class="table table-bordered table-striped">
                     				<tbody>
                       					<tr>
-                        					<td class="col-md-4">Full Name</td>
+                        					<td class="col-md-4">Full Name:</td>
                         					<td id="full_name"><?php echo $full_name; ?></td>
                       					</tr>
                       					<tr>
-                        					<td>Name With Initials</td>
+                        					<td>Name With Initials:</td>
                         					<td id="i_name"><?php echo $i_name; ?> </td>
                       					</tr>
                              			<tr>
-                        					<td>Address</td>
+                        					<td>Address:</td>
                         					<td id="address"><?php echo $address; ?> </td>
                       					</tr>
                         				<tr>
-                        					<td>Gender</td>
+                        					<td>Gender:</td>
                         					<td id="gender"><?php echo $gender; ?> </td>
                       					</tr>
                       					<tr>
-                        					<td>Email</td>
+                        					<td>Email:</td>
                         					<td id="email"><?php echo $email; ?> </td>
                       					</tr>
                                         <tr>
-                        					<td>Phone Number</td>
+                        					<td>Phone Number:</td>
                         					<td id="phone"><?php echo $phone; ?> </td>
                       					</tr>
                     				</tbody>
@@ -103,7 +104,7 @@ $image=$row['image_name'];
                     
 						</div>
                      <div class="panel-footer text-right" id="panel_footer">
-                    	<a href="#" onClick="editMyProfile('<?php echo $index; ?>')" type="button" class="btn btn-sm btn-warning" id="btnEdit"><i class="glyphicon glyphicon-edit"></i></a><!--MSK-00151-->
+                    	<a href="#" onClick="editMyProfile('<?php echo $index; ?>')" type="button" class="btn btn-sm btn-primary" id="btnEdit"><i class="glyphicon glyphicon-edit">&nbsp;Edit</i></a><!--MSK-00151-->
                         <span class="pull-right" id="spanEdit"></span>
                     </div>
             	</div><!--/. panel--> 
@@ -189,7 +190,9 @@ function editMyProfile(my_index){
 								var email = document.getElementById("email1").value;
 								
 								var password = document.getElementById("password1").value;
-								
+								var confirm_password = document.getElementId("confirm_password_loop").value;
+
+
 								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;	
 								var telformat = /\d{3}[\-]\d{3}[\-]\d{4}$/;
 								
@@ -230,6 +233,18 @@ function editMyProfile(my_index){
 								}else{
 									
 								}
+
+			
+							if ($('#password1').val() == $('#confirm_password_loop').val())
+							 {
+							$('#t_message').html('Matching').css('color', 'green');
+							 
+							}
+							 else 
+							 {
+								 alert("Password is not Match!");
+							$('#t_message').html('Not Matching').css('color', 'red');
+							 }
 	
 								if(address == ''){
 									//MSK-00102-full_name 
@@ -385,8 +400,27 @@ function editMyProfile(my_index){
 								}else{
 									
 								}
+
+								if(confirm_password == ''){
+									//MSK-00102-full_name 
+									$("#btnUpdate").attr("disabled", true);
+									//$('tdPassword1').addClass('has-error has-feedback');
+									$('#tdConfirmPassword2').addClass('has-error has-feedback');
+									$('#tdConfirmPassword2').append('<span id="spanConfirmPassword" class="glyphicon glyphicon-remove form-control-feedback msk-set-width-tooltip" data-toggle="tooltip"   title="The Confirm password is required" ></span>');	
+										
+									$("#confirm_password").keydown(function(){
+										//MSK-00103-full_name 
+										$("#btnUpdate").attr("disabled",false);	
+										$('#tdConfirmPassword2').removeClass('has-error has-feedback');
+										$('#spanConfirmPassword').remove();
+										
+									});
 							
-								if(full_name == '' || i_name == '' || address == '' || phone == '' || telformat.test(phone) == false || email == '' || mailformat.test(email) == false || password == ''){
+								}else{
+									
+								}
+							
+								if(full_name == '' || i_name == '' || address == '' || phone == '' || email == '' || mailformat.test(email) == false || password == ''){
 								
 									$("#btnUpdate").attr("disabled",true);	
 									
@@ -475,6 +509,18 @@ if(isset($_GET["do"])&&($_GET["do"]=="alert_from_update")){
 
 ?>	
 
+<script>
+
+$('#password1, #confirm_password_loop').on('keyup', function () {
+    if ($('#password1').val() == $('#confirm_password_loop').val()) {
+        $('#t_message').html('Matching').css('color', 'green');
+    } else 
+        $('#t_message').html('Not Matching').css('color', 'red');
+});
+
+
+	</script>
+
 <!--redirect your own url when clicking browser back button -->
 <script>
 (function(window, location) {
@@ -490,6 +536,8 @@ window.addEventListener("popstate", function() {
   }
 }, false);
 }(window, location));
+
+
 </script>
      		
 </div><!-- /.content-wrapper -->  
