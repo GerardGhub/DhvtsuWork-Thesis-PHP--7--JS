@@ -604,7 +604,7 @@ function editMyProfile(my_index){
 									
 								}
 								
-								if(full_name == '' || i_name == '' || address == '' || phone == '' || telformat.test(phone) == false || email == '' || mailformat.test(email) == false || password == '' || g_name == '' || g_address == '' || g_phone == '' ||  telformat.test(g_phone) == false || g_email == '' || mailformat.test(g_email) == false ){
+								if(full_name == '' || i_name == '' || address == '' || phone == ''|| email == '' || mailformat.test(email) == false || password == '' || g_name == '' || g_address == '' || g_phone == '' || g_email == '' || mailformat.test(g_email) == false ){
 								
 									$("#btnUpdate").attr("disabled",true);	
 									

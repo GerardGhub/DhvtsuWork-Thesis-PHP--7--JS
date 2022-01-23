@@ -109,7 +109,7 @@ if(isset($_POST["do"])&&($_POST["do"]=="update_student_profile")){
 		
 	}
 	
-	header("Location:view/my_profile.php?do=alert_from_update&msg=$msg");//MSK-000143-5
+	header("Location:view/Student/my_profile.php?do=alert_from_update&msg=$msg");//MSK-000143-5
 
 }
 ?>

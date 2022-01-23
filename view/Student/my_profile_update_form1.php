@@ -1,11 +1,11 @@
 <?php
 if(!isset($_SERVER['HTTP_REFERER'])){
     // redirect them to your desired location
-    header('location:../index.php');
+    header('location:../inpdex.ph');
     exit;
 }
 ?>
-<form action="../index.php" method="POST" enctype="multipart/form-data" >
+<form action="../../index.php" method="POST" enctype="multipart/form-data" >
 	<div class="panel-body"><!--panel-body -->
     	<div class="row">
             <div class="col-md-4" id="divPhoto"> 
