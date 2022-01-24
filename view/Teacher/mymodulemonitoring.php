@@ -559,7 +559,7 @@ if(isset($_GET["do"])&&($_GET["do"]=="show_eMark")){
           
            <?php
 	
-               $query = mysql_query("select distinct id, name from grade") or die(mysql_error());
+               $query = mysql_query("select distinct id, name from grade where name='$grade'") or die(mysql_error());
                         while ($row = mysql_fetch_array($query)) {
             $id=$row['id'];
 

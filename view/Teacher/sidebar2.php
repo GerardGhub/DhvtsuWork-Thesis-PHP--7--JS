@@ -14,6 +14,7 @@ $row=mysqli_fetch_assoc($result);
 $name=$row['i_name'];
 $image=$row['image_name'];
 $full_name=$row['full_name'];
+$grade=$row['grade'];
 
 ?>      
       
@@ -73,29 +74,7 @@ $full_name=$row['full_name'];
             <li><a href="all_timetable2.php"><i class="fa fa-circle-o"></i>All Timetable</a></li>
           </ul>
         </li>
-         <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-calendar-check-o"></i>
-            <span>Attendance</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="my_attendance2.php"><i class="fa fa-circle-o"></i> My Attendance</a></li>
-            <li><a href="my_attendance_history2.php"><i class="fa fa-circle-o"></i>My Attendance History</a></li>
-          </ul>
-        </li> -->
-        <!-- <li>
-          <a href="my_salary.php">
-            <i class="fa fa-money"></i> <span>My Salary</span>
-          </a>
-        </li> -->
-         <!-- <li>
-          <a href="my_petty_cash.php">
-            <i class="fa fa-yen"></i> <span>My Petty Cash</span>
-          </a>
-        </li> -->
+    
          <li class="treeview">
           <a href="#">
             <i class="fa fa-certificate"></i>
